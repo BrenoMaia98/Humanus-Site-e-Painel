@@ -1,0 +1,15 @@
+*{
+  margin:0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.fundoLogo{
+width: 100%;
+}
+
+.triangulo{
+  width: 100%;
+  z-index: 1;
+  margin-top: 15%;
+}
