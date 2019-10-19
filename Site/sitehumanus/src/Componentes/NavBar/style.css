@@ -3,25 +3,39 @@
     padding: 0;
     border: 0;
 }
-
 .fundo{
-    width:100%;
-    background-color: #212B56;
-    display: flex;
+    width: 100%; /*largura*/
+    background-color: #212b56;
+    display: flex; 
+    
 }
 
 .menu{
-    flex:1;
-    margin-left: auto;
+    width:85%;
+    margin: 0px;
+    
+    
+    
 }
 
 .menu li{
-    /*Isso daqui deixa em linha*/
-    display: inline-block;
-    padding: 10px;
+    /*Isso deixa em linha*/
+    display: inline-block; 
+    padding: 30px;
+    color: white;  
+    position:flex; 
+    padding-left:60px ;
+    padding-right:60px ;
+    
+
+    
 }
 
+
 .logo{
-    display: inline-block;
+    display: inline-block; 
     width: 15%;
+    margin-left: 20px;
+    
 }
+
