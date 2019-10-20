@@ -1,0 +1,47 @@
+@font-face{
+    src:url(./BebasNeue-Regular.otf);
+    font-family: 'Bebas';
+}
+
+@font-face{
+    font-family: 'CapitalAlegreya';
+    src:url(./AlegreyaSansSC-ExtraBold.ttf) format('truetype');
+    font-weight:bolder;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'CapitalAlegreya';
+    src:url(./AlegreyaSansSC-Bold.ttf) format('truetype');
+    font-weight:bold;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'CapitalAlegreya';
+    src:url(./AlegreyaSansSC-Regular.ttf) format('truetype');
+    font-weight:normal;
+    font-style:normal;
+     }
+ @font-face {
+    font-family: 'CapitalAlegreya';
+    src:url(./AlegreyaSansSC-Medium.ttf) format('truetype');
+    font-weight:medium;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'Alegreya';
+    src:url(./AlegreyaSans-Black.ttf) format('truetype');
+    font-weight:bolder;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'Alegreya';
+    src:url(./AlegreyaSans-Bold.ttf) format('truetype');
+    font-weight:bold;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'Alegreya';
+    src:url(./AlegreyaSans-Regular.ttf) format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
