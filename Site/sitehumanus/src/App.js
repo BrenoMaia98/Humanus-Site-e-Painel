@@ -15,6 +15,32 @@ function App() {
       </div>
       <QuemSomos></QuemSomos>
       <Servicos></Servicos>
+      <div className="container">
+           <div className="content"> 
+              <p><strong>Contato</strong></p>
+                <form> 
+                  <p><label htmlfor="nome">Nome: </label>
+                  <input type="nome" id="nome" placeholder="Nome completo"/></p>
+                  <p><label htmlfor="email">E-mail: </label>
+                  <input type="email" id="email" placeholder="Seu melhor email"/></p>
+                  <p><label htmlfor="comentario">Assunto: </label>
+                  <input type="comentario" id="comentario" placeholder="Faça seu comentário"/></p>
+                  <button className="btn" type="submit">Enviar</button>
+                </form>
+            </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 }
