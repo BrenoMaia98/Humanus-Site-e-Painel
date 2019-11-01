@@ -1,0 +1,65 @@
+*{
+  margin:0;
+  padding:0;
+  border:0;
+
+}
+
+.footer {
+  position:absolute;
+  margin-bottom:0;
+  width:100%;
+  background-color:  #212b56;
+}
+.Texto{
+  text-align:right;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-right: 80px;
+  
+  color: white;
+}
+
+.Texto2{
+  text-Align:center;
+  color:white;
+
+}
+
+
+.Icones li{
+ 
+    display: inline-block;
+    float: left;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+
+
+}
+
+.WhatsApp{
+height: 35px;
+width: 35px;
+}
+
+.Facebook{
+  height: 35px;
+  width: 35px;
+  }
+
+
+.instagram{
+height: 35px;
+width: 35px;
+}
+
+.Twitter{
+height: 35px;
+width: 35px;
+}
+
+

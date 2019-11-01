@@ -26,20 +26,21 @@
 }
 
 .content{ /* todo o quadrado*/
-  width:100%;
+  width: 180%;
   background:white;
   margin-top: 50px;
   border-radius: 4px;
-  padding:30px;
+  padding:70px;
 
 }
+
 
 .content > p{
   font-size: 30px;
   line-height: 30px;
   margin-bottom: 30px;
   text-align: center;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Bebas';
 
 
 
@@ -55,7 +56,7 @@
   color:black;
   font-weight: bold;
   margin-bottom: 8px;
-  font-family:'Kanit', sans-serif;
+  font-family:'Bebas';
 
 
    
@@ -69,14 +70,14 @@
   border-radius: 20px;
   height:30px;
   width: 250px;
-  padding: 0 30px;
+  padding: 20px 30px;
   font-size: 16px;
   border-top:1px solid #212b56;
   border-left:1px solid #212b56;
   border-right:1px solid #212b56; 
   border-bottom:1px solid #212b56;
   margin-left: 20px;
-  float: right;
+  float: left;
   display: block;
   position: flex;
 
@@ -87,7 +88,7 @@
 .content button.btn{
   border:0;
   border-radius: 20px;
-  width: 100%;
+  width: 65%;
   height: 42px;
   padding: 0 20px;
   font-size: 16px;
@@ -95,11 +96,9 @@
   background: #ccc9e2 ;
   color: black;
   cursor: pointer;
-  border-top:3px solid #212b56;
-  border-left:3px solid #212b56;
-  border-right:3px solid #212b56; 
- border-bottom:3px solid #212b56;
-  
+  border:3px solid #212b56;
+    margin-left: 10%;
+  margin-top: 10px;
 }
 
 .content button.btn:hover{
@@ -109,13 +108,19 @@
 
 .content form input#comentario{
   height: 120px;
-  width: 250px;
+  width: 60%;
   float: right;
   display: block;
   padding: 0 30px;
-
+  margin-right: 15%;
+  
 }
 
 .content form input#email{
-
+  width: 55%;
+  float: right;
+  display: block;
+  padding: 0 30px;
+  margin-right: 20%;
+  margin-bottom: 20px;
 }
