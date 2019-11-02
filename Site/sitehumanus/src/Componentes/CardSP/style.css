@@ -1,11 +1,58 @@
 *{
-    margin:0px;
-    padding: 0px;
-    border: 0px;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+
+}
+
+
+
+
+.titulo{
+  background-Color:white;
+  font-Family: 'Bebas';
+  font-size:25px;
+  height: 50px;
+  border-top-left-radius:25px;
+  border-top-right-radius: 25px;
+  
+  
   }
 
-.container{
-    background-color: #212B56;
-    width: 30% ;
-    height: 30% ;
+
+  
+.descricao{
+  background-Color: #212b56;
+  font-family: 'CapitalAlegreya';
+  font-weight:normal;
+  font-style:normal;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
 }
+
+
+.containerCard{
+  
+  margin: 80px auto 0;
+  max-width: 450px;
+  width: 25%;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:#212B56;
+  border-radius: 30px;
+  display:inline-block;
+  margin-left: 200px;
+  margin-right: 50px;
+  border:3px solid  #212b56;
+  
+}
+
+
+
+
+

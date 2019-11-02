@@ -6,7 +6,7 @@ import FundoLogo from './imagens/FundoLogoCompleto.png';
 import QuemSomos from './Componentes/QuemSomos/index'
 import Servicos from './Componentes/Servico/index'
 import Footer from "./Componentes/Footer/index";
-import CardSP from "./Componentes/CardSP/index";
+
 
 function App() {
   return (
