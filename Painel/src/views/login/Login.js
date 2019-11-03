@@ -1,0 +1,93 @@
+import React from 'react';
+import { Redirect } from "react-router-dom";
+import {auth} from '../../auth';
+import axios from 'axios';
+import './login.css';
+
+
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.login = this.login.bind(this);
+        this.state = {
+            redirectToReferrer: false,
+            email: '',
+            senha: '',
+            tipo: 'admin'
+        }
+    }
+
+
+
+    async login(event) {
+        event.preventDefault();
+        try{
+                 // const response = await axios.post("http://74.117.156.74:5012/Admin/authenticate",{"email": this.state.email, "senha": this.state.senha});
+                 // if(response.data.msg === undefined){
+                 //    console.log (this.state)
+                 //    console.log (response.data)
+                 //     auth.authenticate("admin", response.data.token, () => {
+                 //         this.setState(() => ({
+                 //           redirectToReferrer: true
+                 //         }));
+                 //     });
+                 // } else{
+                 //     alert(response.data.msg);
+                 // }
+            //if(this.state.email == "login" && this.state.senha == "123")
+                auth.authenticate("admin","aqui seria um token se tivesse",() => {
+                            this.setState(() => ({
+                              redirectToReferrer: true
+                            }));
+                        });
+            //else alert("Senha ou Login incorretos");
+        }catch(err){
+            alert(err);
+            window.location.replace('/login');
+        }
+    }
+
+    render() {
+        const { from } = this.props.location.state || { from: { pathname: '/' } };
+        const { redirectToReferrer } = this.state;
+
+        if (redirectToReferrer === true) {
+            return <Redirect to={from} />
+        }
+
+        return (
+            <div className="container">
+            <div className="bg">
+
+            <div className="AppLogin">
+                <div className="App__Form">
+                    <div className="FormTitle">
+                        <a href="#" className="FormTitle__Link FormTitle__Link--Active">Login Administrador</a>
+                    </div>
+                    <div className="FormCenter">
+                        <form onSubmit={this.login}>
+                            <div className="FormField">
+                                <label className="FormField__Label" htmlFor="name">Usuário</label>
+                                <input type="text" id="name" className="FormField__Input" placeholder="Entre com o usuário" name="name" onChange={(event) => this.setState({email: event.target.value})}/>
+                            </div>
+                            <div className="FormField">
+                                <label className="FormField__Label" htmlFor="password">Senha</label>
+                                <input type="password" id="password" className="FormField__Input" placeholder="Entre com a senha" name="password" onChange={(event) => this.setState({senha: event.target.value})}/>
+                            </div>
+                            <br/>
+                            <div className="FormField">
+                                <button className="FormField__Button alignbutton">Entrar</button>
+                            </div>
+
+                        </form>
+                    </div> 
+                            <div className="ejcomp">© 2019 - Desenvolvido por EJComp | Empresa Júnior da Computação.</div>
+                </div>
+            </div>
+            </div>
+                </div>
+        );
+    }
+}
+
+export default Login;
