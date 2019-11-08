@@ -64,14 +64,15 @@ class FormsPostagem extends React.Component {
           );
         }
         else{
+            console.log(this.props)
             return (
                 <div>
                     <Typography variant="h5" component="h2" >
-                        Trocar isso dps
+                    {this.props.nome}
                     </Typography>
                     <Divider />
                     <Typography className={classes.pos} color="textSecondary">
-                        Colocar a props
+                        {this.props.descricao}
 
                     </Typography>
                     <form className="App-forms" onSubmit = {this.handleSubmit} >

@@ -1,8 +1,9 @@
 import React from 'react'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
+import BotaoCarregarMais from '../../components/BotaoCarregarMais'
 
 import { NavLink } from "react-router-dom";
-import TableBrindes from '../../components/TableBrindes';
+import TablePostagemBlog from '../../components/TablePostagemBlog';
 class Brindes extends React.Component{
     constructor(props){
         super(props)
@@ -12,7 +13,8 @@ class Brindes extends React.Component{
     render() {
         return (
             <div>
-                <TableBrindes/>
+                <TablePostagemBlog/>
+                <BotaoCarregarMais nome="Carregar Mais" />
                 <NavLink to={{
                              pathname:"/POSTAGEM BLOG/adc", 
                              brindesProps:{

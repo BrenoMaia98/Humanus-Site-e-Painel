@@ -48,11 +48,13 @@ class Login extends React.Component {
     }
 
     render() {
-        const { from } = this.props.location.state || { from: { pathname: '/' } };
+        //remover linha abaixo depois de terminar o desenvolvimento
+        const { from } = this.props.location.state || { from: { pathname: '/INICIO' } }; 
         const { redirectToReferrer } = this.state;
 
         if (redirectToReferrer === true) {
             return <Redirect to={from} />
+            //return <Redirect to={{ pathname: '/INICIO' }} />
         }
 
         return (

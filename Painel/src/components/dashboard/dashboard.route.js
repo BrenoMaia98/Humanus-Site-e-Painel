@@ -36,6 +36,7 @@ class DashboardRouter extends Component {
                     <Route  path="/SERVIÇOS E PROJETOS/adc" component={AddEditServicosProjetos} />
                     <Route  path="/SERVIÇOS E PROJETOS/edit" component={AddEditServicosProjetos} />
                     <Route exact path="/POSTAGEM BLOG/adc" component={FormsPostagem} />
+                    <Route exact path="/POSTAGEM BLOG/edit" component={FormsPostagem} />
                     <Route  path="/SERVIÇOS E PROJETOS/modalidade/adc" component={Modalidade} />
                     <Route  path="/SERVIÇOS E PROJETOS/modalidade/editar" component={Modalidade} />
                     <Route  path="/SERVIÇOS E PROJETOS/modalidade/atividade/adc" component={FormsAtividades} />

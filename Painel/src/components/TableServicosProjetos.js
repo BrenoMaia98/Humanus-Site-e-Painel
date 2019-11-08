@@ -116,7 +116,7 @@ class TableServicosProjetos extends React.Component {
                                     <CustomTableCell align="center">{row.descricao}</CustomTableCell>
                                     <CustomTableCell align="center">
                                         <NavLink to={{
-                                                     pathname:"/servicosProjetos/edit", 
+                                                     pathname:"SERVIÇOS E PROJETOS/edit", 
                                                      componenteProps:{
                                                         nome: "Edição de Serviços e Projetos", 
                                                         descricao: "Altere os campos desejados e clique em concluir para finalizar.",

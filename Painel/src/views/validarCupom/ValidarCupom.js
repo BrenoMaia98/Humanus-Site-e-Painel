@@ -10,7 +10,8 @@ import Divider from '@material-ui/core/Divider';
 import {withRouter} from 'react-router';
 import axios from 'axios';
 import {auth} from "../../auth";
-
+import "./style.css"
+import imgPadrao from "../../images/teste.jpg"
 const styles = {
     card: {
         minWidth: 275,
@@ -26,16 +27,22 @@ const styles = {
     pos: {
         marginBottom: 12,
     },
+    imagem:{
+        heigth:"50vh",
+        width:"50vw",
+    }
 };
 
 class ValidarCupom extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            codigo: ""
+            codigo: "",
+            file:null,
+            original:imgPadrao,
         }
         this.Alert = React.createRef();
-        this.abrirAlert = this.abrirAlert.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     async validar(){
@@ -52,10 +59,11 @@ class ValidarCupom extends React.Component {
 
     }
 
-    async abrirAlert(){
-      this.Alert.current.handleClickOpen("Validação - Cupom", await this.validar());
-
-    }
+    handleChange(event) {
+        this.setState({
+          file: URL.createObjectURL(event.target.files[0])
+        })
+      }
 
     render() {
         const { classes } = this.props;
@@ -71,14 +79,17 @@ class ValidarCupom extends React.Component {
                 </Typography>
                 
                 <div className = "App-validar">
-                    
+                {this.state.file == null? 
+                        <img src={this.state.original} className="imgSize"/> 
+                :
+                <img src={this.state.file} className="imgSize"/>}
                         <label style = {{marginRight:'10px'}}>
                           <p style = {{marginRight:'10px'}} >Foto da Gestão:</p>
-                          <input type="text" name="codigo" onChange={(event) => this.setState({codigo: event.target.value})}/>
+                          <input type="file" onChange={this.handleChange}/>
                         </label>
                         <Button type = "submit" variant="contained" size="medium" className = "App-Button-Validar" onClick = {this.abrirAlert}>
                             <FontAwesomeIcon icon={faCheck} size = "lg" style = {{color:'white', marginRight:'5px'}}/> 
-                            <p style = {{color:'white', margin:0}}>Validar</p>
+                            <p style = {{color:'white', margin:0}}>Salvar</p>
                         </Button>
 
                </div>
