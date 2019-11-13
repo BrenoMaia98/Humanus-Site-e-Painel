@@ -16,7 +16,9 @@ function App() {
         <img src={FundoLogo} className="fundoLogo"/>
       </div>
       <QuemSomos></QuemSomos>
+      <div style={{"background-color":"#212b56", "height":"5px","marginTop":"70px"}}></div>
       <Servicos></Servicos>
+      <div style={{"background-color":"#212b56", "height":"5px", "marginTop":"70px"}}></div>
       <div className="container">
            <div className="content"> 
               <p>CONTATO</p>

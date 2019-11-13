@@ -6,13 +6,16 @@
 }
 
 
-
-
 .titulo{
   background-Color:white;
+  text-align: center;
+  justify-content: center;
   font-Family: 'Bebas';
   font-size:25px;
-  height: 50px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
   border-top-left-radius:25px;
   border-top-right-radius: 25px;
   
@@ -23,7 +26,7 @@
   
 .descricao{
   background-Color: #212b56;
-  font-family: 'CapitalAlegreya';
+  font-family: 'Alegreya';
   font-weight:normal;
   font-style:normal;
   margin-top: 15px;
@@ -34,24 +37,21 @@
 }
 
 
-.containerCard{
-  
-  margin: 80px auto 0;
-  max-width: 450px;
-  width: 25%;
-  height: 260px;
+.containerCardInterno{
+  width: 30vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:#212B56;
+  background-color: #212B56;
   border-radius: 30px;
-  display:inline-block;
-  margin-left: 200px;
-  margin-right: 50px;
-  border:3px solid  #212b56;
-  
+  display: inline-block;
+  border: 3px solid #212b56;  
 }
-
+.containerCardExterno{
+  width:50vw;
+  display: inline-block;
+  text-align: center;
+}
 
 
 
