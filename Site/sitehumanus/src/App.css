@@ -6,6 +6,10 @@
 
 }
 
+.App{
+  overflow-x: hidden;
+}
+
 .fundoLogo{
   width: 100%;
 }

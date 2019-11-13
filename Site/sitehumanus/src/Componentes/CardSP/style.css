@@ -49,6 +49,7 @@
 }
 .containerCardExterno{
   width:50vw;
+  margin-bottom: 7vh;
   display: inline-block;
   text-align: center;
 }
