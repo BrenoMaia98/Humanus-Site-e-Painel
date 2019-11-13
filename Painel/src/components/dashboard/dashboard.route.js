@@ -14,7 +14,7 @@ import FormsAtividades from '../../views/servicosProjetos/FormsAtividades'
 import FormsValores from '../../views/servicosProjetos/FormsValores'
 
 
-import ValidarCupom from '../../views/validarCupom/ValidarCupom'
+import editarFotoGestao from '../../views/editarFoto/editarFotoGestao'
 
 import Home from '../../views/inicio/Home'
 
@@ -27,7 +27,7 @@ class DashboardRouter extends Component {
                 <Switch>
                     {/* rotas principais */}
                     <Route exact path="/INICIO" component={Home} />
-                    <Route exact path="/EDITAR FOTO GESTÃO" component={ValidarCupom} />
+                    <Route exact path="/EDITAR FOTO GESTÃO" component={editarFotoGestao} />
                     <Route exact path="/SERVIÇOS E PROJETOS" component={ServicosProjetos} />
                     <Route exact path="/POSTAGEM BLOG" component={PostagemBlog} />
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
-import TableModalidades from '../../components/TableModalidades';
 import BotaoVoltar from '../../components/BotaoVoltar'
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -10,7 +9,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom";
-import FormsPacotes from './FormsPacotes';
 import {ServicoProjetoTemp} from './ServicoProjetoTemp';
 import axios from 'axios';
 import {auth} from "../../auth";

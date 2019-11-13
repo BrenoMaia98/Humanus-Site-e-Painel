@@ -33,7 +33,7 @@ const styles = {
     }
 };
 
-class ValidarCupom extends React.Component {
+class editarFotoGestao extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -99,11 +99,11 @@ class ValidarCupom extends React.Component {
     }
 }
 
-ValidarCupom.propTypes = {
+editarFotoGestao.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
 // We need an intermediary variable for handling the recursive nesting.
-const ValidarCupomWrapped = withStyles(styles)(ValidarCupom);
+const editarFotoGestaoWrapped = withStyles(styles)(editarFotoGestao);
 
-export default withRouter(ValidarCupomWrapped);
+export default withRouter(editarFotoGestaoWrapped);
