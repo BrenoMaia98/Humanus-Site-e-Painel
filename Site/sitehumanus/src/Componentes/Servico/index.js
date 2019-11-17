@@ -7,7 +7,7 @@ import CardSP from '../CardSP/index';
 export default function Servicos(){
     return(
         <>
-        <h1 style={{ "text-align": "center", "marginBottom":"45px", "marginTop":"50px","marginBottom":"5px", "font-family": "Bebas", "fontSize":"45px"}}>Serviços e Projetos</h1>   
+        <h1 style={{ "text-align": "center", "marginBottom":"45px","color":"#212b56", "marginTop":"50px","marginBottom":"5px", "font-family": "Bebas", "fontSize":"45px"}}>Serviços e Projetos</h1>   
         <div className="containerServicos">
         <CardSP
         titulo="Diagnóstico Organizacional" 
