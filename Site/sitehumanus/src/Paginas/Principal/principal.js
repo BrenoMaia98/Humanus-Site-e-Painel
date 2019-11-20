@@ -9,11 +9,11 @@ import Footer from "../../Componentes/Footer/index";
 function Principal() {
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar />
       <div>
-        <img src={FundoLogo} className="fundoLogo" />
+        <img src={FundoLogo} className="fundoLogo" alt="Fundo Logo" />
       </div>
-      <QuemSomos></QuemSomos>
+      <QuemSomos />
       <div
         style={{
           "background-color": "#212b56",
@@ -21,7 +21,7 @@ function Principal() {
           marginTop: "70px"
         }}
       ></div>
-      <Servicos></Servicos>
+      <Servicos />
       <div
         style={{
           "background-color": "#212b56",
@@ -119,7 +119,7 @@ function Principal() {
           allowfullscreen=""
         ></iframe>
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
@@ -127,5 +127,5 @@ function Principal() {
 export default Principal;
 
 /*
-      
+
 */
