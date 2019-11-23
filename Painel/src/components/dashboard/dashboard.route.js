@@ -4,19 +4,16 @@ import { Route, Switch } from "react-router-dom";
 import PostagemBlog from '../../views/postagem/PostagemBlog';
 import FormsPostagem from '../../views/postagem/FormsPostagem';
 
-import ServicosProjetos from '../../views/servicosProjetos/ServicosProjetos'
+import ServicosProjetos from '../../views/servicosProjetos/ServicosProjetos';
 
-import AddEditServicosProjetos from '../../views/servicosProjetos/AddEditServicosProjetos'
+import AddEditServicosProjetos from '../../views/servicosProjetos/AddEditServicosProjetos';
 
-import Modalidade from '../../views/servicosProjetos/Modalidade'
-import FormsAtividades from '../../views/servicosProjetos/FormsAtividades'
+import NumWhatsApp from '../../views/numWhatsApp/numWhatsApp';
 
-import FormsValores from '../../views/servicosProjetos/FormsValores'
+import editarFotoGestao from '../../views/editarFoto/editarFotoGestao';
+import editarLogo from '../../views/editarLogo/editarLogo';
 
-
-import editarFotoGestao from '../../views/editarFoto/editarFotoGestao'
-
-import Home from '../../views/inicio/Home'
+import Home from '../../views/inicio/Home';
 
 // Classe para adc as rotas
 
@@ -30,6 +27,8 @@ class DashboardRouter extends Component {
                     <Route exact path="/EDITAR FOTO GESTÃO" component={editarFotoGestao} />
                     <Route exact path="/SERVIÇOS E PROJETOS" component={ServicosProjetos} />
                     <Route exact path="/POSTAGEM BLOG" component={PostagemBlog} />
+                    <Route exact path="/WHATSAPP" component={NumWhatsApp} />
+                    <Route exact path="/ALTERAR LOGO" component={editarLogo} />
 
                 
                     {/* rotas de formularios */}
@@ -37,13 +36,6 @@ class DashboardRouter extends Component {
                     <Route  path="/SERVIÇOS E PROJETOS/edit" component={AddEditServicosProjetos} />
                     <Route exact path="/POSTAGEM BLOG/adc" component={FormsPostagem} />
                     <Route exact path="/POSTAGEM BLOG/edit" component={FormsPostagem} />
-                    <Route  path="/SERVIÇOS E PROJETOS/modalidade/adc" component={Modalidade} />
-                    <Route  path="/SERVIÇOS E PROJETOS/modalidade/editar" component={Modalidade} />
-                    <Route  path="/SERVIÇOS E PROJETOS/modalidade/atividade/adc" component={FormsAtividades} />
-                    <Route  path="/SERVIÇOS E PROJETOS/modalidade/atividade/editar" component={FormsAtividades} />
-                    <Route  path="/SERVIÇOS E PROJETOS/modalidade/valores/adc" component={FormsValores} />
-                    <Route  path="/SERVIÇOS E PROJETOS/modalidade/valores/editar" component={FormsValores} />
-
                 </Switch>
             </div>
         );

@@ -23,7 +23,7 @@
   color: #61dafb;
 }
 
-.App-icon{
+.App-icon {
   color: black;
 }
 
@@ -32,58 +32,58 @@
   cursor: pointer;
 }
 
-.App-ListItem{
+.App-ListItem {
   color: white;
 }
 
 .App-ListItem:hover {
-  background-color:#5BAADC !important; 
+  background-color: #5BAADC !important;
 }
 
-.App-Button{
+.App-Button {
   background-color: #5BAADC !important;
   margin-top: 20px !important;
   margin-right: 20px !important;
   color: white;
 }
 
-.App-Button-Validar{
+.App-Button-Validar {
   background-color: #5BAADC !important;
   margin-right: 20px !important;
   color: white;
 }
 
-.App-forms>div{
+.App-forms>div {
   display: flex;
 }
 
-.App-forms>div>label{
+.App-forms>div>label {
   flex: 50%;
   margin-bottom: 10px;
 }
 
-.App-forms>div>label>a{
+.App-forms>div>label>a {
   margin-right: 10px;
 }
 
-.App-validar>div{
+.App-validar>div {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.App-validar>div>button{
-  margin-top:0 !important;
-  margin-left:20px !important;
+.App-validar>div>button {
+  margin-top: 0 !important;
+  margin-left: 20px !important;
 }
 
-.App-validar>div>label>a{
+.App-validar>div>label>a {
   margin-right: 10px;
 }
 
-.linkDash{
+.linkDash {
   text-decoration: none !important;
-} 
+}
 
 @keyframes App-logo-spin {
   from {
@@ -115,7 +115,8 @@
 }
 
 .PageSwitcher__Item--Active {
-  background-color: rgb(56, 53, 209);;
+  background-color: rgb(56, 53, 209);
+  ;
   color: white;
 }
 
@@ -123,9 +124,8 @@
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
+
 .PageSwitcher__Item:last-child {
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
-
-

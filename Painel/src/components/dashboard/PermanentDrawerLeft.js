@@ -19,7 +19,7 @@ import { NavLink } from "react-router-dom";
 
 
 
-const Menu = ['INICIO', 'EDITAR FOTO GESTÃO', 'SERVIÇOS E PROJETOS', 'POSTAGEM BLOG'];
+const Menu = ['INICIO', 'EDITAR FOTO GESTÃO', 'SERVIÇOS E PROJETOS', 'POSTAGEM BLOG','ALTERAR LOGO', "WHATSAPP"];
 
 class PermanentDrawerLeft extends React.Component {
     constructor(props) {
