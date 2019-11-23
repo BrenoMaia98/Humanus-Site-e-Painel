@@ -1,0 +1,240 @@
+.containerMateria{
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+
+.showMore{
+  height: 30vh;
+  width: 100vw;
+}
+
+.btnShowMore{
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 1.5em;
+  text-align: center;
+  margin: unset;
+  position: relative;
+  bottom: 4px;
+  background: url("../../imagens/sombraCima2.png");
+  background-size: cover;
+  display: flow-root;
+}
+
+.img{
+  height: 25vw;
+  width: 30vw;
+  float: left;
+  margin: 0 40px 0px 0;
+  background-color: rgb(255, 0, 0) !important;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+
+.imgDireita{
+  height: 25vw;
+  width: 30vw;
+  float: right;
+  margin:  0 0 0 40px;
+  background-color: rgb(255, 255, 255) !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+p {
+  text-align: justify;
+  text-indent: 2em;
+  font-weight: 500;
+  color: rgb(42, 21, 138)
+}
+
+.resumo{
+  font-size: 1.23em;
+}
+
+.completo{
+
+  font-size: 1.23em;
+}
+
+
+
+
+
+
+.containerTituloCentro{
+  align-items: center;
+}
+
+.tituloCentro{
+  font-family: 'Alegreya', serif;
+  font-size: 3em;
+  text-align: center;
+  margin:0px;
+}
+
+
+.dataCentro{
+  font-family: 'Alegreya', serif;
+  font-size: 2em;
+  padding-left: 2vw;
+  text-align: center;
+  margin:0px;
+}
+
+
+
+.containerTituloEsquerda{
+  width: 60vw;
+  margin-left: 35vw;
+  padding-right: 5vw;
+}
+
+.tituloEsquerda{
+  font-family: 'Alegreya', serif;
+  font-size: 3em;
+  margin:0px;
+}
+
+
+.dataEsquerda{
+  font-family: 'Alegreya', serif;
+  font-size: 2em;
+  padding-left: 2vw;
+  margin:0px;
+}
+
+
+.containerTituloDireita{
+  width: 60vw;
+  margin-right: 35vw;
+  padding-left: 5vw;
+}
+
+
+.tituloDireita{
+  font-family: 'Alegreya', serif;
+  font-size: 3em;
+  margin:0px;
+}
+
+
+.dataDireita{
+  font-family: 'Alegreya', serif;
+  font-size: 2em;
+  padding-left: 2vw;
+  margin:0px;
+}
+
+@media all and (max-width: 900px) 
+{
+  
+  .containerTituloCentro{
+    margin:0px;
+    padding:0px;
+    border:0px;
+  }
+  
+  .containerTituloEsquerda{
+    margin:0px;
+    padding:0px;
+    border:0px;
+  }
+  
+  .containerTituloDireita{
+    margin:0px;
+    padding:0px;
+    border:0px;
+  }
+
+  .tituloCentro{
+    width: 90vw;
+    margin:0px;
+    font-family: 'Alegreya', serif;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .tituloEsquerda{
+    width: 90vw;
+    margin:0px;
+    font-family: 'Alegreya', serif;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .tituloDireita{
+    width: 90vw;
+    font-family: 'Alegreya', serif;
+    text-align: center;
+    font-size: 2em;
+    margin:0px;
+  }
+  
+  .dataCentro{
+    margin:0px;
+    width:90vw;
+    font-family: 'Alegreya', serif;
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  .dataEsquerda{
+    margin:0px;
+    width:90vw;
+    font-family: 'Alegreya', serif;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  .dataDireita{
+    margin:0px;
+    width:90vw;
+    font-family: 'Alegreya', serif;
+    text-align: center;
+    font-size: 1.3em;
+  }
+
+  p {
+    text-align: justify;
+    text-indent: 1.5em;
+  }
+
+  .resumo{
+    font-size: 1.1em;
+  }
+  
+  .completo{
+    font-size: 1em;
+  }
+
+  .img{
+    height: 80vw;
+    width: 90vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-color: rgb(255, 255, 255) !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .imgDireita{
+    height: 80vw;
+    width: 90vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-color: rgb(255, 255, 255) !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+}

@@ -1,11 +1,59 @@
 *{
-    margin:0px;
-    padding: 0px;
-    border: 0px;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+
+}
+
+
+.titulo{
+  background-Color:white;
+  text-align: center;
+  justify-content: center;
+  font-Family: 'Bebas';
+  font-size:25px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  border-top-left-radius:25px;
+  border-top-right-radius: 25px;
+  
+  
   }
 
-.container{
-    background-color: #212B56;
-    width: 30% ;
-    height: 30% ;
+
+  
+.descricao{
+  background-Color: #212b56;
+  font-family: 'Alegreya';
+  font-weight:normal;
+  font-style:normal;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
 }
+
+
+.containerCardInterno{
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #212B56;
+  border-radius: 30px;
+  display: inline-block;
+  border: 3px solid #212b56;  
+}
+.containerCardExterno{
+  width:50vw;
+  margin-bottom: 7vh;
+  display: inline-block;
+  text-align: center;
+}
+
+
+
+
