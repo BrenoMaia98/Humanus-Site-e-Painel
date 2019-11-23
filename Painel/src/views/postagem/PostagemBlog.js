@@ -16,11 +16,12 @@ class Brindes extends React.Component{
                 <TablePostagemBlog/>
                 <BotaoCarregarMais nome="Carregar Mais" />
                 <NavLink to={{
-                             pathname:"/POSTAGEM BLOG/adc", 
-                             brindesProps:{
-                                nome: "Adicionar Brinde", 
+                             pathname:"/POSTAGEM BLOG/adc",
+                             componenteProps: {
+                                tipo:"adc",
                                 descricao: "Inisira os dados necessários e clique em concluir para finalizar."
-                            }}} >
+                            }
+                            }} >
                     <BotaoAdicionar nome="Postagem" />
                 </NavLink>
             </div>

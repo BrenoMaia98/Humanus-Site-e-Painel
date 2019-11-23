@@ -1,5 +1,4 @@
 import React from "react";
-import BotaoAdicionar from "../../components/BotaoAdicionar";
 import BotaoVoltar from "../../components/BotaoVoltar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -40,29 +39,14 @@ const styles = {
   }
 };
 
-class AddEditServicosProjetos extends React.Component {
+class AddEditPostagem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dados: { titulo: "", resumo: "", materiaCompleta: "", fotos: [] }
     };
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  validaCampo() {
-    if (
-      this.state.nome === "" ||
-      this.state.nome === null ||
-      this.state.nome === undefined ||
-      this.state.imagem === "" ||
-      this.state.imagem === null ||
-      this.state.imagem === undefined ||
-      this.state.condicoes_pagamento === "" ||
-      this.state.condicoes_pagamento === null ||
-      this.state.condicoes_pagamento === undefined
-    )
-      return false;
-    else return true;
+    this.enviarServidor = this.enviarServidor.bind(this);
   }
 
   getInfo() {
@@ -70,14 +54,12 @@ class AddEditServicosProjetos extends React.Component {
            (resp) =>  this.setState(dados:resp.data)
         )*/
 
-    console.log("PROPS QUE CHEGARAM !!!!!!!!!!!!!!!!!!!!!!!!!!")
-    console.log(this.props)
-
-    const dados = {
-      titulo: "",
-      resumo:
+    if(this.props.location.componenteProps.tipo !== "adc"){
+      const dados = {
+        titulo: "Um titulo qualquer",
+        resumo:
         " Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.",
-      materiaCompleta:
+        materiaCompleta:
         "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.",
       fotos: [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGN29TOR6DHBM9eO-a-ST7_moemdvpRWMJehgraNI9a6qvGHvX",
@@ -86,29 +68,56 @@ class AddEditServicosProjetos extends React.Component {
       ]
     };
     this.setState({ dados });
+  }else{
+    this.setState( {dados: { titulo: "", resumo: "", materiaCompleta: "", fotos: [] }});
   }
+  }
+  open(modal) {
+    this.setState({
+        [modal]: true
+    });
+}
+
+close(modal) {
+    this.setState({
+        [modal]: false
+    });
+}
+enviarServidor() {
+  let envio = true;
+  console.log("TIPO QUE CHEGOU:",this.props.location);
+  if (envio) {
+    console.log("Dados a serem enviados",this.state);
+        this.open("modal1")
+    } else
+    this.open("modal2")
+}
+
   handleChange(e, index) {
     e.preventDefault();
     let aux = this.state.dados;
     aux.fotos[index] = URL.createObjectURL(e.target.files[0]);
-    this.setState({ dados: aux })
+    this.setState({ dados: aux }, console.log("State dps de editar: ", this.state))
   }
+
   addNewImg(e) {
     e.preventDefault();
     let aux = this.state.dados;
     aux.fotos.push(URL.createObjectURL(e.target.files[0]));
-    this.setState({ dados: aux })
+    this.setState({ dados: aux }, () => console.log("State dps de add: ", this.state))
   }
+
   removerFoto(index) {
     let aux = this.state.dados;
     aux.fotos.splice(index, 1)
-    this.setState({ dados: aux })
+    this.setState({ dados: aux }, console.log("State dps de remover: ", this.state))
   }
-  componentWillMount() {
-    this.getInfo();
+
+  async componentWillMount() {
+    await this.getInfo();
   }
+
   render() {
-    console.log(this.props);
     const { classes } = this.props;
     return (
       <div>
@@ -124,20 +133,25 @@ class AddEditServicosProjetos extends React.Component {
             <div>
               <label>
                 Titulo da matéria:
-                <input
-                  type="text" name="nome" required defaultValue={this.state.nome} />
+                <input                  type="text" name="nome" required value={this.state.dados.titulo} />
               </label>
             </div>
             <div>
               <label>
                 Resumo:
                 <br />
-                <textarea rows="8" cols="60" value={this.state.condicoes_pagamento}></textarea>
+                <textarea required  rows="8" cols="60" value={this.state.dados.resumo} onChange={(e) =>{
+                  e.preventDefault();
+                  this.setState({resumo:e.target.value})
+                }}></textarea>
               </label>
               <label>
                 Matéria Completa:
                 <br />
-                <textarea rows="12" cols="60" value={this.state.condicoes_pagamento}></textarea>
+                <textarea required rows="12" cols="60" value={this.state.dados.materiaCompleta} onChange={(e) =>{
+                  e.preventDefault();
+                  this.setState({materiaCompleta:e.target.value})
+                }}></textarea>
               </label>
             </div>
             <div>
@@ -155,40 +169,28 @@ class AddEditServicosProjetos extends React.Component {
                     this.state.dados.fotos.map((resp, index) => {
                       if (index == this.state.dados.fotos.length - 1) {
                         return (
-                          <>
+                          <div key={index}>
                             <div className={classes.fotoAlign}>
                               <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                               <>
-                                <input
-                                  type="file"
-                                  name={`foto${resp}`}
-                                  accept="imagem/*"
-                                  onChange={(e) => this.handleChange(e, index)}
-                                />
+                                <input type="file" name={`foto${resp}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
                                 <img src={resp} className={classes.fotoSize} alt="" />
                               </>
                             </div>
                             <div className={classes.fotoAlign}>
                               <label >
                                 Adicionar nova foto:
-                               <input type="file" name={`novoInput`} accept="imagem/*" onChange={(e) => this.addNewImg(e, index)} />
+                      <input type="file" name={`novoInput`} accept="imagem/*" onChange={(e) => this.addNewImg(e, index)} />
                               </label>
                             </div>
-                          </>
+                          </div>
                         );
                       } else {
-
                         return (
-                          <div className={classes.fotoAlign}>
-
+                          <div className={classes.fotoAlign} key={index}>
                             <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                             <>
-                              <input
-                                type="file"
-                                name={`foto${resp}`}
-                                accept="imagem/*"
-                                onChange={(e) => this.handleChange(e, index)}
-                              />
+                              <input type="file" name={`foto${resp}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
                               <img src={resp} className={classes.fotoSize} alt="" />
                             </>
                           </div>
@@ -199,41 +201,25 @@ class AddEditServicosProjetos extends React.Component {
             </div>
           </form>
         </div>
-        <div
-          align="center"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <Button
-            onClick={() => this.adicionarPacote()}
-            variant="contained"
-            size="medium"
-            className="App-Button"
-            style={{ color: "white" }}
-          >
-            <FontAwesomeIcon
-              icon={faCheck}
-              size="lg"
-              style={{ marginRight: "10px" }}
-            />{" "}
+        <div align="center" style={{ display: "flex", justifyContent: "center" }}        >
+          <Button onClick={() => this.enviarServidor()} variant="contained" size="medium" className="App-Button" style={{ color: "white" }}          >
+            <FontAwesomeIcon icon={faCheck} size="lg" style={{ marginRight: "10px" }} />{" "}
             Concluir
           </Button>
-          <BotaoVoltar
-            onRef={ref => (this.botaoVoltar = ref)}
-            link="SERVIÇOS E PROJETOS"
-          />
+          <BotaoVoltar onRef={ref => (this.botaoVoltar = ref)} link="SERVIÇOS E PROJETOS" />
         </div>
       </div>
     );
   }
 }
 
-AddEditServicosProjetos.propTypes = {
+AddEditPostagem.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 // We need an intermediary variable for handling the recursive nesting.
-const AddEditServicosProjetosWrapped = withStyles(styles)(
-  AddEditServicosProjetos
+const AddEditPostagemWrapped = withStyles(styles)(
+  AddEditPostagem
 );
 
-export default AddEditServicosProjetosWrapped;
+export default AddEditPostagemWrapped;

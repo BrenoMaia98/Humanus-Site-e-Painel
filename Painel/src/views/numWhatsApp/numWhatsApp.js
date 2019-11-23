@@ -41,6 +41,7 @@ class numWhatsApp extends React.Component {
             codigo: "",
             modal1: false,
             modal2: false,
+            num:"",
         }
         this.handleChange = this.handleChange.bind(this);
         this.enviarServidor = this.enviarServidor.bind(this);
@@ -71,7 +72,6 @@ class numWhatsApp extends React.Component {
     enviarServidor() {
         let envio = false;
         if (envio) {
-            console.log("Passei por auqi pelo menos")
             this.open("modal1")
         } else
         this.open("modal2")

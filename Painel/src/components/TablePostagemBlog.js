@@ -44,15 +44,14 @@ const styles = theme => ({
 
 
 class TablePostagemBlog extends React.Component {
-    constructor({ ativarModoEdicao }) {
-        super({ ativarModoEdicao });
+    constructor(props) {
+        super(props);
         this.state = {
             linhas: []
         };
     }
 
     componentWillMount() {
-
         this.pegarPostagens();
     }
 
@@ -143,7 +142,7 @@ class TablePostagemBlog extends React.Component {
                                                 nome: "Edição da Postagem do Blog",
                                                 descricao: "Altere os campos desejados e clique em concluir para finalizar.",
                                                 id: row.id,
-                                                adicao: false
+                                                tipo: "edit"
                                             }
                                         }}>
                                             <FontAwesomeIcon icon={faEdit} size="lg" className="App-icon" />
