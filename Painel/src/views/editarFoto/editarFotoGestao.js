@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import Divider from '@material-ui/core/Divider';
 import {withRouter} from 'react-router';
+import Modal from "../../components/modal/index";
 import axios from 'axios';
 import {auth} from "../../auth";
 import "./style.css"
@@ -38,24 +39,48 @@ class editarFotoGestao extends React.Component {
         this.state = {
             codigo: "",
             file:null,
-            original:imgPadrao,
+            original:null,
+            modal1:false,
+            modal2:false,
         }
         this.handleChange = this.handleChange.bind(this);
+        this.enviarServidor = this.enviarServidor.bind(this);
+        this.open = this.open.bind(this);
+        this.close = this.close.bind(this);
     }
 
-    async validar(){
-        var codigo = this.state.codigo;
-        try{
-          const response = await axios.post('http://74.117.156.74:5012/Cupom/validar', 
-          { "codigo": codigo},auth.config);
-          if(response.data.msg) return response.data.msg;
-          else return "Cupom válidado com sucesso!";
-        }
-        catch(err){
-          return "Houve um erro, tente novamente!";
-        }
+    
+  receberDados() {
+    /*await axios.post('http://74.117.156.74:5012/ServicosProjetos/delete', {'id': index},auth.config).then(
+           (resp) =>  this.setState(dados:resp.data)
+        )*/
 
-    }
+    this.setState({original:imgPadrao,})
+  }
+
+  open(modal) {
+    this.setState({
+      [modal]: true
+    });
+  }
+
+  close(modal) {
+    this.setState({
+      [modal]: false
+    });
+  }
+  enviarServidor() {
+    let envio = true;
+      if (envio) {
+        this.open("modal1");
+      } else
+        this.open("modal2");
+    
+  }
+
+  componentWillMount() {
+    this.receberDados();
+  }
 
     handleChange(event) {
         this.setState({
@@ -85,12 +110,26 @@ class editarFotoGestao extends React.Component {
                           <p style = {{marginRight:'10px'}} >Foto da Gestão:</p>
                           <input type="file" onChange={this.handleChange}/>
                         </label>
-                        <Button type = "submit" variant="contained" size="medium" className = "App-Button-Validar" onClick = {this.abrirAlert}>
+                        <Button type = "submit" variant="contained" size="medium" className = "App-Button-Validar" onClick = {this.enviarServidor}>
                             <FontAwesomeIcon icon={faCheck} size = "lg" style = {{color:'white', marginRight:'5px'}}/> 
                             <p style = {{color:'white', margin:0}}>Salvar</p>
                         </Button>
 
                </div>
+               <Modal visible={this.state.modal1} effect="modal" onClickAway={() => this.close('modal1')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Sucesso</h1>
+            <h4 className="Modal__data">Seus dados foram salvos e já estão disponiveis no site principal</h4>
+            <a onClick={() => this.close('modal1')}>Ok</a>
+          </div>
+        </Modal>
+        <Modal visible={this.state.modal2} effect="modal" onClickAway={() => this.close('modal2')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Erro</h1>
+            <h4 className="Modal__data">Ocorreu um erro na conexão, por favor tente mais tarde, caso o erro persista, contate a empresa EJCOMP.</h4>
+            <a onClick={() => this.close('modal2')}>Ok</a>
+          </div>
+        </Modal>
             </div>
         );
     }
