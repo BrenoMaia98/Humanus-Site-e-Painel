@@ -122,7 +122,6 @@ class TablePostagemBlog extends React.Component {
                                 <CustomTableCell align="center">Título</CustomTableCell>
                                 <CustomTableCell align="center">Data</CustomTableCell>
                                 <CustomTableCell align="center">Resumo</CustomTableCell>
-                                <CustomTableCell align="center">Imagens</CustomTableCell>
                                 <CustomTableCell align="center">Editar</CustomTableCell>
                                 <CustomTableCell align="center">Remover</CustomTableCell>
                             </TableRow>
@@ -134,7 +133,6 @@ class TablePostagemBlog extends React.Component {
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
                                     <CustomTableCell align="center">{row.dataPublicacao}</CustomTableCell>
                                     <CustomTableCell align="center">{row.resumo}</CustomTableCell>
-                                    <CustomTableCell align="center">{row.imagens.join(" ; ")}</CustomTableCell>
                                     <CustomTableCell align="center">
                                         <NavLink to={{
                                             pathname: "/POSTAGEM BLOG/edit",

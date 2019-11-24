@@ -4,8 +4,8 @@ import BotaoCarregarMais from '../../components/BotaoCarregarMais'
 
 import { NavLink } from "react-router-dom";
 import TablePostagemBlog from '../../components/TablePostagemBlog';
-class Brindes extends React.Component{
-    constructor(props){
+class Brindes extends React.Component {
+    constructor(props) {
         super(props)
         this.state = {}
     }
@@ -13,18 +13,17 @@ class Brindes extends React.Component{
     render() {
         return (
             <div>
-                <TablePostagemBlog/>
+                <TablePostagemBlog />
                 <BotaoCarregarMais nome="Carregar Mais" />
                 <NavLink to={{
-                             pathname:"/POSTAGEM BLOG/adc",
-                             componenteProps: {
-                                tipo:"adc",
-                                descricao: "Inisira os dados necessários e clique em concluir para finalizar."
-                            }
-                            }} >
+                    pathname: "/POSTAGEM BLOG/adc",
+                    nome: "Adição de uma Postagem para o Blog",
+                    tipo: "adc",
+                    descricao: "Inisira os dados necessários e clique em concluir para finalizar."
+                }} >
                     <BotaoAdicionar nome="Postagem" />
                 </NavLink>
-            </div>
+            </div >
         )
     }
 }
