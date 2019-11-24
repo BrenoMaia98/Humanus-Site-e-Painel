@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import AlertDialogSlide from '../../components/AlertDialogSlide'
 import Divider from '@material-ui/core/Divider';
 import {withRouter} from 'react-router';
 import axios from 'axios';
@@ -41,7 +40,6 @@ class editarFotoGestao extends React.Component {
             file:null,
             original:imgPadrao,
         }
-        this.Alert = React.createRef();
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -93,7 +91,6 @@ class editarFotoGestao extends React.Component {
                         </Button>
 
                </div>
-               <AlertDialogSlide ref = {this.Alert}> </AlertDialogSlide>
             </div>
         );
     }

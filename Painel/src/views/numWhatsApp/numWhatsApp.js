@@ -41,7 +41,7 @@ class numWhatsApp extends React.Component {
             codigo: "",
             modal1: false,
             modal2: false,
-            num:"",
+            num: "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.enviarServidor = this.enviarServidor.bind(this);
@@ -70,11 +70,11 @@ class numWhatsApp extends React.Component {
         });
     }
     enviarServidor() {
-        let envio = false;
+        let envio = true;
         if (envio) {
             this.open("modal1")
         } else
-        this.open("modal2")
+            this.open("modal2")
     }
 
     componentWillMount() {
@@ -90,7 +90,7 @@ class numWhatsApp extends React.Component {
                 </Typography>
                 <Divider />
                 <Typography className={classes.pos} color="textSecondary">
-                    Este numero decontato sera utilizado para que o cliente possa se comunicar com a empresa por meio do contato direto via WhatsApp.
+                    Este numero de contato sera utilizado para que o cliente possa se comunicar com a empresa por meio do contato direto via WhatsApp.
                 </Typography>
 
                 <div className="App-validar">
@@ -103,7 +103,7 @@ class numWhatsApp extends React.Component {
                         <p style={{ color: 'white', margin: 0 }}>Salvar</p>
                     </Button>
                 </div>
-                <Modal visible={this.state.modal} effect="modal" onClickAway={() => this.close('modal1')}>
+                <Modal visible={this.state.modal1} effect="modal" onClickAway={() => this.close('modal1')}>
                     <div className="Modal">
                         <h1 className="Modal__title">Sucesso</h1>
                         <h4 className="Modal__data">Seus dados foram salvos e já estão disponiveis no site principal</h4>
