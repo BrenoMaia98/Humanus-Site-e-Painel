@@ -65,7 +65,7 @@ class App extends React.Component {
 render(){
   return (
     <div >
-    <div className="App">
+    <div className="Box">
       <Picker data = {Categorias}></Picker>
     </div>
     <Divisao></Divisao>

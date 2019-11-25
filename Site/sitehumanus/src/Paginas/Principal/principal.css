@@ -29,7 +29,7 @@
 
 }
 
-.content{ /* todo o quadrado*/
+.formContainer{ /* todo o quadrado*/
   width: 180%;
   background:white;
   margin-top: 0px;
@@ -39,7 +39,7 @@
 
 }
 
-.content > p{
+.formContainer > p{
   line-height: 30px;
   margin-bottom: 60px;
   text-align: center;
@@ -52,12 +52,12 @@
 
 }
 
-.content form{
+.formContainer form{
   display:flex;
   flex-direction: column;
 }
 
-.content form label{ /* nome, email, assunto*/
+.formContainer form label{ /* name, Email, assunto*/
   font-size: 20px;
   color: #212b56;
   font-weight: bold;
@@ -69,7 +69,7 @@
 
 }
 
-.content form input{ /*barras*/
+.formContainer form input{ /*barras*/
   margin-bottom:20px;
   border: 1px solid #dddb;
   border-radius: 20px;
@@ -89,7 +89,7 @@
 
 }
 
-.comentario{ /*barras*/
+.Comentario{ /*barras*/
   margin-bottom:20px;
   border: 1px solid #dddb;
   border-radius: 20px;
@@ -112,7 +112,7 @@
 
 
 
-.content button.btn{
+.formContainer button.btn{
   border:0;
   border-radius: 20px;
   width: 65%;
@@ -134,7 +134,7 @@
   font-style:normal;
 }
 
-.content button.btn:hover{
+.formContainer button.btn:hover{
   background: #ccc9e2;
 }
 
@@ -142,7 +142,8 @@
 
 
 
-.content form input#email{
+.formContainer form input#Email{
+  box-sizing: unset !important;
   width: 55%;
   float: right;
   display: block;
@@ -151,8 +152,8 @@
   margin-bottom: 20px;
 }
 
-.content form textarea#comentario{
-  
+.formContainer form textarea#Comentario{
+  box-sizing: unset !important;
   resize: none;
   width: 500px;
   float: right;
@@ -164,7 +165,8 @@
 
 
 
-.content form input#nome{
+.formContainer form input#name{
+  box-sizing: unset !important;
   width: 55%;
   float: right;
   display: block;
@@ -254,7 +256,7 @@
   
   }
   
-  .content{ /* todo o quadrado*/
+  .formContainer{ /* todo o quadrado*/
     width: auto;
     background:white;
     margin-top: 0px;
@@ -264,7 +266,7 @@
   
   }
   
-  .content > p{
+  .formContainer > p{
     line-height: 30px;
     margin-bottom: 60px;
     text-align: center;
@@ -275,12 +277,12 @@
   
   }
   
-  .content form{
+  .formContainer form{
     display:flex;
     flex-direction: column;
   }
   
-  .content form label{ /* nome, email, assunto*/
+  .formContainer form label{ /* name, Email, assunto*/
     font-size: 20px;
     color: #212b56;
     font-weight: bold;
@@ -292,7 +294,7 @@
   
   }
   
-  .content form input{ 
+  .formContainer form input{ 
     margin-bottom:20px;
     border: 1px solid #dddb;
     border-radius: 20px;
@@ -312,7 +314,7 @@
   
   }
   
-  .comentario{ 
+  .Comentario{ 
     margin-bottom:20px;
     border: 1px solid #dddb;
     border-radius: 20px;
@@ -332,7 +334,7 @@
   
   }
   
-    .content button.btn{
+    .formContainer button.btn{
     border:0;
     border-radius: 20px;
     width: 65%;
@@ -354,15 +356,16 @@
     font-style:normal;
   }
   
-  .content button.btn:hover{
+  .formContainer button.btn:hover{
     background: #ccc9e2;
   }
   
     
   
   
-  .content form input#email{
+  .formContainer form input#Email{
     margin-top: 3%;
+    box-sizing: unset !important;
     width: 85%;
     float: right;
     display: block;
@@ -372,9 +375,9 @@
     margin-bottom: 25px;
    }
   
-  .content form textarea#comentario{
-    
+  .formContainer form textarea#Comentario{
     resize: none;
+    box-sizing: unset !important;
     margin-top: 3%;
     width: 85%;
     height: 55px;
@@ -389,8 +392,9 @@
   
   
   
-  .content form input#nome{
+  .formContainer form input#name{
     margin-top: 3%;
+    box-sizing: unset !important;
     width: 85%;
     float: right;
     display: block;

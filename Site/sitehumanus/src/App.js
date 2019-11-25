@@ -6,7 +6,7 @@ import Blog from './Paginas/Blog/blog'
 function App() {
   return (
     <>
-   <Blog></Blog>
+   <Principal></Principal>
     </>
   );
 }

@@ -18,15 +18,15 @@ function Principal() {
       <Servicos></Servicos>
       <div style={{"background-color":"#212b56", "height":"5px", "marginTop":"70px"}}></div>
       <div className="container">
-           <div className="content"> 
+           <div className="formContainer"> 
               <p>CONTATO</p>
                 <form> 
-                  <div className="linhaContato"><label htmlfor="nome">Nome: </label>
-                  <input type="nome" id="nome" placeholder="Nome completo"/></div>
-                  <div className="linhaContato"><label htmlfor="email">E-mail: </label>
-                  <input type="email" id="email" placeholder="Seu melhor email"/></div>
-                  <div className="linhaContato"><label htmlfor="comentario">Assunto: </label>
-                  <textarea  id="comentario" className="comentario" rows="5" cols="50" placeholder="Faça seu comentario">
+                  <div className="lineontato"><label htmlfor="name">Nome: </label>
+                  <input type="name" id="name" placeholder="Nome completo"/></div>
+                  <div className="lineontato"><label htmlfor="Email">E-mail: </label>
+                  <input type="Email" id="Email" placeholder="Seu melhor Email"/></div>
+                  <div className="lineontato"><label htmlfor="Comentario">Assunto: </label>
+                  <textarea  id="Comentario" className="Comentario" rows="5" cols="50" placeholder="Faça seu comentario">
                   </textarea></div>
                   <button className="btn" type="submit"><strong>Enviar</strong></button>
                 </form>
