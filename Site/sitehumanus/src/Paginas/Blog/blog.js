@@ -55,10 +55,14 @@ const Categorias = [
       id: 11,
       categoria: 'Diagnóstico Organizacional',
     }, 
-    
-
 ]
-function App() {
+
+
+
+
+class App extends React.Component {
+  
+render(){
   return (
     <div >
     <div className="App">
@@ -73,6 +77,7 @@ function App() {
       <Divisao></Divisao>
     </div>
   );
+}
 }
 
 export default App;

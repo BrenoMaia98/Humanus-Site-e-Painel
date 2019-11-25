@@ -1,12 +1,14 @@
 import React from 'react';
-import "./principal.css";
-import NavBar from "../../Componentes/NavBar/NavBar";
-import FundoLogo from "../../imagens/FundoLogoCompleto.png";
-import QuemSomos from "../../Componentes/QuemSomos/index";
-import Servicos from "../../Componentes/Servico/index";
-import Footer from "../../Componentes/Footer/index";
+import './App.css';
+import NavBar from './Componentes/NavBar/NavBar';
+import FundoLogo from './imagens/FundoLogoCompleto.png';
 
-function Principal() {
+import QuemSomos from './Componentes/QuemSomos/index'
+import Servicos from './Componentes/Servico/index'
+import Footer from "./Componentes/Footer/index";
+
+
+function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
@@ -51,12 +53,21 @@ function Principal() {
             </div>
       <Footer></Footer>
 
+
+
+
+
+
+
+
+
+
     </div>
   );
 }
 
-export default Principal;
+export default App;
 
 /*
-
+      
 */
