@@ -4,11 +4,14 @@
   border: 0;
 }
 
-.titulo{
+.Titulo{
   color:#212b56;
   text-align: center;
   font-family: 'Bebas';
-  
+  display: block;
+  margin-left: 40%;
+  margin-bottom: 5px;
+  font-Size: 48px;
   
 
 }
@@ -20,6 +23,9 @@
   font-style:normal;
   color:#212b56;
   text-align: justify;
+  margin-top: 30px;
+  margin-bottom: 15px;
+
 }
 
 .foto{
@@ -29,8 +35,50 @@
   border-radius: 50px;
   float: left; 
   margin: 25px;
-  margin-top: 63px;
+  margin-top: 30px;
   margin-bottom: 15px;
+  
   
 
 }
+
+@media only screen and (max-width: 1200px) {
+  body 
+    
+  
+    .Titulo{
+      color:#212b56;
+      font-family: 'Bebas';
+      margin: 45px;
+      font-Size:48px;
+      margin-bottom: 10px;
+      
+          
+    }
+    
+    .conteudo{
+      padding: 30px;
+      font-family: 'Alegreya';
+      font-weight:normal;
+      font-style:normal;
+      color:#212b56;
+      text-align: justify;
+    }
+    
+    .foto{
+      width:80%;
+      height: 50%;
+      border: 2px solid #3d3d3d;
+      border-radius: 50px;
+      float: center; 
+      margin: 45px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+      
+          
+    }
+
+
+
+  }
