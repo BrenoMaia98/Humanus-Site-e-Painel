@@ -22,12 +22,12 @@ export default class Direita extends Component {
         <br/>
           
         <div className= "containerTituloDireita">
-          <p className="tituloDireita">{this.state.titulo}</p>
-          <p className="dataDireita">{this.state.data}</p>
+          <p className="textBlogStyle tituloDireita">{this.state.titulo}</p>
+          <p className="textBlogStyle dataDireita">{this.state.data}</p>
         </div>
         <div>
           <img src={this.state.img} className="imgDireita"></img>
-        <p id="show"  className="resumo">{this.state.show? this.state.completo : this.state.resumo}</p>
+        <p className="textBlogStyle" id="show"  className="resumo">{this.state.show? this.state.completo : this.state.resumo}</p>
         </div>
         <p className="btnShowMore" onClick= {
             () => {
