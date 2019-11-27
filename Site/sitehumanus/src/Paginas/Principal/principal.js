@@ -5,6 +5,7 @@ import FundoLogo from "../../imagens/FundoLogoCompleto.png";
 import QuemSomos from "../../Componentes/QuemSomos/index";
 import Servicos from "../../Componentes/Servico/index";
 import Footer from "../../Componentes/Footer/index";
+import Divisao from '../../Componentes/Divisao/divisao';
 
 function Principal() {
   return (
@@ -13,10 +14,11 @@ function Principal() {
       <div>
         <img src={FundoLogo} className="fundoLogo"/>
       </div>
+      <div className="primeiraBarra"></div>
       <QuemSomos></QuemSomos>
-      <div style={{"background-color":"#212b56", "height":"5px","marginTop":"70px"}}></div>
+      <Divisao type="2"></Divisao>
       <Servicos></Servicos>
-      <div style={{"background-color":"#212b56", "height":"5px", "marginTop":"70px"}}></div>
+      <Divisao type="2"></Divisao>
       <div className="container">
            <div className="formContainer"> 
               <p>CONTATO</p>

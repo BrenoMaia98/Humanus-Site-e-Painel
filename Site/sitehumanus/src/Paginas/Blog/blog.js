@@ -5,6 +5,7 @@ import Divisao from '../../Componentes/Divisao/divisao'
 import Direita from '../../Componentes/Materia/direita'
 import Esquerda from '../../Componentes/Materia/esquerda'
 import SemFoto from '../../Componentes/Materia/semFoto'
+import NavBar from '../../Componentes/NavBar/NavBar';
 
 const Categorias = [
   {
@@ -223,39 +224,56 @@ render(){
 
   return (
     <div >
-    <div className="Box">
+      <NavBar></NavBar>
+    <div className="BlogContainerPrincipal">
+      <p className="tituloPicker" >Filtro de Postagens</p>
       <Picker data = {Categorias}></Picker>
     </div>
     {
       this.state.postagens.map(( atual,index) =>{
         if(atual.img === null){
-          return (<SemFoto 
+          return (
+            <>
+          <SemFoto 
             titulo= {atual.titulo} 
             data= {atual.data} 
             resumo= {atual.resumo} 
             completo= {atual.completo} 
-            ></SemFoto>);
-        }else{
-          if( ladoFotoPostagem === "direita"){
-            ladoFotoPostagem = "esquerda";
-            return (<Direita 
-              titulo= {atual.titulo} 
-              data= {atual.data} 
-              img= {atual.img} 
-              imgs= {atual.imgs} 
-              resumo= {atual.resumo} 
-              completo= {atual.completo} 
-              ></Direita>);
-            }else{
-              ladoFotoPostagem = "direita";
-            return (<Esquerda 
-              titulo= {atual.titulo} 
-              data= {atual.data} 
-              img= {atual.img} 
-              imgs= {atual.imgs} 
-              resumo= {atual.resumo} 
-              completo= {atual.completo} 
-              ></Esquerda>);
+            ></SemFoto>
+            <Divisao></Divisao>
+            </>
+            );
+          }else{
+            if( ladoFotoPostagem === "direita"){
+              ladoFotoPostagem = "esquerda";
+              return (
+                <>
+              <Direita 
+                titulo= {atual.titulo} 
+                data= {atual.data} 
+                img= {atual.img} 
+                imgs= {atual.imgs} 
+                resumo= {atual.resumo} 
+                completo= {atual.completo} 
+                ></Direita>
+                <Divisao></Divisao>
+                </>
+                );
+              }else{
+                ladoFotoPostagem = "direita";
+                return (
+                  <>
+                  <Esquerda 
+                  titulo= {atual.titulo} 
+                  data= {atual.data} 
+                  img= {atual.img} 
+                  imgs= {atual.imgs} 
+                  resumo= {atual.resumo} 
+                  completo= {atual.completo} 
+                  ></Esquerda>
+                  <Divisao></Divisao>
+                  </>
+              );
           }
         }
       })

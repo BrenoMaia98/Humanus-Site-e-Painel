@@ -20,11 +20,11 @@ export default class SemFoto extends Component {
         <div className = "containerMateria">
         <br/>
         <div className="containerTituloCentro">
-          <p className="tituloCentro">{this.state.titulo}</p>
-          <p className="dataCentro">{this.state.data}</p>
+          <p className=" textBlogStyle tituloCentro">{this.state.titulo}</p>
+          <p className=" textBlogStyle dataCentro">{this.state.data}</p>
         </div>
         <div>
-        <p id="show"  className="resumo">{this.state.show? this.state.completo : this.state.resumo}</p>
+        <p className="textBlogStyle" id="show"  className="resumo">{this.state.show? this.state.completo : this.state.resumo}</p>
         </div>
         <p className="btnShowMore" onClick= {
             () => {
