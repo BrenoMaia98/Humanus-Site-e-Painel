@@ -5,13 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import AlertDialogSlide from "../../components/AlertDialogSlide";
 import Divider from "@material-ui/core/Divider";
 import { withRouter } from "react-router";
 import axios from "axios";
 import { auth } from "../../auth";
+import Modal from "../../components/modal/index";
 import "./style.css";
-import imgPadrao from "../../images/teste.jpg";
 const styles = {
   pos: {
     marginBottom: 12
@@ -27,31 +26,46 @@ class editarFotoGestao extends React.Component {
     this.state = {
       codigo: "",
       file: null,
-      original: imgPadrao
+      original: "",
+      modal1:false,
+      modal2:false,
     };
-    this.Alert = React.createRef();
+    this.enviarServidor = this.enviarServidor.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  async validar() {
-    var codigo = this.state.codigo;
-    try {
-      const response = await axios.post(
-        "http://74.117.156.74:5012/Cupom/validar",
-        { codigo: codigo },
-        auth.config
-      );
-      if (response.data.msg) return response.data.msg;
-      else return "Cupom válidado com sucesso!";
-    } catch (err) {
-      return "Houve um erro, tente novamente!";
-    }
+  receberDados() {
+    let data = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8xnHHVxLRnXmaUCJKmANZZWL2sHVo9d5yW3Yu_j5y2G17Sap4";
+    this.setState({ original: data });
+  }
+
+  open(modal) {
+    this.setState({
+      [modal]: true
+    });
+  }
+
+  close(modal) {
+    this.setState({
+      [modal]: false
+    });
+  }
+  enviarServidor() {
+    let envio = false;
+    if (envio) {
+      this.open("modal1");
+    } else
+      this.open("modal2");
   }
 
   handleChange(event) {
     this.setState({
       file: URL.createObjectURL(event.target.files[0])
     });
+  }
+
+  componentWillMount() {
+    this.receberDados();
   }
 
   render() {
@@ -74,24 +88,33 @@ class editarFotoGestao extends React.Component {
               {this.state.file == null ? (
                 <img src={this.state.original} className="logoPrincipal" />
               ) : (
-                <img src={this.state.file} className="logoPrincipal" />
-              )}
+                  <img src={this.state.file} className="logoPrincipal" />
+                )}
               <input type="file" onChange={this.handleChange} />
             </label>
           </div>
           <Button
-            type="submit"  variant="contained"   size="medium"  className="App-Button-Validar"
-            onClick={this.abrirAlert}
+            type="submit" variant="contained" size="medium" className="App-Button-Validar"
+            onClick={() => this.enviarServidor()}
           >
-            <FontAwesomeIcon
-              icon={faCheck}
-              size="lg"
-              style={{ color: "white", marginRight: "5px" }}
-            />
+            <FontAwesomeIcon icon={faCheck} size="lg" style={{ color: "white", marginRight: "5px" }} />
             <p style={{ color: "white", margin: 0 }}>Salvar</p>
           </Button>
         </div>
-        <AlertDialogSlide ref={this.Alert}> </AlertDialogSlide>
+        <Modal visible={this.state.modal1} effect="modal" onClickAway={() => this.close('modal1')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Sucesso</h1>
+            <h4 className="Modal__data">Seus dados foram salvos e já estão disponiveis no site principal</h4>
+            <a onClick={() => this.close('modal1')}>Ok</a>
+          </div>
+        </Modal>
+        <Modal visible={this.state.modal2} effect="modal" onClickAway={() => this.close('modal2')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Erro</h1>
+            <h4 className="Modal__data">Ocorreu um erro na conexão, por favor tente mais tarde, caso o erro persista, contate a empresa EJCOMP.</h4>
+            <a onClick={() => this.close('modal2')}>Ok</a>
+          </div>
+        </Modal>
       </div>
     );
   }

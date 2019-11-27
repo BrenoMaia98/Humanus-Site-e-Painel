@@ -53,12 +53,9 @@ class ServicosProjetos extends React.Component{
                 <TableServicosProjetos/>
                 <NavLink to={{
                                 pathname: "/SERVIÇOS E PROJETOS/adc",
-                                componenteProps: {
                                     nome: "Adição de Serviços e Projetos",
                                     descricao: "Inisira os dados e clique em concluir para finalizar.",
-                                    id: -1,
-                                    adicao:true,
-                                }
+                                    tipo:"add",
                             }} >
                     <BotaoAdicionar nome="Serviço / Projeto" />
                 </NavLink>

@@ -117,12 +117,12 @@ class TableServicosProjetos extends React.Component {
                                     <CustomTableCell align="center">
                                         <NavLink to={{
                                                      pathname:"SERVIÇOS E PROJETOS/edit", 
-                                                     componenteProps:{
+                                                     
                                                         nome: "Edição de Serviços e Projetos", 
                                                         descricao: "Altere os campos desejados e clique em concluir para finalizar.",
                                                         id: row.id,
-                                                        adicao:false
-                                                    }}}>
+                                                        tipo:"edit"
+                                                    }}>
                                             <FontAwesomeIcon icon={faEdit} size="lg" className="App-icon" />
                                         </NavLink>
                                     </CustomTableCell>
