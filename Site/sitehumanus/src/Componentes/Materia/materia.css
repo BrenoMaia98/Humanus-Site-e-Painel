@@ -24,23 +24,37 @@
 }
 
 .img{
-  height: 25vw;
+  height: auto;
+  max-height: 25vw;
   width: 30vw;
-  float: left;
-  margin: 0 40px 0px 0;
-  background-color: rgb(255, 0, 0) !important;
-
+  margin:  0 40px 0 0;
+  background-color: rgb(255, 255, 255) !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
 }
+.botaoPostagem{
+  display:flex;
 
+}
+.botaoPostagem button{
+  margin-left:auto;
+  margin-right: auto;
+  
+}
 
-.imgDireita{
-  height: 25vw;
-  width: 30vw;
+.flexImage{
   float: right;
+}
+
+.flexImageLeft{
+  float: left;
+}
+.imgDireita{
+  height: auto;
+  max-height: 25vw;
+  width: 30vw;
   margin:  0 0 0 40px;
   background-color: rgb(255, 255, 255) !important;
   background-size: contain;
