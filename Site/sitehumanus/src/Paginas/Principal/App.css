@@ -11,7 +11,6 @@
 }
 
 .fundoLogo{
-  padding-top: 10vh;
   width: 100%;
 }
 
@@ -19,12 +18,7 @@
   width:100%;
   z-index: 1;
 }
-.primeiraBarra{
-  height: 2px;
-  background-color: rgba(60, 37, 131, 0.374);
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-}
+
 .container{
   margin: 80px auto 0;
   max-width: 450px;
@@ -35,7 +29,7 @@
 
 }
 
-.formContainer{ /* todo o quadrado*/
+.content{ /* todo o quadrado*/
   width: 180%;
   background:white;
   margin-top: 0px;
@@ -45,7 +39,7 @@
 
 }
 
-.formContainer > p{
+.content > p{
   line-height: 30px;
   margin-bottom: 60px;
   text-align: center;
@@ -58,12 +52,12 @@
 
 }
 
-.formContainer form{
+.content form{
   display:flex;
   flex-direction: column;
 }
 
-.formContainer form label{ /* name, Email, assunto*/
+.content form label{ /* nome, email, assunto*/
   font-size: 20px;
   color: #212b56;
   font-weight: bold;
@@ -75,7 +69,7 @@
 
 }
 
-.formContainer form input{ /*barras*/
+.content form input{ /*barras*/
   margin-bottom:20px;
   border: 1px solid #dddb;
   border-radius: 20px;
@@ -95,7 +89,7 @@
 
 }
 
-.Comentario{ /*barras*/
+.comentario{ /*barras*/
   margin-bottom:20px;
   border: 1px solid #dddb;
   border-radius: 20px;
@@ -118,7 +112,7 @@
 
 
 
-.formContainer button.btn{
+.content button.btn{
   border:0;
   border-radius: 20px;
   width: 65%;
@@ -140,7 +134,7 @@
   font-style:normal;
 }
 
-.formContainer button.btn:hover{
+.content button.btn:hover{
   background: #ccc9e2;
 }
 
@@ -148,8 +142,7 @@
 
 
 
-.formContainer form input#Email{
-  box-sizing: unset !important;
+.content form input#email{
   width: 55%;
   float: right;
   display: block;
@@ -158,8 +151,8 @@
   margin-bottom: 20px;
 }
 
-.formContainer form textarea#Comentario{
-  box-sizing: unset !important;
+.content form textarea#comentario{
+  
   resize: none;
   width: 500px;
   float: right;
@@ -171,8 +164,7 @@
 
 
 
-.formContainer form input#name{
-  box-sizing: unset !important;
+.content form input#nome{
   width: 55%;
   float: right;
   display: block;
@@ -244,7 +236,6 @@
   }
   
   .fundoLogo{
-    padding-top: 10vh;
     width: 100%;
   }
   
@@ -263,7 +254,7 @@
   
   }
   
-  .formContainer{ /* todo o quadrado*/
+  .content{ /* todo o quadrado*/
     width: auto;
     background:white;
     margin-top: 0px;
@@ -273,7 +264,7 @@
   
   }
   
-  .formContainer > p{
+  .content > p{
     line-height: 30px;
     margin-bottom: 60px;
     text-align: center;
@@ -284,12 +275,12 @@
   
   }
   
-  .formContainer form{
+  .content form{
     display:flex;
     flex-direction: column;
   }
   
-  .formContainer form label{ /* name, Email, assunto*/
+  .content form label{ /* nome, email, assunto*/
     font-size: 20px;
     color: #212b56;
     font-weight: bold;
@@ -301,7 +292,7 @@
   
   }
   
-  .formContainer form input{ 
+  .content form input{ 
     margin-bottom:20px;
     border: 1px solid #dddb;
     border-radius: 20px;
@@ -321,7 +312,7 @@
   
   }
   
-  .Comentario{ 
+  .comentario{ 
     margin-bottom:20px;
     border: 1px solid #dddb;
     border-radius: 20px;
@@ -341,7 +332,7 @@
   
   }
   
-    .formContainer button.btn{
+    .content button.btn{
     border:0;
     border-radius: 20px;
     width: 65%;
@@ -363,16 +354,15 @@
     font-style:normal;
   }
   
-  .formContainer button.btn:hover{
+  .content button.btn:hover{
     background: #ccc9e2;
   }
   
     
   
   
-  .formContainer form input#Email{
+  .content form input#email{
     margin-top: 3%;
-    box-sizing: unset !important;
     width: 85%;
     float: right;
     display: block;
@@ -382,9 +372,9 @@
     margin-bottom: 25px;
    }
   
-  .formContainer form textarea#Comentario{
+  .content form textarea#comentario{
+    
     resize: none;
-    box-sizing: unset !important;
     margin-top: 3%;
     width: 85%;
     height: 55px;
@@ -399,9 +389,8 @@
   
   
   
-  .formContainer form input#name{
+  .content form input#nome{
     margin-top: 3%;
-    box-sizing: unset !important;
     width: 85%;
     float: right;
     display: block;

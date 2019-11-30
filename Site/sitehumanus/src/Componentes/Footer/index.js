@@ -20,12 +20,12 @@ return(
         </div>
         <div className="Texto">
         
-        <p style={{"marginBottom":"10px","margin-right": "115px"}}>Tel:(18) 3302-5915</p>
-        <p style={{"marginBottom":"10px","margin-right": "120px"}}>CEP: 19806-173</p>
-        <p style={{"marginBottom":"10px", "margin-right": "50px"}}>Av Dom Antonio, n°2100, Assis (CPPA)</p>
+        <p className="telefone">Tel:(18) 3302-5915</p>
+        <p className="CEP">CEP: 19806-173</p>
+        <p className="endereço">Av Dom Antonio, n°2100, Assis (CPPA)</p>
         
         <div className="Texto2">
-        <p>Desenvolvido por EJCOMP- @ Empresa Junior de Computação</p>
+        <p>Desenvolvido por EJCOMP- © Empresa Junior de Computação</p>
         </div>
         </div>
 

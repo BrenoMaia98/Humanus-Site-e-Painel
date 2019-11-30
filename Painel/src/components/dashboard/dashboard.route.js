@@ -7,6 +7,7 @@ import FormsPostagem from '../../views/postagem/FormsPostagem';
 import ServicosProjetos from '../../views/servicosProjetos/ServicosProjetos';
 
 import AddEditServicosProjetos from '../../views/servicosProjetos/AddEditServicosProjetos';
+import AddEditPostagem from '../../views/postagem/AddEditPostagem';
 
 import NumWhatsApp from '../../views/numWhatsApp/numWhatsApp';
 
@@ -34,8 +35,8 @@ class DashboardRouter extends Component {
                     {/* rotas de formularios */}
                     <Route  path="/SERVIÇOS E PROJETOS/adc" component={AddEditServicosProjetos} />
                     <Route  path="/SERVIÇOS E PROJETOS/edit" component={AddEditServicosProjetos} />
-                    <Route exact path="/POSTAGEM BLOG/adc" component={FormsPostagem} />
-                    <Route exact path="/POSTAGEM BLOG/edit" component={FormsPostagem} />
+                    <Route exact path="/POSTAGEM BLOG/adc" component={AddEditPostagem} />
+                    <Route exact path="/POSTAGEM BLOG/edit" component={AddEditPostagem} />
                 </Switch>
             </div>
         );

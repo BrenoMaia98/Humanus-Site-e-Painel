@@ -2,22 +2,33 @@ import React from 'react';
 import './style.css';
 import CardSP from '../CardSP/index';
 
+
+
+
 const cardInfo = [
   {
-    title: 'titulo1',
-    description: 'desc1',
+    titulo: "Diagnóstico Organizacional",
+    descricao: "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. ",
   },
   {
-    title: 'titulo2',
-    description: 'desc2',
+    titulo: "Pesquisa de Clima Organizacional",
+    descricao: "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. ",
   },
   {
-    title: 'titulo3',
-    description: 'desc3',
+    titulo: "Treinamento",
+    descricao: "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. ",
   },
   {
-    title: 'titulo4',
-    description: 'desc4',
+    titulo: "Recrutamento e Seleção",
+    descricao: "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. ",
+  },
+  {
+    titulo: "Análise e Descrição de Cargos",
+    descricao: "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. ",
+  },
+  {
+    titulo: "Orientação Profissional",
+    descricao: "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. ",
   },
 ];
 
@@ -28,10 +39,11 @@ export default function Servicos() {
       <div className="containerServicos">
         {
           cardInfo.map(atual => (
-            <CardSP titulo={atual.title} descricao={atual.description} />
+            <CardSP titulo={atual.titulo} descricao={atual.descricao} />
           ))
         }
       </div>
     </>
   );
+
 }

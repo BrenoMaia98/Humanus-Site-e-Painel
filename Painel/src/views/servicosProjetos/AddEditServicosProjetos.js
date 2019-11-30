@@ -7,10 +7,8 @@ import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
-import { ServicoProjetoTemp } from "./ServicoProjetoTemp";
+import Modal from "../../components/modal/index";
 import axios from "axios";
 import { auth } from "../../auth";
 
@@ -33,7 +31,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding:"20px",
+    padding: "20px",
   },
   fotoSize: {
     marginLeft: "50px",
@@ -45,65 +43,77 @@ class AddEditServicosProjetos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dados: { titulo: "", resumo: "", materiaCompleta: "", fotos:[] }
+      titulo: "",
+      resumo: "",
+      modal1: false,
+      modal2: false,
+      modal3: false,
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.enviarServidor = this.enviarServidor.bind(this);
+    this.validaCampo = this.validaCampo.bind(this);
   }
 
   validaCampo() {
     if (
-      this.state.nome === "" ||
-      this.state.nome === null ||
-      this.state.nome === undefined ||
-      this.state.imagem === "" ||
-      this.state.imagem === null ||
-      this.state.imagem === undefined ||
-      this.state.condicoes_pagamento === "" ||
-      this.state.condicoes_pagamento === null ||
-      this.state.condicoes_pagamento === undefined
+      this.state.titulo === "" ||
+      this.state.titulo === null ||
+      this.state.titulo === undefined ||
+      this.state.resumo === "" ||
+      this.state.resumo === null ||
+      this.state.resumo === undefined
     )
       return false;
     else return true;
   }
 
-  getInfo() {
+  receberDados() {
     /*await axios.post('http://74.117.156.74:5012/ServicosProjetos/delete', {'id': index},auth.config).then(
            (resp) =>  this.setState(dados:resp.data)
         )*/
-    const dados = {
-      titulo: "",
-      resumo:
-        " Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.",
-      materiaCompleta:
-        "Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.",
-      fotos: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGN29TOR6DHBM9eO-a-ST7_moemdvpRWMJehgraNI9a6qvGHvX",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8xnHHVxLRnXmaUCJKmANZZWL2sHVo9d5yW3Yu_j5y2G17Sap4",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQU50c9Hw7jfLsaPgPt17yrCFyKidS5V5cefYmvsADw9_B3LNK2"
-      ]
-    };
-    this.setState({ dados });
+
+    console.log("PROPS DA NAVIGATION",this.props.location);
+    if (this.props.location.tipo !== "add") {
+      const dados = {
+        titulo: "Serviço numero 1",
+        resumo:
+          " Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.",
+
+      };
+      this.setState({
+        titulo: dados.titulo,
+        resumo: dados.resumo,
+      });
+    }
   }
-  handleChange(e,index){
-      e.preventDefault();
-      let aux = this.state.dados;
-      aux.fotos[index] = URL.createObjectURL(e.target.files[0]);
-      this.setState({dados:aux},console.log("State dps de editar: ",this.state))
+
+  open(modal) {
+    this.setState({
+      [modal]: true
+    });
   }
-  addNewImg(e){
-    e.preventDefault();
-    let aux = this.state.dados;
-    aux.fotos.push(URL.createObjectURL(e.target.files[0]));
-    this.setState({dados:aux},() => console.log("State dps de add: ",this.state))
+
+  close(modal) {
+    this.setState({
+      [modal]: false
+    });
   }
-  removerFoto(index){
-    let aux = this.state.dados;
-    aux.fotos.splice(index,1)
-    this.setState({dados:aux},console.log("State dps de remover: ",this.state))
+  enviarServidor() {
+    let envio = true;
+    if (!this.validaCampo()) {
+      this.open("modal3")
+    } else {
+
+      if (envio) {
+        this.open("modal1");
+      } else
+        this.open("modal2");
+    }
   }
-  componentWillMount(){
-    this.getInfo();
-}
+
+  componentWillMount() {
+    this.receberDados();
+  }
+
   render() {
     console.log(this.props);
     const { classes } = this.props;
@@ -111,140 +121,57 @@ class AddEditServicosProjetos extends React.Component {
       <div>
         <div>
           <Typography variant="h5" component="h2">
-            {this.props.nome}
+            {this.props.location.nome}
           </Typography>
           <Divider />
           <Typography className={classes.pos} color="textSecondary">
-            {this.props.descricao}
+            {this.props.location.descricao}
           </Typography>
           <form className="App-forms">
             <div>
               <label>
-                Titulo da matéria:
+                Titulo do serviço:
                 <input
-                  type="text"
-                  name="nome"
-                  required
-                  defaultValue={this.state.nome}
-                />
+                  type="text" name="nome" required defaultValue={this.state.titulo} onChange={(e) => { e.preventDefault(); this.setState({ titulo: e.target.value }) }} />
               </label>
             </div>
             <div>
               <label>
                 Resumo:
                 <br />
-                <textarea
-                  rows="8"
-                  cols="60"
-                  value={this.state.condicoes_pagamento}
-                ></textarea>
+                <textarea rows="8" cols="60" required value={this.state.resumo} onChange={(e) => { e.preventDefault(); this.setState({ resumo: e.target.value }) }}></textarea>
               </label>
-              <label>
-                Matéria Completa:
-                <br />
-                <textarea
-                  rows="12"
-                  cols="60"
-                  value={this.state.condicoes_pagamento}
-                  ></textarea>
-              </label>
-            </div>
-            <div>
-                Fotos:
-                  <div>
-
-                {
-                this.state.dados.fotos.length == 0 ?
-                <div className={classes.fotoAlign}>
-                      <label >
-                            Adicionar nova foto:
-                      <input
-                        type="file"
-                        name={`novoInput`}
-                        accept="imagem/*"
-                        onChange={(e) => this.addNewImg(e)}
-                        />
-                        </label>
-                    </div>
-                :
-
-                this.state.dados.fotos.map((resp, index) => {
-                    if(index == this.state.dados.fotos.length-1){
-                        return(
-                            <>
-                           
-                    <div className={classes.fotoAlign}>
-                        
-<FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)}/>
-<>
-                    <input
-                      type="file"
-                      name={`foto${resp}`}
-                      accept="imagem/*"
-                      onChange={(e) => this.handleChange(e,index)}
-                      />
-                    <img src={resp} className={classes.fotoSize} alt="" />
-                    </>
-                  </div>
-                  <div className={classes.fotoAlign}>
-                      <label >
-                            Adicionar nova foto:
-                      <input
-                        type="file"
-                        name={`novoInput`}
-                        accept="imagem/*"
-                        onChange={(e) => this.addNewImg(e,index)}
-                        />
-                        </label>
-                    </div>
-                  </>
-                        );
-                    }else{
-                        
-                        return (
-                            <div className={classes.fotoAlign}>
-
-<FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)}/>
-<>
-                      <input
-                        type="file"
-                        name={`foto${resp}`}
-                        accept="imagem/*"
-                        onChange={(e) => this.handleChange(e,index)}
-                        />
-                      <img src={resp} className={classes.fotoSize} alt="" />
-                    </>
-                    </div>
-                  );
-                }
-            })}
-        </div>
             </div>
           </form>
         </div>
-        <div
-          align="center"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <Button
-            onClick={() => this.adicionarPacote()}
-            variant="contained"
-            size="medium"
-            className="App-Button"
-            style={{ color: "white" }}
-          >
-            <FontAwesomeIcon
-              icon={faCheck}
-              size="lg"
-              style={{ marginRight: "10px" }}
-            />{" "}
+        <div align="center" style={{ display: "flex", justifyContent: "center" }}        >
+          <Button onClick={() => this.enviarServidor()} variant="contained" size="medium" className="App-Button" style={{ color: "white" }}          >
+            <FontAwesomeIcon icon={faCheck} size="lg" style={{ marginRight: "10px" }} />{" "}
             Concluir
           </Button>
-          <BotaoVoltar
-            onRef={ref => (this.botaoVoltar = ref)}
-            link="SERVIÇOS E PROJETOS"
-          />
+          <BotaoVoltar onRef={ref => (this.botaoVoltar = ref)} link="SERVIÇOS E PROJETOS" />
         </div>
+        <Modal visible={this.state.modal1} effect="modal" onClickAway={() => this.close('modal1')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Sucesso</h1>
+            <h4 className="Modal__data">Seus dados foram salvos e já estão disponiveis no site principal</h4>
+            <a onClick={() => this.close('modal1')}>Ok</a>
+          </div>
+        </Modal>
+        <Modal visible={this.state.modal2} effect="modal" onClickAway={() => this.close('modal2')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Erro</h1>
+            <h4 className="Modal__data">Ocorreu um erro na conexão, por favor tente mais tarde, caso o erro persista, contate a empresa EJCOMP.</h4>
+            <a onClick={() => this.close('modal2')}>Ok</a>
+          </div>
+        </Modal>
+        <Modal visible={this.state.modal3} effect="modal" onClickAway={() => this.close('modal3')}>
+          <div className="Modal">
+            <h1 className="Modal__title">Erro</h1>
+            <h4 className="Modal__data">Você deve preencher todos os campos para concluir esta ação.</h4>
+            <a onClick={() => this.close('modal3')}>Ok</a>
+          </div>
+        </Modal>
       </div>
     );
   }

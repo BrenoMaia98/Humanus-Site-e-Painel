@@ -11,6 +11,10 @@
 }
 
 .btnShowMore{
+  text-align: justify;
+  text-indent: 2em;
+  font-weight: 500;
+  color: rgb(42, 21, 138);
   cursor: pointer;
   font-weight: bolder;
   font-size: 1.5em;
@@ -28,8 +32,6 @@
   width: 30vw;
   float: left;
   margin: 0 40px 0px 0;
-  background-color: rgb(255, 0, 0) !important;
-
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -46,9 +48,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
 }
-p {
+.textBlogStyle {
   text-align: justify;
   text-indent: 2em;
   font-weight: 500;
@@ -56,6 +57,7 @@ p {
 }
 
 .resumo{
+  text-align: justify;
   font-size: 1.23em;
 }
 
@@ -63,11 +65,6 @@ p {
 
   font-size: 1.23em;
 }
-
-
-
-
-
 
 .containerTituloCentro{
   align-items: center;
@@ -172,10 +169,10 @@ p {
 
   .tituloDireita{
     width: 90vw;
-    font-family: 'Alegreya', serif;
-    text-align: center;
-    font-size: 2em;
     margin:0px;
+    font-family: 'Alegreya', serif;
+    font-size: 2em;
+    text-align: center;
   }
   
   .dataCentro{
@@ -198,16 +195,20 @@ p {
     margin:0px;
     width:90vw;
     font-family: 'Alegreya', serif;
-    text-align: center;
     font-size: 1.3em;
+    text-align: center;
   }
 
-  p {
+  
+  .textBlogStyle {
     text-align: justify;
-    text-indent: 1.5em;
+    text-indent: 0.1em;
+    font-weight: 500;
+    color: rgb(42, 21, 138)
   }
 
   .resumo{
+    text-align: justify;
     font-size: 1.1em;
   }
   
@@ -235,6 +236,5 @@ p {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  
   }
 }

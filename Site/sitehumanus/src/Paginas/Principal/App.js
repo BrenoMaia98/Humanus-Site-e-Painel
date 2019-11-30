@@ -1,34 +1,34 @@
 import React from 'react';
-import "./principal.css";
-import NavBar from "../../Componentes/NavBar/NavBar";
-import FundoLogo from "../../imagens/FundoLogoCompleto.png";
-import QuemSomos from "../../Componentes/QuemSomos/index";
-import Servicos from "../../Componentes/Servico/index";
-import Footer from "../../Componentes/Footer/index";
-import Divisao from '../../Componentes/Divisao/divisao';
+import './App.css';
+import NavBar from './Componentes/NavBar/NavBar';
+import FundoLogo from './imagens/FundoLogoCompleto.png';
 
-function Principal() {
+import QuemSomos from './Componentes/QuemSomos/index'
+import Servicos from './Componentes/Servico/index'
+import Footer from "./Componentes/Footer/index";
+
+
+function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
       <div>
         <img src={FundoLogo} className="fundoLogo"/>
       </div>
-      <div className="primeiraBarra"></div>
       <QuemSomos></QuemSomos>
-      <Divisao type="2"></Divisao>
+      <div style={{"background-color":"#212b56", "height":"5px","marginTop":"70px"}}></div>
       <Servicos></Servicos>
-      <Divisao type="2"></Divisao>
+      <div style={{"background-color":"#212b56", "height":"5px", "marginTop":"70px"}}></div>
       <div className="container">
-           <div className="formContainer"> 
+           <div className="content"> 
               <p>CONTATO</p>
                 <form> 
-                  <div className="lineontato"><label htmlfor="name">Nome: </label>
-                  <input type="name" id="name" placeholder="Nome completo"/></div>
-                  <div className="lineontato"><label htmlfor="Email">E-mail: </label>
-                  <input type="Email" id="Email" placeholder="Seu melhor Email"/></div>
-                  <div className="lineontato"><label htmlfor="Comentario">Assunto: </label>
-                  <textarea  id="Comentario" className="Comentario" rows="5" cols="50" placeholder="Faça seu comentario">
+                  <div className="linhaContato"><label htmlfor="nome">Nome: </label>
+                  <input type="nome" id="nome" placeholder="Nome completo"/></div>
+                  <div className="linhaContato"><label htmlfor="email">E-mail: </label>
+                  <input type="email" id="email" placeholder="Seu melhor email"/></div>
+                  <div className="linhaContato"><label htmlfor="comentario">Assunto: </label>
+                  <textarea  id="comentario" className="comentario" rows="5" cols="50" placeholder="Faça seu comentario">
                   </textarea></div>
                   <button className="btn" type="submit"><strong>Enviar</strong></button>
                 </form>
@@ -53,12 +53,21 @@ function Principal() {
             </div>
       <Footer></Footer>
 
+
+
+
+
+
+
+
+
+
     </div>
   );
 }
 
-export default Principal;
+export default App;
 
 /*
-
+      
 */
