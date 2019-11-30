@@ -26,14 +26,15 @@ class Login extends React.Component {
 
             const response = await axios.post(`${auth.baseURL}/Session/login`,
                 {
-                    "usuario": this.state.email,
+                    "usuario": "golfionho",
                     "senha": "23412341"
+                    // "usuario": this.state.email,
+                    //"senha": this.state.senha 
                 },
-                //"senha": this.state.senha },
-            ).catch((e) => { if (!e.status) console.log(e) });
-            HTMLFormControlsCollection.log(response)
-            debugger
-            if (response.data.message === undefined) {
+            );
+            console.log(response)
+            if (!response.data.isError) {
+                alert("LOGIN AUTORIZADO");
                 this.setState({ token: response.data.token },
                     () => {
                         auth.authenticate("admin", response.data.token, () => {
@@ -43,7 +44,7 @@ class Login extends React.Component {
                         });
                     })
             } else {
-                alert(response.data.msg);
+                alert(response.data.message);
             }
         } catch (err) {
             alert(err);
