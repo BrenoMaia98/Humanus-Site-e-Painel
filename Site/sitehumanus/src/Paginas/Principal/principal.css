@@ -11,6 +11,7 @@
 }
 
 .fundoLogo{
+  padding-top: 10vh;
   width: 100%;
 }
 
@@ -18,7 +19,12 @@
   width:100%;
   z-index: 1;
 }
-
+.primeiraBarra{
+  height: 2px;
+  background-color: rgba(60, 37, 131, 0.374);
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
 .container{
   margin: 80px auto 0;
   max-width: 450px;
@@ -236,6 +242,7 @@
   }
   
   .fundoLogo{
+    padding-top: 10vh;
     width: 100%;
   }
   

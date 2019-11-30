@@ -1,10 +1,13 @@
-import React from "react";
-import "./blog.css";
-import Picker from "../../Componentes/Picker/picker";
-import Divisao from "../../Componentes/Divisao/divisao";
-import Direita from "../../Componentes/Materia/direita";
-import Esquerda from "../../Componentes/Materia/esquerda";
-import SemFoto from "../../Componentes/Materia/semFoto";
+
+import React from 'react';
+import './blog.css';
+import Picker from '../../Componentes/Picker/picker'
+import Divisao from '../../Componentes/Divisao/divisao'
+import Direita from '../../Componentes/Materia/direita'
+import Esquerda from '../../Componentes/Materia/esquerda'
+import SemFoto from '../../Componentes/Materia/semFoto'
+import NavBar from '../../Componentes/NavBar/NavBar';
+
 
 const Categorias = [
   {
@@ -240,54 +243,68 @@ class App extends React.Component {
     this.recebeDados();
   }
 
+
   render() {
     var ladoFotoPostagem = "direita";
 
-    return (
-      <>
-        <div>
-          <div className="App">
-            <Picker data={Categorias}></Picker>
-          </div>
-          {this.state.postagens.map((atual, index) => {
-            if (atual.img === null) {
+  return (
+    <>
+    <div >
+      <NavBar></NavBar>
+    <div className="BlogContainerPrincipal">
+      <p className="tituloPicker" >Filtro de Postagens</p>
+      <Picker data = {Categorias}></Picker>
+    </div>
+    {
+      this.state.postagens.map(( atual,index) =>{
+        if(atual.img === null){
+          return (
+            <>
+          <SemFoto 
+            titulo= {atual.titulo} 
+            data= {atual.data} 
+            resumo= {atual.resumo} 
+            completo= {atual.completo} 
+            ></SemFoto>
+            <Divisao></Divisao>
+            </>
+            );
+          }else{
+            if( ladoFotoPostagem === "direita"){
+              ladoFotoPostagem = "esquerda";
               return (
-                <SemFoto
-                  titulo={atual.titulo}
-                  data={atual.data}
-                  resumo={atual.resumo}
-                  completo={atual.completo}
-                ></SemFoto>
-              );
-            } else {
-              if (ladoFotoPostagem === "direita") {
-                ladoFotoPostagem = "esquerda";
-                return (
-                  <Direita
-                    titulo={atual.titulo}
-                    data={atual.data}
-                    img={atual.img}
-                    imgs={atual.imgs}
-                    resumo={atual.resumo}
-                    completo={atual.completo}
-                  ></Direita>
+                <>
+              <Direita 
+                titulo= {atual.titulo} 
+                data= {atual.data} 
+                img= {atual.img} 
+                imgs= {atual.imgs} 
+                resumo= {atual.resumo} 
+                completo= {atual.completo} 
+                ></Direita>
+                <Divisao></Divisao>
+                </>
                 );
-              } else {
+              }else{
                 ladoFotoPostagem = "direita";
                 return (
-                  <Esquerda
-                    titulo={atual.titulo}
-                    data={atual.data}
-                    img={atual.img}
-                    imgs={atual.imgs}
-                    resumo={atual.resumo}
-                    completo={atual.completo}
+                  <>
+                  <Esquerda 
+                  titulo= {atual.titulo} 
+                  data= {atual.data} 
+                  img= {atual.img} 
+                  imgs= {atual.imgs} 
+                  resumo= {atual.resumo} 
+                  completo= {atual.completo} 
                   ></Esquerda>
-                );
-              }
-            }
-          })}
-        </div>
+                  <Divisao></Divisao>
+                  </>
+              );
+          }
+        }
+      })
+    }
+    </div>
         <br></br>
         <div className="botaoPostagem">
           <button onClick={(evento) => { evento.preventDefault(); this.recebeDados() }}>

@@ -6,8 +6,20 @@
 
 }
 
-.App{
+.BlogContainerPrincipal{
+  padding-top: 15vh;
   overflow-x: hidden;
+}
+
+.tituloPicker{
+  width: 100vw;
+  margin:0px;
+  font-family: 'Alegreya', serif;
+  font-size: 2.5em;
+  font-weight:bolder ;
+  padding-bottom: 5vh;
+  text-align: center;
+  color:#212b56;
 }
 
 .fundoLogo{
