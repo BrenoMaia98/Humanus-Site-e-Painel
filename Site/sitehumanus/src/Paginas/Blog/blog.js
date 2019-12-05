@@ -264,6 +264,7 @@ class App extends React.Component {
       paginaAtual: page
     });
     this.getPostagens(page);
+    window.scrollTo(0, 25);
   }
 
   componentWillMount() {
