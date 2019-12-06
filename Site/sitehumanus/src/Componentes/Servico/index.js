@@ -28,7 +28,7 @@ export default class Servicos extends React.Component {
   render() {
     return (
       <>
-        <h1 style={{ "text-align": "center", "marginBottom": "45px", "marginTop": "50px", "marginBottom": "5px", "font-family": "Bebas", "fontSize": "45px" }}>Serviços e Projetos</h1>
+        <h1 style={{ "color":"#212b56", "text-align": "center", "marginBottom": "45px", "marginTop": "50px", "marginBottom": "5px", "font-family": "Bebas", "fontSize": "45px" }}>Serviços e Projetos</h1>
         <div className="containerServicos">
           {
             this.state.cardInfo.map((atual, index) => (
