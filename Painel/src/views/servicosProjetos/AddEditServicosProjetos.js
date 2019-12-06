@@ -44,10 +44,12 @@ class AddEditServicosProjetos extends React.Component {
     super(props);
     this.state = {
       titulo: "",
-      resumo: "",
+      descricao: "",
+      descricaoItem: "",
       modal1: false,
       modal2: false,
       modal3: false,
+      isErrormsg:"Ocorreu um erro na conexão, por favor tente mais tarde, caso o erro persista, contate a empresa EJCOMP.",
     };
     this.enviarServidor = this.enviarServidor.bind(this);
     this.validaCampo = this.validaCampo.bind(this);
@@ -58,30 +60,29 @@ class AddEditServicosProjetos extends React.Component {
       this.state.titulo === "" ||
       this.state.titulo === null ||
       this.state.titulo === undefined ||
-      this.state.resumo === "" ||
-      this.state.resumo === null ||
-      this.state.resumo === undefined
+      this.state.descricaoItem === "" ||
+      this.state.descricaoItem === null ||
+      this.state.descricaoItem === undefined
     )
       return false;
     else return true;
   }
 
   receberDados() {
-    /*await axios.post('http://74.117.156.74:5012/ServicosProjetos/delete', {'id': index},auth.config).then(
-           (resp) =>  this.setState(dados:resp.data)
-        )*/
-
-    console.log("PROPS DA NAVIGATION",this.props.location);
-    if (this.props.location.tipo !== "add") {
+    if (this.props.location.tipo === "add") {
       const dados = {
-        titulo: "Serviço numero 1",
-        resumo:
-          " Maecenas ipsum velit, consectetuer eu, lobortis ut, dictum at, dui. In rutrum. Sed ac dolor sit amet purus malesuada congue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Suspendisse sagittis ultrices augue. Mauris metus. Nunc dapibus tortor vel mi dapibus sollicitudin. Etiam posuere lacus quis dolor. Praesent id justo in neque elementum ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In convallis. Fusce suscipit libero eget elit. Praesent vitae arcu tempor neque lacinia pretium. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.",
-
+        titulo: "",
+        descricao:"",
       };
       this.setState({
         titulo: dados.titulo,
-        resumo: dados.resumo,
+        descricaoItem: dados.descricao,
+      });
+    }else{
+      console.log("PROPS: ", this.props.location);
+      this.setState({
+        titulo: this.props.location.titulo,
+        descricaoItem: this.props.location.descricaoItem,
       });
     }
   }
@@ -97,25 +98,40 @@ class AddEditServicosProjetos extends React.Component {
       [modal]: false
     });
   }
-  enviarServidor() {
-    let envio = true;
+  async enviarServidor() {
+    
+    let resp = null;
     if (!this.validaCampo()) {
       this.open("modal3")
     } else {
-
-      if (envio) {
+      if(this.props.location.tipo !== "edit"){
+         resp = await axios.post(`${auth.baseURL}/ServicosProjetos/create`,        {
+          titulo: this.state.titulo,
+          descricao: this.state.descricaoItem,
+        }
+        )
+      }else{
+         resp = await axios.post(`${auth.baseURL}/ServicosProjetos/update`,        {
+          titulo: this.state.titulo,
+          descricao: this.state.descricaoItem,
+          _id:this.props.location._id,
+        }
+        )
+      }
+      if (!resp.data.isError) {
         this.open("modal1");
-      } else
+      } else{
+        this.setState({isErrorMsg:resp.data.message})
         this.open("modal2");
+      }
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.receberDados();
   }
 
   render() {
-    console.log(this.props);
     const { classes } = this.props;
     return (
       <div>
@@ -137,9 +153,9 @@ class AddEditServicosProjetos extends React.Component {
             </div>
             <div>
               <label>
-                Resumo:
+                descricao:
                 <br />
-                <textarea rows="8" cols="60" required value={this.state.resumo} onChange={(e) => { e.preventDefault(); this.setState({ resumo: e.target.value }) }}></textarea>
+                <textarea rows="8" cols="60" required value={this.state.descricaoItem} onChange={(e) => { e.preventDefault(); this.setState({ descricaoItem: e.target.value }) }}></textarea>
               </label>
             </div>
           </form>
@@ -161,7 +177,7 @@ class AddEditServicosProjetos extends React.Component {
         <Modal visible={this.state.modal2} effect="modal" onClickAway={() => this.close('modal2')}>
           <div className="Modal">
             <h1 className="Modal__title">Erro</h1>
-            <h4 className="Modal__data">Ocorreu um erro na conexão, por favor tente mais tarde, caso o erro persista, contate a empresa EJCOMP.</h4>
+            <h4 className="Modal__data">{this.state.isErrorMsg}</h4>
             <a onClick={() => this.close('modal2')}>Ok</a>
           </div>
         </Modal>

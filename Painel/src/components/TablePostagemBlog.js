@@ -119,7 +119,7 @@ class TablePostagemBlog extends React.Component {
                                 <TableRow className={classes.row} key={row.id}>
                                     <CustomTableCell align="center">{row.categoria}</CustomTableCell>
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
-                                    <CustomTableCell align="center">{row.dataPublicacao}</CustomTableCell>
+                                    <CustomTableCell align="center">{row.data}</CustomTableCell>
                                     <CustomTableCell align="center">{row.resumo}</CustomTableCell>
                                     <CustomTableCell align="center">
                                         <NavLink to={{
