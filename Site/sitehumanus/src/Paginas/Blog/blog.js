@@ -1,13 +1,14 @@
+import React from "react";
 
-import React from 'react';
-import './blog.css';
-import Picker from '../../Componentes/Picker/picker'
-import Divisao from '../../Componentes/Divisao/divisao'
-import Direita from '../../Componentes/Materia/direita'
-import Esquerda from '../../Componentes/Materia/esquerda'
-import SemFoto from '../../Componentes/Materia/semFoto'
-import NavBar from '../../Componentes/NavBar/NavBar';
+import { Pagination } from "antd";
 
+import "./blog.css";
+import Picker from "../../Componentes/Picker/picker";
+import Divisao from "../../Componentes/Divisao/divisao";
+import Direita from "../../Componentes/Materia/direita";
+import Esquerda from "../../Componentes/Materia/esquerda";
+import SemFoto from "../../Componentes/Materia/semFoto";
+import NavBar from "../../Componentes/NavBar/NavBar";
 
 const Categorias = [
   {
@@ -64,9 +65,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postagens: []
+      postagensAtuais: [],
+      postagens: [],
+      postagensPorPagina: 5
     };
     this.recebeDados = this.recebeDados.bind(this);
+    this.getPostagens = this.getPostagens.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   recebeDados() {
@@ -233,83 +238,110 @@ class App extends React.Component {
         ]
       }
     ];
+    console.log(data.length);
     this.setState({
       postagens: data,
       ladoFotoPostagem: "direita"
     });
   }
 
+  getPostagens(paginaAtual) {
+    const { postagensPorPagina, postagens } = this.state;
+    let indexDaUltimaPostagem = paginaAtual * postagensPorPagina;
+    let indexDaPrimeiraPostagem = indexDaUltimaPostagem - postagensPorPagina;
+    let postagensAtuais = postagens.slice(
+      indexDaPrimeiraPostagem,
+      indexDaUltimaPostagem
+    );
+
+    this.setState({
+      postagensAtuais: postagensAtuais
+    });
+  }
+
+  handlePageChange(page, pageSize) {
+    this.setState({
+      paginaAtual: page
+    });
+    this.getPostagens(page);
+    window.scrollTo(0, 25);
+  }
+
   componentWillMount() {
     this.recebeDados();
   }
-
+  componentDidMount(){
+    this.getPostagens(1);
+  }
 
   render() {
     var ladoFotoPostagem = "direita";
 
-  return (
-    <>
-    <div >
-      <NavBar></NavBar>
-    <div className="BlogContainerPrincipal">
-      <p className="tituloPicker" >Filtro de Postagens</p>
-      <Picker data = {Categorias}></Picker>
-    </div>
-    {
-      this.state.postagens.map(( atual,index) =>{
-        if(atual.img === null){
-          return (
-            <>
-          <SemFoto 
-            titulo= {atual.titulo} 
-            data= {atual.data} 
-            resumo= {atual.resumo} 
-            completo= {atual.completo} 
-            ></SemFoto>
-            <Divisao></Divisao>
-            </>
-            );
-          }else{
-            if( ladoFotoPostagem === "direita"){
-              ladoFotoPostagem = "esquerda";
+    return (
+      <>
+        <div>
+          <NavBar></NavBar>
+          <div className="BlogContainerPrincipal">
+            <p className="tituloPicker">Filtro de Postagens</p>
+            <Picker data={Categorias}></Picker>
+          </div>
+          {this.state.postagensAtuais.map((atual, index) => {
+            if (atual.img === null) {
               return (
                 <>
-              <Direita 
-                titulo= {atual.titulo} 
-                data= {atual.data} 
-                img= {atual.img} 
-                imgs= {atual.imgs} 
-                resumo= {atual.resumo} 
-                completo= {atual.completo} 
-                ></Direita>
-                <Divisao></Divisao>
+                  <SemFoto
+                    titulo={atual.titulo}
+                    data={atual.data}
+                    resumo={atual.resumo}
+                    completo={atual.completo}
+                  ></SemFoto>
+                  <Divisao></Divisao>
                 </>
+              );
+            } else {
+              if (ladoFotoPostagem === "direita") {
+                ladoFotoPostagem = "esquerda";
+                return (
+                  <>
+                    <Direita
+                      titulo={atual.titulo}
+                      data={atual.data}
+                      img={atual.img}
+                      imgs={atual.imgs}
+                      resumo={atual.resumo}
+                      completo={atual.completo}
+                    ></Direita>
+                    <Divisao></Divisao>
+                  </>
                 );
-              }else{
+              } else {
                 ladoFotoPostagem = "direita";
                 return (
                   <>
-                  <Esquerda 
-                  titulo= {atual.titulo} 
-                  data= {atual.data} 
-                  img= {atual.img} 
-                  imgs= {atual.imgs} 
-                  resumo= {atual.resumo} 
-                  completo= {atual.completo} 
-                  ></Esquerda>
-                  <Divisao></Divisao>
+                    <Esquerda
+                      titulo={atual.titulo}
+                      data={atual.data}
+                      img={atual.img}
+                      imgs={atual.imgs}
+                      resumo={atual.resumo}
+                      completo={atual.completo}
+                    ></Esquerda>
+                    <Divisao></Divisao>
                   </>
-              );
-          }
-        }
-      })
-    }
-    </div>
+                );
+              }
+            }
+          })}
+        </div>
         <br></br>
         <div className="botaoPostagem">
-          <button onClick={(evento) => { evento.preventDefault(); this.recebeDados() }}>
-            Carregar mais postagens
-          </button>
+          <Pagination
+            onChange={this.handlePageChange}
+            defaultCurrent={1}
+            pageSize={this.state.postagensPorPagina}
+            total={this.state.postagens.length}
+            style={{ zIndex: 100000000 }}
+          />
         </div>
       </>
     );
