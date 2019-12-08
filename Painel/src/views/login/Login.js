@@ -32,7 +32,6 @@ class Login extends React.Component {
                     //"senha": this.state.senha 
                 },
             );
-            console.log(response)
             if (!response.data.isError) {
                 this.setState({ token: response.data.token },
                     () => {

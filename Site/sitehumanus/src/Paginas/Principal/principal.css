@@ -10,6 +10,13 @@
   overflow-x: hidden;
 }
 
+.divLogo{
+  padding-top: 10vh;
+}
+
+.fundoLogo{
+  width: 100%;
+}
 .fundoLogo{
   padding-top: 10vh;
   width: 100%;

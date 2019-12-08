@@ -25,18 +25,35 @@ class editarFotoGestao extends React.Component {
     super(props);
     this.state = {
       codigo: "",
-      file: null,
+      file: "https://semantic-ui.com/images/wireframe/image.png",
+      file2: "https://semantic-ui.com/images/wireframe/image.png",
+      fileURL: null,
+      file2URL: null,
+      Completo: null,
+      Resumido: null,
       original: "",
-      modal1:false,
-      modal2:false,
+      modal1: false,
+      modal2: false,
     };
     this.enviarServidor = this.enviarServidor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
   }
 
-  receberDados() {
-    let data = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8xnHHVxLRnXmaUCJKmANZZWL2sHVo9d5yW3Yu_j5y2G17Sap4";
-    this.setState({ original: data });
+  async receberDados() {
+    debugger
+    try {
+      const Resumido = await axios.get(`${auth.baseURL}/Logo/index/Resumido`)
+      const Completo = await axios.get(`${auth.baseURL}/Logo/index/Completo`)
+
+      this.setState({
+        file:  Completo.data.isError ? this.state.file : `${auth.baseURL}/Image/${Completo.data.logo.thumbnail}` ,
+        file2:  Resumido.data.isError ? this.state.file2 : `${auth.baseURL}/Image/${Resumido.data.logo.thumbnail}` 
+      }
+      );
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   open(modal) {
@@ -50,8 +67,40 @@ class editarFotoGestao extends React.Component {
       [modal]: false
     });
   }
-  enviarServidor() {
-    let envio = false;
+  async enviarServidor() {
+    console.log("STATE:", this.state)
+    debugger
+    if (this.state.fileURL !== null) {
+
+      var Form1 = new FormData();
+      Form1.append("thumbnail", this.state.file);
+      Form1.append("tipo", "Completo");
+      const response1 = await axios({
+        method: 'put',
+        url: `${auth.baseURL}/Logo/update`,
+        data: Form1,
+        headers: {
+          'content-type': `multipart/form-data; boundary=${Form1._boundary}`,
+        },
+      }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
+    }
+
+    if (this.state.file2URL !== null) {
+
+      var Form2 = new FormData();
+      Form2.append("thumbnail", this.state.file2);
+      Form2.append("tipo", "Resumido");
+      const response2 = await axios({
+        method: 'put',
+        url: `${auth.baseURL}/Logo/update`,
+        data: Form2,
+        headers: {
+          'content-type': `multipart/form-data; boundary=${Form2._boundary}`,
+        },
+      }).then(resp => console.log("RESP2 : ", resp)).catch(e => console.log("ERROR2 : ", e));
+    }
+
+    let envio = true;
     if (envio) {
       this.open("modal1");
     } else
@@ -59,12 +108,27 @@ class editarFotoGestao extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
-      file: URL.createObjectURL(event.target.files[0])
-    });
+    try{
+      this.setState({
+      fileURL: URL.createObjectURL(event.target.files[0]),
+      file: event.target.files[0]
+    });}catch(e){
+      console.log("Catch ao atualizar img1: ",e)
+    }
   }
 
-  componentWillMount() {
+  handleChange2(event) {
+    try{
+      this.setState({
+      file2URL: URL.createObjectURL(event.target.files[0]),
+      file2: event.target.files[0]
+    });}catch(e){
+      console.log("Catch ao atualizar img2: ",e)
+    }
+  }
+
+
+  componentDidMount() {
     this.receberDados();
   }
 
@@ -84,13 +148,16 @@ class editarFotoGestao extends React.Component {
         <div className="App-validar">
           <div className="a">
             <label style={{ marginRight: "10px" }}>
-              <p style={{ marginRight: "10px" }}>Editar Logo principal:</p>
-              {this.state.file == null ? (
-                <img src={this.state.original} className="logoPrincipal" />
-              ) : (
-                  <img src={this.state.file} className="logoPrincipal" />
-                )}
-              <input type="file" onChange={this.handleChange} />
+              <div>
+                <p style={{ marginRight: "10px" }}>Editar Logo principal:</p>
+                <img src={this.state.fileURL ? this.state.fileURL : this.state.file} className="logoPrincipal" />
+                <input type="file" onChange={this.handleChange} />
+              </div>
+              <div>
+                <p style={{ marginRight: "10px" }}>Editar Logo principal:</p>
+                <img src={this.state.file2URL ? this.state.file2URL : this.state.file2} className="logoPrincipal" />
+                <input type="file" onChange={this.handleChange2} />
+              </div>
             </label>
           </div>
           <Button
