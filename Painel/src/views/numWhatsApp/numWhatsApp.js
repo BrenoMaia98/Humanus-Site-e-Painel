@@ -42,6 +42,7 @@ class numWhatsApp extends React.Component {
             modal1: false,
             modal2: false,
             num: "",
+            _id:"",
         }
         this.handleChange = this.handleChange.bind(this);
         this.enviarServidor = this.enviarServidor.bind(this);
@@ -53,31 +54,48 @@ class numWhatsApp extends React.Component {
         })
     }
 
-    receberDados() {
-        let data = "18 999999999";
-        this.setState({ num: data })
+    async receberDados() {
+        const resp = await axios.post(`${auth.baseURL}/WhatsApp/show`, {});
+        this.setState({ num: resp.data.numero, _id:resp.data._id });
     }
-
+    
     open(modal) {
         this.setState({
             [modal]: true
         });
     }
-
+    
     close(modal) {
         this.setState({
             [modal]: false
         });
     }
-    enviarServidor() {
-        let envio = true;
-        if (envio) {
-            this.open("modal1")
-        } else
+    validaCampo() {
+        if (
+            this.state.num === "" ||
+            this.state.num === null ||
+            this.state.num === undefined
+            )
+            return false;
+        else return true;
+    }
+    
+    async enviarServidor() {
+        if (this.validaCampo()) {
+            const resp = await axios.post(`${auth.baseURL}/WhatsApp/update`, {
+                numero: this.state.num,
+                _id:this.state._id,
+            });
+            console.log("RES WHATS: ",resp.data);
+            if (!resp.data.isError) {
+                this.open("modal1")
+            } else
+                this.open("modal2")
+            } else
             this.open("modal2")
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.receberDados();
     }
     render() {

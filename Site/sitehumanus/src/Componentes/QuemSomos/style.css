@@ -11,7 +11,7 @@
   display: block;
   margin-left: 40%;
   margin-bottom: 5px;
-  font-Size: 48px;
+  font-Size: 3em;
   
 
 }
@@ -19,6 +19,7 @@
 .conteudo{
   padding: 30px;
   font-family: 'Alegreya';
+  font-size: 1.5em;
   font-weight:normal;
   font-style:normal;
   color:#212b56;

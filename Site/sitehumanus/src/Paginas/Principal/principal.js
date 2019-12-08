@@ -2,6 +2,8 @@ import React from 'react';
 import "./principal.css";
 import NavBar from "../../Componentes/NavBar/NavBar";
 import FundoLogo from "../../imagens/FundoLogoCompleto.png";
+import LogoCompleto from "../../imagens/LogoCompleto.png";
+import FundoSemLogo from "../../imagens/FundoSemLogo.png";
 import QuemSomos from "../../Componentes/QuemSomos/index";
 import Servicos from "../../Componentes/Servico/index";
 import Footer from "../../Componentes/Footer/index";
@@ -11,14 +13,23 @@ function Principal() {
   return (
     <div className="App">
       <NavBar></NavBar>
-      <div>
-        <img src={FundoLogo} className="fundoLogo"/>
+
+      <div className="divLogo">
+        <img src={FundoSemLogo} className="fundoLogo"/>
+        <img src={LogoCompleto} className="fundoLogo2"/>
       </div>
+
       <div className="primeiraBarra"></div>
+
       <QuemSomos></QuemSomos>
+
       <Divisao type="2"></Divisao>
+      
       <Servicos></Servicos>
+
       <Divisao type="2"></Divisao>
+
+
       <div className="container">
            <div className="formContainer"> 
               <p>CONTATO</p>

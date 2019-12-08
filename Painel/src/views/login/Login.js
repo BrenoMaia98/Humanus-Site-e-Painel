@@ -32,9 +32,7 @@ class Login extends React.Component {
                     //"senha": this.state.senha 
                 },
             );
-            console.log(response)
             if (!response.data.isError) {
-                alert("LOGIN AUTORIZADO");
                 this.setState({ token: response.data.token },
                     () => {
                         auth.authenticate("admin", response.data.token, () => {
