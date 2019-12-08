@@ -47,6 +47,7 @@ class AddEditPostagem extends React.Component {
       resumo: "",
       materiaCompleta: "",
       fotos: [],
+      _id: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.enviarServidor = this.enviarServidor.bind(this);
@@ -84,9 +85,10 @@ class AddEditPostagem extends React.Component {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQU50c9Hw7jfLsaPgPt17yrCFyKidS5V5cefYmvsADw9_B3LNK2"
         ]
       };
-      this.setState({ titulo:dados.titulo , materiaCompleta:dados.materiaCompleta, resumo:dados.resumo , fotos:dados.fotos });
+      this.setState({ titulo: dados.titulo, materiaCompleta: dados.materiaCompleta, resumo: dados.resumo, fotos: dados.fotos });
     } else {
-      this.setState({ titulo: "", resumo: "", materiaCompleta: "", fotos: []  });
+      var { titulo, resumo, thumbnail, num, numC, materiaCompleta, _id } = this.props.data;
+      this.setState({ titulo, resumo, materiaCompleta, fotos: thumbnail, _id });
     }
   }
 
@@ -159,7 +161,7 @@ class AddEditPostagem extends React.Component {
                 <input type="text" name="nome" required value={this.state.titulo} onChange={(e) => {
                   e.preventDefault();
                   this.setState({ titulo: e.target.value })
-                }}/>
+                }} />
               </label>
             </div>
             <div>
@@ -192,15 +194,15 @@ class AddEditPostagem extends React.Component {
                       </label>
                     </div>
                     :
-                    this.state.fotos.map((resp, index) => {
+                    this.state.fotos.map((thumbnail, index) => {
                       if (index == this.state.fotos.length - 1) {
                         return (
                           <div key={index}>
                             <div className={classes.fotoAlign}>
                               <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                               <>
-                                <input type="file" name={`foto${resp}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
-                                <img src={resp} className={classes.fotoSize} alt="" />
+                                <input type="file" name={`foto${thumbnail}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
+                                <img src={`${auth.baseURL}/Image/${thumbnail}`} className={classes.fotoSize} alt="" />
                               </>
                             </div>
                             <div className={classes.fotoAlign}>
@@ -216,8 +218,8 @@ class AddEditPostagem extends React.Component {
                           <div className={classes.fotoAlign} key={index}>
                             <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                             <>
-                              <input type="file" name={`foto${resp}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
-                              <img src={resp} className={classes.fotoSize} alt="" />
+                              <input type="file" name={`foto${thumbnail}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
+                              <img src={`${auth.baseURL}/Image/${thumbnail}`} className={classes.fotoSize} alt="" />
                             </>
                           </div>
                         );

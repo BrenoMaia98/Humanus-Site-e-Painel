@@ -16,7 +16,10 @@ function Principal() {
 
       <div className="divLogo">
         <img src={FundoSemLogo} className="fundoLogo"/>
-        <img src={LogoCompleto} className="fundoLogo2"/>
+        <div className="fundoLogo2">
+
+          <img src={LogoCompleto} className="img2"/>
+        </div>
       </div>
 
       <div className="primeiraBarra"></div>

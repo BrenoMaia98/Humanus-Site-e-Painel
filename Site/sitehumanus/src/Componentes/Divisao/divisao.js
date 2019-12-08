@@ -4,9 +4,6 @@ import './divisao.css';
 
 export default class Divisao extends Component {
   
-  componentDidMount(){
-    console.log(this.props)
-  }
   render() {
     return(<>
     {

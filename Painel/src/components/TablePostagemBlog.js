@@ -47,37 +47,28 @@ class TablePostagemBlog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            linhas: []
+            linhas: this.props.data,
         };
     }
 
-    componentWillMount() {
-        this.pegarPostagens();
+  
+    componentDidMount(){
+        this.setState({linhas:this.props.data})
+    }
+    
+    componentWillUpdate(nextProps, nextState){
+        nextState.linhas = nextProps.data;
     }
 
     getCurrentDate(separator = '') {
-
         let newDate = new Date()
         let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
         let year = newDate.getFullYear();
-
         return `${year}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${date}`
     }
 
 
-    pegarPostagens() {
-        
-        try {
-            //   axios.post('http://74.117.156.74:5012/Brinde/get',{},auth.config).then(response => {
-            //     this.setState({linhas:response.data})
-            //   })
-
-            this.setState({ linhas: this.props.data })
-        } catch (err) {
-            console.log(err);
-        }
-    }
 
 
     async removerPostagem(index) {
@@ -116,7 +107,7 @@ class TablePostagemBlog extends React.Component {
                         </TableHead>
                         <TableBody>
                             {this.state.linhas.map(row => (
-                                <TableRow className={classes.row} key={row.id}>
+                                <TableRow className={classes.row} key={row._id}>
                                     <CustomTableCell align="center">{row.categoria}</CustomTableCell>
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
                                     <CustomTableCell align="center">{row.data}</CustomTableCell>
@@ -127,7 +118,7 @@ class TablePostagemBlog extends React.Component {
                                             componenteProps: {
                                                 nome: "Edição da Postagem do Blog",
                                                 descricao: "Altere os campos desejados e clique em concluir para finalizar.",
-                                                id: row.id,
+                                                dados: row,
                                                 tipo: "edit"
                                             }
                                         }}>

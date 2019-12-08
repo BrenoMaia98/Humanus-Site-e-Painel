@@ -11,21 +11,33 @@
 }
 
 .divLogo{
-  padding-top: 10vh;
+  margin-top: 10vh;
+  height: 100vh;
+  display: flex;
+  z-index: -2;
 }
 
 .fundoLogo{
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }
-.fundoLogo{
-  padding-top: 10vh;
+.fundoLogo2{
+  position: absolute;
+  left: 22.1vw;
+  top: 19vh;
+  width: 75.9vw;
+  height: 50vh;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img2{
+  position: relative;
   width: 100%;
+  height: 100%;
 }
 
-.triangulo{
-  width:100%;
-  z-index: 1;
-}
 .primeiraBarra{
   height: 2px;
   background-color: rgba(60, 37, 131, 0.374);
@@ -251,14 +263,10 @@
   }
   
   .fundoLogo{
-    padding-top: 10vh;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
   }
   
-  .triangulo{
-    width:100%;
-    z-index: 1;
-  }
   
   .container{
     margin: 80px auto 0;
