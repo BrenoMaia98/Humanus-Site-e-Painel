@@ -23,11 +23,13 @@ const styles = {
 };
 
 class BotaoCarregarMais extends React.Component {
+    constructor(props){
+        super(props);
+    }
     render() {
-
         return (
             <div>
-                <Button variant="contained" size="medium" className = "App-Button" >
+                <Button onClick={this.props.onClick} variant="contained" size="medium" className = "App-Button" >
                     <FontAwesomeIcon icon={faArrowDown} size = "lg" style = {{color:'white', marginRight: '10px'}}/> <p style = {{color:'white', margin:0}}>Adicionar {this.props.nome}</p>
                 </Button>
             </div>

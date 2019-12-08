@@ -281,10 +281,10 @@ class App extends React.Component {
       <>
         <div>
           <NavBar></NavBar>
-          <div className="BlogContainerPrincipal">
+          {/* <div className="BlogContainerPrincipal">
             <p className="tituloPicker">Filtro de Postagens</p>
             <Picker data={Categorias}></Picker>
-          </div>
+          </div> */}
           {this.state.postagensAtuais.map((atual, index) => {
             if (atual.img === null) {
               return (
