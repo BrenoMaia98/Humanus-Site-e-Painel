@@ -11,6 +11,7 @@
     display: flex;
     font-weight: bolder;
     position: fixed;
+    z-index: 50;
 }
 
 .menu{
