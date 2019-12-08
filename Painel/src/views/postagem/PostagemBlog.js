@@ -28,11 +28,9 @@ class PostagemBlog extends React.Component {
     }
 
     async pegarDados(){
-        console.log("OIE :D" , this.state);
         const req = await axios.get(`${auth.baseURL}/Postagem/list/${this.state.pg + 1}/-`).catch(e => console.log(e));
         var aux = this.state.data;
         aux = aux.concat(req.data);
-        console.log("TCHAU D:" , aux)
         this.setState({ pg:this.state.pg + 1 ,data: aux });
     }
 

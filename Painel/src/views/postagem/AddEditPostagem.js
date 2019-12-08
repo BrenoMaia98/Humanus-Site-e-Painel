@@ -69,15 +69,14 @@ class AddEditPostagem extends React.Component {
 
   receberDados() {
     if (this.props.location.tipo !== "adc") {
-      console.log(this.props)
-      if(this.props.location.componenteProps.dados){
+      if (this.props.location.componenteProps.dados) {
         var { titulo, resumo, thumbnail, materiaCompleta, _id } = this.props.location.componenteProps.dados;
-        this.setState({ titulo, resumo, materiaCompleta, fotos: thumbnail, _id});
+        this.setState({ titulo, resumo, materiaCompleta, fotos: thumbnail, _id });
       }
     } else {
       console.log(this.props)
-      this.setState({ titulo:"", resumo:"", materiaCompleta:"", fotos:[] , _id:"" });
-      
+      this.setState({ titulo: "", resumo: "", materiaCompleta: "", fotos: [], _id: "" });
+
     }
   }
 
@@ -115,6 +114,18 @@ class AddEditPostagem extends React.Component {
     let aux = this.state;
     aux.fotos[index] = URL.createObjectURL(e.target.files[0]);
     this.setState({ dados: aux }, console.log("State dps de editar: ", this.state))
+  }
+
+  isBlob = (str) =>{
+    let aux = str.split(":")
+    return (aux[0] === "blob");
+  }
+
+  returnSrcImg = (thumbnail) =>{
+    if(this.isBlob(thumbnail))
+      return thumbnail;
+      else return `${auth.baseURL}/Image/${thumbnail}`;
+
   }
 
   addNewImg(e) {
@@ -184,20 +195,20 @@ class AddEditPostagem extends React.Component {
                     </div>
                     :
                     this.state.fotos.map((thumbnail, index) => {
-                      if (index == this.state.fotos.length - 1) {
+                      if (index === this.state.fotos.length - 1) {
                         return (
                           <div key={index}>
                             <div className={classes.fotoAlign}>
                               <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                               <>
                                 <input type="file" name={`foto${thumbnail}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
-                                <img src={`${auth.baseURL}/Image/${thumbnail}`} className={classes.fotoSize} alt="" />
+                                <img src={this.returnSrcImg(thumbnail)} className={classes.fotoSize} alt="" />
                               </>
                             </div>
                             <div className={classes.fotoAlign}>
                               <label >
                                 Adicionar nova foto:
-                      <input type="file" name={`novoInput`} accept="imagem/*" onChange={(e) => this.addNewImg(e, index)} />
+                                <input type="file" name={`novoInput`} accept="imagem/*" onChange={(e) => this.addNewImg(e, index)} />
                               </label>
                             </div>
                           </div>
@@ -208,7 +219,7 @@ class AddEditPostagem extends React.Component {
                             <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                             <>
                               <input type="file" name={`foto${thumbnail}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
-                              <img src={`${auth.baseURL}/Image/${thumbnail}`} className={classes.fotoSize} alt="" />
+                              <img src={this.returnSrcImg(thumbnail)} className={classes.fotoSize} alt="" />
                             </>
                           </div>
                         );
