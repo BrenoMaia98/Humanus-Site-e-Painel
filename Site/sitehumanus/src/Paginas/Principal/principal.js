@@ -40,13 +40,15 @@ function Principal() {
       <div className="container" id="contato">
            <div className="formContainer"> 
               <p>CONTATO</p>
-                <form> 
+                <form method="POST" action="http://formspree.io/fopej88492@mail1web.org"> 
                   <div className="lineontato"><label htmlfor="name">Nome: </label>
-                  <input type="name" id="name" placeholder="Nome completo"/></div>
+                  <input name="name" type="name" id="name" placeholder="Nome completo"/></div>
                   <div className="lineontato"><label htmlfor="Email">E-mail: </label>
-                  <input type="Email" id="Email" placeholder="Seu melhor Email"/></div>
-                  <div className="lineontato"><label htmlfor="Comentario">Assunto: </label>
-                  <textarea  id="Comentario" className="Comentario" rows="5" cols="50" placeholder="Faça seu comentario">
+                  <input name="_cc" type="Email" id="Email" placeholder="Seu melhor Email"/></div>
+                  <div className="lineontato"><label htmlfor="Email">Assunto: </label>
+                  <input name="_subject"  id="Email" placeholder="Assunto do email"/></div>
+                  <div className="lineontato"><label htmlfor="Comentario">Comentário: </label>
+                  <textarea name="message"  id="Comentario" className="Comentario" rows="5" cols="50" placeholder="Faça seu comentario">
                   </textarea></div>
                   <button className="btn" type="submit"><strong>Enviar</strong></button>
                 </form>
