@@ -13,6 +13,10 @@ export default class Direita extends Component {
       show: false,
     }
   }
+  componentWillReceiveProps(props) {
+    var { titulo, data, resumo, completo, img, imgs } = props;
+    this.setState({ titulo, data, resumo, completo, img, imgs });
+  }
 
 
   render() {

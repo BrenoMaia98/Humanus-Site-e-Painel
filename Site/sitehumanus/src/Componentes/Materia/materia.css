@@ -1,3 +1,9 @@
+
+.containerPostagensBlog{
+  padding-top: 15vh;
+}
+
+
 .containerMateria {
   padding-top: 2vh;
   padding-bottom: 2vh;
@@ -73,7 +79,8 @@
   text-align: justify;
   text-indent: 2em;
   font-weight: 500;
-  color: rgb(42, 21, 138)
+  color: rgb(42, 21, 138);
+  font-family: "Microsoft" , 'Alegreya', serif;
 }
 
 .resumo {
@@ -90,7 +97,7 @@
 }
 
 .tituloCentro {
-  font-family: 'Alegreya', serif;
+  font-family: 'Bebas','Alegreya', serif;
   font-size: 3em;
   text-align: center;
   margin: 0px;
@@ -111,7 +118,8 @@
 }
 
 .tituloEsquerda {
-  font-family: 'Alegreya', serif;
+  text-align: center;
+  font-family: 'Bebas','Alegreya', serif;
   font-size: 3em;
   margin: 0px;
 }
@@ -130,7 +138,8 @@
 }
 
 .tituloDireita {
-  font-family: 'Alegreya', serif;
+  text-align: center;
+  font-family: 'Bebas','Alegreya', serif;
   font-size: 3em;
   margin: 0px;
 }
@@ -161,21 +170,23 @@
   .tituloCentro {
     width: 90vw;
     margin: 0px;
-    font-family: 'Alegreya', serif;
+    font-family: 'Bebas','Alegreya', serif;
     font-size: 2em;
     text-align: center !important;
   }
   .tituloEsquerda {
+    text-align: center;
     width: 90vw;
     margin: 0px;
-    font-family: 'Alegreya', serif;
+    font-family: 'Bebas','Alegreya', serif;
     font-size: 2em;
     text-align: center !important;
   }
   .tituloDireita {
+    text-align: center;
     width: 90vw;
     margin: 0px;
-    font-family: 'Alegreya', serif;
+    font-family: 'Bebas','Alegreya', serif;
     font-size: 2em;
     text-align: center !important;
   }
@@ -208,7 +219,8 @@
     text-align: justify;
     text-indent: 0.1em;
     font-weight: 500;
-    color: rgb(42, 21, 138)
+    color: rgb(42, 21, 138);
+    font-family: "Microsoft" , 'Alegreya', serif;
   }
   .resumo {
     text-align: justify;

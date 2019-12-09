@@ -19,8 +19,8 @@ export default class quemSomos extends React.Component {
 
         axios.get(`${auth.baseURL}/Gestao/index`, {}).then(
             (response1) => {
-                this.setState({img:`${auth.baseURL}/Image/${response1.data.fotoGestao.thumbnail}`})
-            }).catch((e) => {console.log(e)})
+                this.setState({ img: `${auth.baseURL}/Image/${response1.data.fotoGestao.thumbnail}` })
+            }).catch((e) => { console.log(e) })
     }
 
     render() {
@@ -50,6 +50,25 @@ export default class quemSomos extends React.Component {
                         oferece um serviço de planejamento de ações personalizado de acordo com as
                         singularidades de cada empresa, com custos abaixo dos praticados pelo
                 mercado.</p>
+                        <strong>Missão:</strong>
+                    <ul className="none">
+                        <li>Impactar e desenvolver pessoas, gerando oportunidades através de um empreendedorismo humanizado.</li>
+                    </ul>
+                    <ul className="none">
+
+                    </ul>
+                    <strong>Visão:</strong>
+                    <ul className="none">
+                    <li>Seremos referência estadual em gestão de pessoas até 2022.</li>
+                    </ul>
+                    <strong>Valores:</strong>
+                    <ul className="none">
+
+                        <li>Visão humanizada</li>
+                        <li>Sinergia</li>
+                        <li>Compromisso</li>
+                        <li>Equidade</li>
+                    </ul>
                 </div>
             </>
         );

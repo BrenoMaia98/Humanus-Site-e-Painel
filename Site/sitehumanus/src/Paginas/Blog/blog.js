@@ -13,6 +13,7 @@ import Footer from "../../Componentes/Footer";
 import { auth } from "../../auth";
 import axios from "axios"
 import Slider from '../../Componentes/Slider/slider';
+import RenderPostagem from "../../Componentes/Materia/renderPostagem";
 
 const Categorias = [
   { id: 0, categoria: "Projetos" },
@@ -33,17 +34,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      carregado:false,
-      postagens:[],
+      carregado: false,
+      postagens: [],
       postagensAtuais: [],
-      postagensPorPagina: 10,
+      postagensPorPagina: 2,
       openSlider: false,
     };
   }
 
   recebeDados = async () => {
     const ArrayPostagens = await axios.get(`${auth.baseURL}/Postagem/all`);
-    console.log(ArrayPostagens.data)
     this.setState({
       postagens: ArrayPostagens.data,
       ladoFotoPostagem: "direita"
@@ -51,17 +51,19 @@ class App extends React.Component {
   }
 
   getPostagens = (paginaAtual) => {
-    const { postagensPorPagina, postagens } = this.state;
+    console.log(paginaAtual);
+    var { postagensPorPagina, postagens } = this.state;
     let indexDaUltimaPostagem = paginaAtual * postagensPorPagina;
     let indexDaPrimeiraPostagem = indexDaUltimaPostagem - postagensPorPagina;
     let postagensAtuais = postagens.slice(
       indexDaPrimeiraPostagem,
       indexDaUltimaPostagem
     );
-
+    //console.log("Antes : ",this.state.postagensAtuais)
+    //console.log("DPS : ",postagensAtuais)
     this.setState({
-      postagensAtuais: postagensAtuais,
-      carregado:true,
+      postagensAtuais,
+      carregado: true,
     });
   }
 
@@ -75,17 +77,15 @@ class App extends React.Component {
 
   openModal = (arrayImg) => {
     let aux = [];
-    console.log(arrayImg);
-    if(arrayImg !== undefined){
+    if (arrayImg !== undefined) {
       arrayImg.forEach(element => {
-        console.log("Cada uma: ",element);
         aux.push(`${auth.baseURL}/Image/${element}`);
       });
       this.setState({
         images: aux,
         openSlider: true
       });
-    }else{
+    } else {
       this.setState({
         images: [],
       });
@@ -93,7 +93,13 @@ class App extends React.Component {
     }
 
   }
-  dataFormat = (data) =>{
+
+  closeModal = () => {
+    this.setState({
+      openSlider: false
+    });
+  }
+  dataFormat = (data) => {
     let aux = new Date(data);
     return `${aux.getDate()}/${aux.getMonth()}/${aux.getFullYear()}`;
   }
@@ -104,8 +110,6 @@ class App extends React.Component {
   }
 
   render() {
-    var ladoFotoPostagem = "direita";
-
     return (
       <div>
         <div >
@@ -115,64 +119,16 @@ class App extends React.Component {
             <Picker data={Categorias}></Picker>
           </div> */}
           <div className="containerPostagensBlog">
-
-            {this.state.postagensAtuais.map((atual, index) => {
-              console.log(atual)
-              if (atual.img === null) {
-                return (
-                  <>
-                    <SemFoto
-                      titulo={atual.titulo}
-                      data={`${atual.data.getDate()}/${atual.data.getMonth()}/${atual.data.getFullYear()}`}
-                      resumo={atual.resumo.split("\n")}
-                      completo={atual.materiaCompleta.split("\n")}
-                    ></SemFoto>
-                    <Divisao></Divisao>
-                  </>
-                );
-              } else {
-                if (ladoFotoPostagem === "direita") {
-                  ladoFotoPostagem = "esquerda";
-                  return (
-                    <>
-                      <Direita
-                        titulo={atual.titulo}
-                        data={this.dataFormat(atual.data)}
-                        img={`${auth.baseURL}/Image/${atual.thumbnail[0]}`}
-                        resumo={atual.resumo.split("\n")}
-                        completo={atual.materiaCompleta.split("\n")}
-                        showModal={() => this.openModal(atual.thumbnail)}
-                      ></Direita>
-                      <Divisao></Divisao>
-                    </>
-                  );
-                } else {
-                  ladoFotoPostagem = "direita";
-                  return (
-                    <>
-                    <div>
-                      <Esquerda
-                        titulo={atual.titulo}
-                        data={this.dataFormat(atual.data)}
-                        img={`${auth.baseURL}/Image/${atual.thumbnail[0]}`}
-                        resumo={atual.resumo.split("\n")}
-                        completo={atual.materiaCompleta.split("\n")}
-                        showModal={() => this.openModal(atual.thumbnail)}
-                      ></Esquerda>
-                    </div>
-                      <Divisao></Divisao>
-                      </>
-                  );
-                }
-              }
-            })}
+            <RenderPostagem
+              openModal={this.openModal}
+              postagensAtuais={this.state.postagensAtuais} />
           </div>
         </div>
 
         <br></br>
         <div className="botaoPostagem">
           {
-            this.state.postagens !== undefined && this.state.postagens !== [] &&
+            this.state.postagens !== undefined && this.state.postagens !== [] && this.state.carregado &&
             <Pagination
               onChange={this.handlePageChange}
               defaultCurrent={1}
@@ -182,15 +138,15 @@ class App extends React.Component {
             />
           }
         </div>
-        <Slider isOpen={this.state.openSlider} images={this.state.images}></Slider>
-        
-        {!this.state.carregado?
-          <div className="footerBottom">
-            <Footer></Footer>
-          </div>
-          :
-            <Footer></Footer>
-      }
+
+        {this.state.carregado &&
+          <Footer></Footer>
+        }
+        <Slider
+          closeModal={this.closeModal}
+          isOpen={this.state.openSlider}
+          images={this.state.images}
+        ></Slider>
 
 
       </div>

@@ -21,14 +21,14 @@ export default class Esquerda extends Component {
       <div className="containerMateria">
         <br />
         <div className="containerTituloEsquerda">
-          <p className="textBlogStyle tituloEsquerda">{this.state.titulo}</p>
-          <p className="textBlogStyle dataEsquerda">Criado em: {this.state.data}</p>
+          <p className="textBlogStyle tituloEsquerda">{this.props.titulo}</p>
+          <p className="textBlogStyle dataEsquerda">Criado em: {this.props.data}</p>
         </div>
         <div>
 
 
           <div className="flexImageLeft">
-            <img src={this.state.img} className="img"></img>
+            <img src={this.props.img} className="img"></img>
             <br></br>
             <div className="botaoPostagem">
               <button className="btnVerMaisFotos" onClick={(evento) => { evento.preventDefault(); this.props.showModal() }}>
@@ -38,10 +38,10 @@ export default class Esquerda extends Component {
           </div>
           <div id="show" className="resumo">
             {this.state.show ?
-              this.state.completo.map((e, index) => {
+              this.props.completo.map((e, index) => {
                 return <p key={index} className="textBlogStyle">{e}</p>
               }) :
-              this.state.resumo.map((e,index) => {
+              this.props.resumo.map((e,index) => {
                 return <p key={index} className="textBlogStyle">{e}</p>
               })
             }
