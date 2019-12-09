@@ -50,25 +50,38 @@ export default class quemSomos extends React.Component {
                         oferece um serviço de planejamento de ações personalizado de acordo com as
                         singularidades de cada empresa, com custos abaixo dos praticados pelo
                 mercado.</p>
-                        <strong>Missão:</strong>
-                    <ul className="none">
-                        <li>Impactar e desenvolver pessoas, gerando oportunidades através de um empreendedorismo humanizado.</li>
-                    </ul>
-                    <ul className="none">
 
-                    </ul>
-                    <strong>Visão:</strong>
-                    <ul className="none">
-                    <li>Seremos referência estadual em gestão de pessoas até 2022.</li>
-                    </ul>
-                    <strong>Valores:</strong>
-                    <ul className="none">
+                    <div className="containerWidth33">
+                        <div className="width33">
 
-                        <li>Visão humanizada</li>
-                        <li>Sinergia</li>
-                        <li>Compromisso</li>
-                        <li>Equidade</li>
-                    </ul>
+                            <strong>Missão:</strong>
+                            <ul className="none">
+                                <li>Impactar e desenvolver pessoas, gerando oportunidades através de um empreendedorismo humanizado.</li>
+                            </ul>
+                            <ul className="none">
+                            </ul>
+                        </div>
+
+                        <div className="width33">
+
+
+                            <strong>Visão:</strong>
+                            <ul className="none">
+                                <li>Seremos referência estadual em gestão de pessoas até 2022.</li>
+                            </ul>
+                        </div>
+
+                        <div className="width33">
+                            <strong>Valores:</strong>
+                            <ul className="none">
+
+                                <li>Visão humanizada</li>
+                                <li>Sinergia</li>
+                                <li>Compromisso</li>
+                                <li>Equidade</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </>
         );

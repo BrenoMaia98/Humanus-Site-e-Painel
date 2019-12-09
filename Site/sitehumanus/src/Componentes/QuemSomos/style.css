@@ -16,10 +16,21 @@
 
 }
 ul.none{
-  list-style-type:none;
   padding-left: 20px;
 }
 
+.width33 {
+  flex: 1;
+  padding-left : 5vw;
+  padding-right: 5vw;
+  
+}
+.containerWidth33{
+  flex: 1;
+  width: 100vw;
+  display: flex;
+  border:solid #212b56 2px 0px 2px 0px ;
+}
 .conteudo{
   padding: 30px;
   font-family: 'Alegreya';
@@ -48,7 +59,18 @@ ul.none{
 @media only screen and (max-width: 1200px) {
   body 
     
-  
+  .width33 {
+    flex: unset;
+    padding-left : unset;
+    padding-right: unset;
+    
+  }
+  .containerWidth33{
+    flex: none;
+    width: unset;
+    display: block;
+  }
+
     .Titulo{
       color:#212b56;
       font-family: 'Bebas';

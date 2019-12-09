@@ -28,7 +28,7 @@ function Principal() {
       <QuemSomos></QuemSomos>
       </div>
 
-      <Divisao type="2"></Divisao>
+      <Divisao type="NMargin"></Divisao>
       
       <div id="ServicosProjetos">
       <Servicos></Servicos>
