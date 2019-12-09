@@ -22,7 +22,7 @@ export default class Esquerda extends Component {
         <br />
         <div className="containerTituloEsquerda">
           <p className="textBlogStyle tituloEsquerda">{this.state.titulo}</p>
-          <p className="textBlogStyle dataEsquerda">{this.state.data}</p>
+          <p className="textBlogStyle dataEsquerda">Criado em: {this.state.data}</p>
         </div>
         <div>
 
@@ -31,7 +31,7 @@ export default class Esquerda extends Component {
             <img src={this.state.img} className="img"></img>
             <br></br>
             <div className="botaoPostagem">
-              <button onClick={(evento) => { evento.preventDefault(); }}>
+              <button className="btnVerMaisFotos" onClick={(evento) => { evento.preventDefault();this.props.showModal() }}>
                 Ver mais fotos
               </button>
             </div>

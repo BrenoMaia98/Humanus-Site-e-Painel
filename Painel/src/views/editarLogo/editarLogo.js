@@ -41,7 +41,6 @@ class editarFotoGestao extends React.Component {
   }
 
   async receberDados() {
-    debugger
     try {
       const Resumido = await axios.get(`${auth.baseURL}/Logo/index/Resumido`)
       const Completo = await axios.get(`${auth.baseURL}/Logo/index/Completo`)
@@ -68,8 +67,6 @@ class editarFotoGestao extends React.Component {
     });
   }
   async enviarServidor() {
-    console.log("STATE:", this.state)
-    debugger
     if (this.state.fileURL !== null) {
 
       var Form1 = new FormData();
@@ -154,7 +151,7 @@ class editarFotoGestao extends React.Component {
                 <input type="file" onChange={this.handleChange} />
               </div>
               <div>
-                <p style={{ marginRight: "10px" }}>Editar Logo principal:</p>
+                <p style={{ marginRight: "10px" }}>Editar Logo Resumido:</p>
                 <img src={this.state.file2URL ? this.state.file2URL : this.state.file2} className="logoPrincipal" />
                 <input type="file" onChange={this.handleChange2} />
               </div>

@@ -12,19 +12,15 @@ export default class quemSomos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            img:null
+            img: "http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png"
         }
     }
     async componentDidMount() {
-        axios.get(`${auth.baseURL}/Imagens/:fotoGestao`, {}).then(
-            (response) => {
-                try {
-                    this.setState({ img: response.data });
-                } catch (e) {
-                    console.log(e);
-                }
-            }
-        )
+
+        axios.get(`${auth.baseURL}/Gestao/index`, {}).then(
+            (response1) => {
+                this.setState({img:`${auth.baseURL}/Image/${response1.data.fotoGestao.thumbnail}`})
+            }).catch((e) => {console.log(e)})
     }
 
     render() {
@@ -33,7 +29,7 @@ export default class quemSomos extends React.Component {
                 <div className="Titulo">
                     <p> QUEM SOMOS ?</p>
                 </div>
-                <img src={imgGestao} className="foto" />
+                <img src={this.state.img} className="foto" />
                 <div className="conteudo">
                     <p>Fundada em 23 de Maio de 1997, a Humanus Empresa Júnior é uma associação
                         civil sem fins lucrativos, constituída por alunos de graduação do curso de

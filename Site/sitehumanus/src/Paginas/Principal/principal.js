@@ -14,7 +14,7 @@ function Principal() {
     <div className="App">
       <NavBar></NavBar>
 
-      <div className="divLogo">
+      <div className="divLogo" id="topo">
         <img src={FundoSemLogo} className="fundoLogo"/>
         <div className="fundoLogo2">
 
@@ -22,18 +22,22 @@ function Principal() {
         </div>
       </div>
 
-      <div className="primeiraBarra"></div>
+      <div className="primeiraBarra" id="QuemSomos"></div>
 
+      <div >
       <QuemSomos></QuemSomos>
+      </div>
 
       <Divisao type="2"></Divisao>
       
+      <div id="ServicosProjetos">
       <Servicos></Servicos>
+      </div>
 
       <Divisao type="2"></Divisao>
 
 
-      <div className="container">
+      <div className="container" id="contato">
            <div className="formContainer"> 
               <p>CONTATO</p>
                 <form> 

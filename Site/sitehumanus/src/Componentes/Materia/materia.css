@@ -10,6 +10,8 @@
   width: 100vw;
 }
 
+
+
 .btnShowMore{
   text-align: justify;
   text-indent: 2em;
@@ -37,17 +39,12 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
-}
-.botaoPostagem{
-  display:flex;
-
-}
-.botaoPostagem button{
-  margin-left:auto;
-  margin-right: auto;
-  padding: 10px;
   
+}
+.btnVerMaisFotos{
+  margin: 0 40px 0px 0;
+  width: 30vw;
+  padding: 10px;
 }
 
 .flexImage{
@@ -66,6 +63,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+.btnVerMaisFotosDireita{
+  margin:  0 0 0 40px;
+  width: 30vw;
+  padding: 10px;
 }
 .textBlogStyle {
   text-align: justify;
@@ -243,6 +245,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+  }
+  
+  .btnVerMaisFotos{
+    width: 90vw;
   }
   
   .imgDireita{

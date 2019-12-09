@@ -30,8 +30,8 @@
 }
 
 .foto{
-  width:40%;
-  height: 50%;
+  width:40vw;
+  height: 50vh;
   border: 2px solid #3d3d3d;
   border-radius: 50px;
   float: left; 

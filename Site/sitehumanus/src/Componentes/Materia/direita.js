@@ -10,7 +10,6 @@ export default class Direita extends Component {
       resumo: this.props.resumo,
       completo: this.props.completo,
       img: this.props.img,
-      imgs: this.props.imgs,
       show: false,
     }
   }
@@ -31,7 +30,7 @@ export default class Direita extends Component {
             <img src={this.state.img} className="imgDireita"></img>
             <br></br>
             <div className="botaoPostagem">
-              <button onClick={(evento) => { evento.preventDefault(); }}>
+              <button className="btnVerMaisFotosDireita"  onClick={(evento) => { evento.preventDefault(); this.props.showModal() }}>
                 Ver mais fotos
               </button>
             </div>

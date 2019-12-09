@@ -9,8 +9,8 @@
 }
 
 .linha{
-    display: flow-root;
-    margin-top: 15vh;
+    display: block;
+    margin-top: 30vh;
     margin-bottom: 8vh;
 }
 
