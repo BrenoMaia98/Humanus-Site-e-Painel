@@ -1,18 +1,16 @@
-.containerMateria{
+.containerMateria {
   padding-top: 2vh;
   padding-bottom: 2vh;
   padding-right: 5vw;
   padding-left: 5vw;
 }
 
-.showMore{
+.showMore {
   height: 30vh;
   width: 100vw;
 }
 
-
-
-.btnShowMore{
+.btnShowMore {
   text-align: justify;
   text-indent: 2em;
   font-weight: 500;
@@ -20,7 +18,7 @@
   cursor: pointer;
   font-weight: bolder;
   font-size: 1.5em;
-  text-align: center;
+  text-align: center !important;
   margin: unset;
   position: relative;
   bottom: 4px;
@@ -29,46 +27,48 @@
   display: flow-root;
 }
 
-.img{
+.img {
   height: auto;
   max-height: 25vw;
   width: 30vw;
   background-color: rgb(255, 255, 255) !important;
-
   margin: 0 40px 0px 0;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  
 }
-.btnVerMaisFotos{
+
+.btnVerMaisFotos {
   margin: 0 40px 0px 0;
   width: 30vw;
   padding: 10px;
 }
 
-.flexImage{
+.flexImage {
   float: right;
 }
 
-.flexImageLeft{
+.flexImageLeft {
   float: left;
 }
-.imgDireita{
+
+.imgDireita {
   height: auto;
   max-height: 25vw;
   width: 30vw;
-  margin:  0 0 0 40px;
+  margin: 0 0 0 40px;
   background-color: rgb(255, 255, 255) !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
-.btnVerMaisFotosDireita{
-  margin:  0 0 0 40px;
+
+.btnVerMaisFotosDireita {
+  margin: 0 0 0 40px;
   width: 30vw;
   padding: 10px;
 }
+
 .textBlogStyle {
   text-align: justify;
   text-indent: 2em;
@@ -76,186 +76,166 @@
   color: rgb(42, 21, 138)
 }
 
-.resumo{
+.resumo {
   text-align: justify;
   font-size: 1.23em;
 }
 
-.completo{
-
+.completo {
   font-size: 1.23em;
 }
 
-.containerTituloCentro{
+.containerTituloCentro {
   align-items: center;
 }
 
-.tituloCentro{
+.tituloCentro {
   font-family: 'Alegreya', serif;
   font-size: 3em;
   text-align: center;
-  margin:0px;
+  margin: 0px;
 }
 
-
-.dataCentro{
+.dataCentro {
   font-family: 'Alegreya', serif;
   font-size: 2em;
   padding-left: 2vw;
   text-align: center;
-  margin:0px;
+  margin: 0px;
 }
 
-
-
-.containerTituloEsquerda{
+.containerTituloEsquerda {
   width: 60vw;
   margin-left: 35vw;
   padding-right: 5vw;
 }
 
-.tituloEsquerda{
+.tituloEsquerda {
   font-family: 'Alegreya', serif;
   font-size: 3em;
-  margin:0px;
+  margin: 0px;
 }
 
-
-.dataEsquerda{
+.dataEsquerda {
   font-family: 'Alegreya', serif;
   font-size: 2em;
   padding-left: 2vw;
-  margin:0px;
+  margin: 0px;
 }
 
-
-.containerTituloDireita{
+.containerTituloDireita {
   width: 60vw;
   margin-right: 35vw;
   padding-left: 5vw;
 }
 
-
-.tituloDireita{
+.tituloDireita {
   font-family: 'Alegreya', serif;
   font-size: 3em;
-  margin:0px;
+  margin: 0px;
 }
 
-
-.dataDireita{
+.dataDireita {
   font-family: 'Alegreya', serif;
   font-size: 2em;
   padding-left: 2vw;
-  margin:0px;
+  margin: 0px;
 }
 
-@media all and (max-width: 900px) 
-{
-  
-  .containerTituloCentro{
-    margin:0px;
-    padding:0px;
-    border:0px;
+@media all and (max-width: 900px) {
+  .containerTituloCentro {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
   }
-  
-  .containerTituloEsquerda{
-    margin:0px;
-    padding:0px;
-    border:0px;
+  .containerTituloEsquerda {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
   }
-  
-  .containerTituloDireita{
-    margin:0px;
-    padding:0px;
-    border:0px;
+  .containerTituloDireita {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
   }
-
-  .tituloCentro{
+  .tituloCentro {
     width: 90vw;
-    margin:0px;
+    margin: 0px;
     font-family: 'Alegreya', serif;
     font-size: 2em;
-    text-align: center;
+    text-align: center !important;
   }
-
-  .tituloEsquerda{
+  .tituloEsquerda {
     width: 90vw;
-    margin:0px;
+    margin: 0px;
     font-family: 'Alegreya', serif;
     font-size: 2em;
-    text-align: center;
+    text-align: center !important;
   }
-
-  .tituloDireita{
+  .tituloDireita {
     width: 90vw;
-    margin:0px;
+    margin: 0px;
     font-family: 'Alegreya', serif;
     font-size: 2em;
-    text-align: center;
+    text-align: center !important;
   }
-  
-  .dataCentro{
-    margin:0px;
-    width:90vw;
+  .dataCentro {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90vw;
     font-family: 'Alegreya', serif;
     font-size: 1.3em;
-    text-align: center;
+    text-align: center !important;
   }
-
-  .dataEsquerda{
-    margin:0px;
-    width:90vw;
+  .dataEsquerda {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90vw;
     font-family: 'Alegreya', serif;
     font-size: 1.3em;
-    text-align: center;
+    text-align: center !important;
   }
-  
-  .dataDireita{
-    margin:0px;
-    width:90vw;
+  .dataDireita {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80vh;
+    width: 90vw;
     font-family: 'Alegreya', serif;
     font-size: 1.3em;
-    text-align: center;
+    text-align: center !important;
   }
-
-  
   .textBlogStyle {
     text-align: justify;
     text-indent: 0.1em;
     font-weight: 500;
     color: rgb(42, 21, 138)
   }
-
-  .resumo{
+  .resumo {
     text-align: justify;
     font-size: 1.1em;
   }
-  
-  .completo{
+  .completo {
     font-size: 1em;
   }
-
-  .img{
-    height: 80vw;
+  .img {
     width: 90vw;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    max-height: none;
+    max-width: none;
     background-color: rgb(255, 255, 255) !important;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
-  
-  .btnVerMaisFotos{
+  .btnVerMaisFotos {
     width: 90vw;
   }
-  
-  .imgDireita{
-    height: 80vw;
+  .btnVerMaisFotosDireita {
     width: 90vw;
-    padding-left: 5vw;
-    padding-right: 5vw;
+  }
+  .imgDireita {
+    width: 90vw;
+    max-height: none;
+    max-width: none;
     background-color: rgb(255, 255, 255) !important;
     background-size: contain;
     background-repeat: no-repeat;

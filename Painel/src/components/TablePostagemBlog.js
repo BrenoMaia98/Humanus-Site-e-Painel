@@ -97,7 +97,6 @@ class TablePostagemBlog extends React.Component {
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>
-                                <CustomTableCell align="center">Categoria</CustomTableCell>
                                 <CustomTableCell align="center">Título</CustomTableCell>
                                 <CustomTableCell align="center">Data</CustomTableCell>
                                 <CustomTableCell align="center">Resumo</CustomTableCell>
@@ -108,7 +107,6 @@ class TablePostagemBlog extends React.Component {
                         <TableBody>
                             {this.state.linhas.map(row => (
                                 <TableRow className={classes.row} key={row._id}>
-                                    <CustomTableCell align="center">{row.categoria}</CustomTableCell>
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
                                     <CustomTableCell align="center">{row.data}</CustomTableCell>
                                     <CustomTableCell align="center">{row.resumo}</CustomTableCell>

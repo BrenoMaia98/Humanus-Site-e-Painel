@@ -31,14 +31,21 @@ export default class Esquerda extends Component {
             <img src={this.state.img} className="img"></img>
             <br></br>
             <div className="botaoPostagem">
-              <button className="btnVerMaisFotos" onClick={(evento) => { evento.preventDefault();this.props.showModal() }}>
+              <button className="btnVerMaisFotos" onClick={(evento) => { evento.preventDefault(); this.props.showModal() }}>
                 Ver mais fotos
               </button>
             </div>
           </div>
-
-          <p className="textBlogStyle" id="show" className="resumo">{this.state.show ? this.state.completo : this.state.resumo}</p>
-
+          <div id="show" className="resumo">
+            {this.state.show ?
+              this.state.completo.map((e, index) => {
+                return <p key={index} className="textBlogStyle">{e}</p>
+              }) :
+              this.state.resumo.map((e,index) => {
+                return <p key={index} className="textBlogStyle">{e}</p>
+              })
+            }
+          </div>
         </div>
         <p className="btnShowMore" onClick={
           () => {

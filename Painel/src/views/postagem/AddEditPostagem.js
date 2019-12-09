@@ -92,6 +92,7 @@ class AddEditPostagem extends React.Component {
     });
   }
   enviarServidor() {
+    console.log(this.state)
     let envio = true;
     if (!this.validaCampo()) {
       this.open("modal3")

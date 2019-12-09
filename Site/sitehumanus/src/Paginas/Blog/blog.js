@@ -33,6 +33,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      carregado:false,
+      postagens:[],
       postagensAtuais: [],
       postagensPorPagina: 10,
       openSlider: false,
@@ -58,7 +60,8 @@ class App extends React.Component {
     );
 
     this.setState({
-      postagensAtuais: postagensAtuais
+      postagensAtuais: postagensAtuais,
+      carregado:true,
     });
   }
 
@@ -121,8 +124,8 @@ class App extends React.Component {
                     <SemFoto
                       titulo={atual.titulo}
                       data={`${atual.data.getDate()}/${atual.data.getMonth()}/${atual.data.getFullYear()}`}
-                      resumo={atual.resumo.split("\n").join("<br />")}
-                      completo={atual.materiaCompleta.split("\n").join("<br />")}
+                      resumo={atual.resumo.split("\n")}
+                      completo={atual.materiaCompleta.split("\n")}
                     ></SemFoto>
                     <Divisao></Divisao>
                   </>
@@ -136,8 +139,8 @@ class App extends React.Component {
                         titulo={atual.titulo}
                         data={this.dataFormat(atual.data)}
                         img={`${auth.baseURL}/Image/${atual.thumbnail[0]}`}
-                        resumo={atual.resumo.split("\n").join("<br />")}
-                        completo={atual.materiaCompleta.split("\n").join("<br />")}
+                        resumo={atual.resumo.split("\n")}
+                        completo={atual.materiaCompleta.split("\n")}
                         showModal={() => this.openModal(atual.thumbnail)}
                       ></Direita>
                       <Divisao></Divisao>
@@ -152,8 +155,8 @@ class App extends React.Component {
                         titulo={atual.titulo}
                         data={this.dataFormat(atual.data)}
                         img={`${auth.baseURL}/Image/${atual.thumbnail[0]}`}
-                        resumo={atual.resumo.split("\n").join("<br />")}
-                        completo={atual.materiaCompleta.split("\n").join("<br />")}
+                        resumo={atual.resumo.split("\n")}
+                        completo={atual.materiaCompleta.split("\n")}
                         showModal={() => this.openModal(atual.thumbnail)}
                       ></Esquerda>
                     </div>
@@ -180,7 +183,14 @@ class App extends React.Component {
           }
         </div>
         <Slider isOpen={this.state.openSlider} images={this.state.images}></Slider>
-        <Footer></Footer>
+        
+        {!this.state.carregado?
+          <div className="footerBottom">
+            <Footer></Footer>
+          </div>
+          :
+            <Footer></Footer>
+      }
 
 
       </div>
