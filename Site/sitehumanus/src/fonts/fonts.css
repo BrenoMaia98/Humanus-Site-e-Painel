@@ -46,3 +46,8 @@
     font-weight:normal;
     font-style:normal;
 }
+
+@font-face{
+    src:url(./microsoft-jhenghei.ttf);
+    font-family: 'Microsoft';
+}

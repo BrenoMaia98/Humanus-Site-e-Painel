@@ -5,6 +5,11 @@
   border: 0;
 
 }
+.footerBottom{
+  position: absolute;
+  bottom: 0px;
+}
+
 
 .BlogContainerPrincipal{
   padding-top: 15vh;

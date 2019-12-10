@@ -69,7 +69,6 @@ class TableServicosProjetos extends React.Component {
             { id: 5, titulo: "Análise e Descrição de Cargos", descricao: " Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus odio, dapibus id, fermentum quis, suscipit id, erat. Fusce aliquam vestibulum ipsum. Aliquam erat volutpat. Pellentesque sapien. Cras elementum. Nulla pulvinar eleifend sem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque porta. Vivamus porttitor turpis ac leo." },
             { id: 6, titulo: "Orientação Profissional", descricao: " Aenean placerat. In vulputate urna eu arcu. Aliquam erat volutpat. Suspendisse potenti. Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere. Nullam lectus justo, vulputate eget, mollis sed, tempor sed, magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam neque. Curabitur ligula sapien, pulvinar a, vestibulum quis, facilisis vel, sapien. Nullam eget nisl. Donec vitae arcu." },
         ]
-        debugger
         this.pegarServicosProjetos();
         //this.setState({linhas:data});
     }
@@ -77,10 +76,8 @@ class TableServicosProjetos extends React.Component {
 
     async removerPacote(id,index) {
         try {
-            //await axios.post('http://74.117.156.74:5012/ServicosProjetos/delete', {'id': id},auth.config)
             if (window.confirm('Tem certeza que deseja deletar este item de forma PERMANENTE?')) {
                 var auxiliar = this.state.linhas;
-                //debugger
                 const resp = await axios.post(`${auth.baseURL}/ServicosProjetos/delete`,
                 { _id: id }
                 ).catch((e) =>   console.log(e))

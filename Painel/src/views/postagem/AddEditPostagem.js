@@ -47,6 +47,8 @@ class AddEditPostagem extends React.Component {
       resumo: "",
       materiaCompleta: "",
       fotos: [],
+      files: [],
+      naoModificada: [],
       _id: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -69,15 +71,12 @@ class AddEditPostagem extends React.Component {
 
   receberDados() {
     if (this.props.location.tipo !== "adc") {
-      console.log(this.props)
-      if(this.props.location.componenteProps.dados){
+      if (this.props.location.componenteProps.dados) {
         var { titulo, resumo, thumbnail, materiaCompleta, _id } = this.props.location.componenteProps.dados;
-        this.setState({ titulo, resumo, materiaCompleta, fotos: thumbnail, _id});
+        this.setState({ titulo, resumo, materiaCompleta, naoModificada: thumbnail, fotos: thumbnail, _id });
       }
     } else {
-      console.log(this.props)
-      this.setState({ titulo:"", resumo:"", materiaCompleta:"", fotos:[] , _id:"" });
-      
+      this.setState({ titulo: "", resumo: "", materiaCompleta: "", naoModificada: [], fotos: [], _id: "" });
     }
   }
 
@@ -93,6 +92,42 @@ class AddEditPostagem extends React.Component {
     });
   }
   enviarServidor() {
+    
+    if (this.state.fileURL !== null) {
+      let data = new Date;
+      var Form1 = new FormData();
+      this.state.files.forEach(e =>{
+        Form1.append("thumbnail",e);
+      })
+      Form1.append("categoria", "Geral");
+      Form1.append("titulo",this.state.titulo);
+      Form1.append("data",data);
+      Form1.append("resumo",this.state.resumo);
+      Form1.append("materiaCompleta",this.state.materiaCompleta);
+      if (this.props.location.tipo === "adc") {
+        axios({
+          method: 'post',
+          url: `${auth.baseURL}/Postagem/create`,
+          data: Form1,
+          headers: {
+            'content-type': `multipart/form-data; boundary=${Form1._boundary}`,
+          },
+        }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
+      } else {
+        Form1.append("_id",this.props.location.componenteProps.dados._id);
+        Form1.append("naoModificada",this.state.naoModificada);
+         axios({
+          method: 'put',
+          url: `${auth.baseURL}/Postagem/update`,
+          data: Form1,
+          headers: {
+            'content-type': `multipart/form-data; boundary=${Form1._boundary}`,
+          },
+        }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
+      }
+    }
+
+
     let envio = true;
     if (!this.validaCampo()) {
       this.open("modal3")
@@ -114,20 +149,34 @@ class AddEditPostagem extends React.Component {
     e.preventDefault();
     let aux = this.state;
     aux.fotos[index] = URL.createObjectURL(e.target.files[0]);
-    this.setState({ dados: aux }, console.log("State dps de editar: ", this.state))
+    aux.files[index] = e.target.files[0];
+    this.setState({ fotos: aux.fotos, files: aux.files });
   }
 
-  addNewImg(e) {
+  isBlob = (str) => {
+    let aux = str.split(":")
+    return (aux[0] === "blob");
+  }
+
+  returnSrcImg = (thumbnail) => {
+    if (this.isBlob(thumbnail))
+      return thumbnail;
+    else return `${auth.baseURL}/Image/${thumbnail}`;
+
+  }
+
+  addNewImg = (e) => {
     e.preventDefault();
     let aux = this.state;
     aux.fotos.push(URL.createObjectURL(e.target.files[0]));
-    this.setState({ dados: aux }, () => console.log("State dps de add: ", this.state))
+    aux.files.push(e.target.files[0]);
+    this.setState({ fotos: aux.fotos, files: aux.files }, () => console.log("State dps de add: ", this.state))
   }
 
   removerFoto(index) {
     let aux = this.state;
     aux.fotos.splice(index, 1)
-    this.setState({ dados: aux }, console.log("State dps de remover: ", this.state))
+    this.setState({ fotos: aux.fotos }, console.log("State dps de remover: ", this.state))
   }
 
 
@@ -184,20 +233,20 @@ class AddEditPostagem extends React.Component {
                     </div>
                     :
                     this.state.fotos.map((thumbnail, index) => {
-                      if (index == this.state.fotos.length - 1) {
+                      if (index === this.state.fotos.length - 1) {
                         return (
                           <div key={index}>
                             <div className={classes.fotoAlign}>
                               <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                               <>
                                 <input type="file" name={`foto${thumbnail}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
-                                <img src={`${auth.baseURL}/Image/${thumbnail}`} className={classes.fotoSize} alt="" />
+                                <img src={this.returnSrcImg(thumbnail)} className={classes.fotoSize} alt="" />
                               </>
                             </div>
                             <div className={classes.fotoAlign}>
                               <label >
                                 Adicionar nova foto:
-                      <input type="file" name={`novoInput`} accept="imagem/*" onChange={(e) => this.addNewImg(e, index)} />
+                                <input type="file" name={`novoInput`} accept="imagem/*" onChange={(e) => this.addNewImg(e, index)} />
                               </label>
                             </div>
                           </div>
@@ -208,7 +257,7 @@ class AddEditPostagem extends React.Component {
                             <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" onClick={() => this.removerFoto(index)} />
                             <>
                               <input type="file" name={`foto${thumbnail}`} accept="imagem/*" onChange={(e) => this.handleChange(e, index)} />
-                              <img src={`${auth.baseURL}/Image/${thumbnail}`} className={classes.fotoSize} alt="" />
+                              <img src={this.returnSrcImg(thumbnail)} className={classes.fotoSize} alt="" />
                             </>
                           </div>
                         );

@@ -38,7 +38,8 @@ class editarFotoGestao extends React.Component {
     super(props);
     this.state = {
       codigo: "",
-      file: null,
+      file: "https://semantic-ui.com/images/wireframe/image.png",
+      fileURL: null,
       original: null,
       modal1: false,
       modal2: false,
@@ -51,10 +52,16 @@ class editarFotoGestao extends React.Component {
 
 
   async receberDados() {
-    const resp = await axios.post(`${auth.baseURL}/Gestao/index`, {})
-    this.setState({ original: resp.data.thumbnail })
+    try {
+      const foto = await axios.get(`${auth.baseURL}/Gestao/index`)
 
-    //this.setState({ original: imgPadrao, })
+      this.setState({
+        file: foto.data.isError ? this.state.file : `${auth.baseURL}/Image/${foto.data.fotoGestao.thumbnail}`,
+      }
+      );
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   open(modal) {
@@ -68,13 +75,22 @@ class editarFotoGestao extends React.Component {
       [modal]: false
     });
   }
-  enviarServidor() {
-    let envio = true;
-    if (envio) {
-      this.open("modal1");
-    } else
-      this.open("modal2");
-
+  async enviarServidor(e) {
+    e.preventDefault();
+    if (this.state.fileURL !== null) {
+      var Form1 = new FormData();
+      Form1.append("thumbnail", this.state.file);
+      await axios({
+        method: 'put',
+        url: `${auth.baseURL}/Gestao/update`,
+        data: Form1,
+        headers: {
+          'content-type': `multipart/form-data; boundary=${Form1._boundary}`,
+        },
+      }).then(resp => 
+        this.open("modal1")).catch(e => this.open("modal2"));
+    }else
+    this.open("modal1");
   }
 
   componentWillMount() {
@@ -82,9 +98,13 @@ class editarFotoGestao extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
-      file: URL.createObjectURL(event.target.files[0])
-    })
+    try{
+      this.setState({
+      fileURL: URL.createObjectURL(event.target.files[0]),
+      file: event.target.files[0]
+    });}catch(e){
+      console.log("Catch ao atualizar img1: ",e)
+    }
   }
 
   render() {
@@ -94,18 +114,16 @@ class editarFotoGestao extends React.Component {
       <div>
         <Typography variant="h5" component="h2" >
           Editar Foto Gestão
-                </Typography>
+        </Typography>
         <Divider />
         <Typography className={classes.pos} color="textSecondary">
           Insira a foto da gestão e clique em salvar para alterar e concluir a operação.
-                </Typography>
+        </Typography>
 
         <div className="App-validar">
           <form onSubmit={this.enviarServidor} enctype="multipart/form-data" >
-            {this.state.file == null ?
-              <img src={this.state.original} className="imgSize" />
-              :
-              <img src={this.state.file} className="imgSize" />}
+              <img src={this.state.fileURL ? this.state.fileURL : this.state.file} className="imgSize" />
+                
             <label style={{ marginRight: '10px' }}>
               <p style={{ marginRight: '10px' }} >Foto da Gestão:</p>
 

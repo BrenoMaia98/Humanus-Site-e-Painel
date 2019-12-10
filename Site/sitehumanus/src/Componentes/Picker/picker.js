@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import './picker.css';
+//import './picker.css';
+// Se for importar o CSS vai ter que alterar o MVVdo quem somos, o ul{ } e o li{ }
 
 
 const Name = ({ 

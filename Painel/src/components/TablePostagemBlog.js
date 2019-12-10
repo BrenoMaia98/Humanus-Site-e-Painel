@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom"; import axios from 'axios';
+import {auth} from "../auth"
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -69,24 +70,21 @@ class TablePostagemBlog extends React.Component {
     }
 
 
-
-
-    async removerPostagem(index) {
+    async removerPostagem(id,index) {
         try {
-            //await axios.post('http://74.117.156.74:5012/ServicosProjetos/delete', {'id': index},auth.config)
             if (window.confirm('Tem certeza que deseja deletar este item de forma PERMANENTE?')) {
-                var auxiliar = [...this.state.linhas];
-                for (var i = auxiliar.length - 1; i >= 0; i--) {
-                    if (auxiliar[i].id === index) {
-                        auxiliar.splice(i, 1);
-                    }
-                }
+                var auxiliar = this.state.linhas;
+                await axios.delete(`${auth.baseURL}/Postagem/delete/${id}`);
+                auxiliar.splice(index, 1);
                 this.setState({ linhas: auxiliar });
             }
         } catch (err) {
             console.log(err);
         }
     };
+
+
+    
 
     render() {
         const { classes } = this.props;
@@ -97,7 +95,6 @@ class TablePostagemBlog extends React.Component {
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>
-                                <CustomTableCell align="center">Categoria</CustomTableCell>
                                 <CustomTableCell align="center">Título</CustomTableCell>
                                 <CustomTableCell align="center">Data</CustomTableCell>
                                 <CustomTableCell align="center">Resumo</CustomTableCell>
@@ -106,9 +103,8 @@ class TablePostagemBlog extends React.Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.linhas.map(row => (
+                            {this.state.linhas.map((row,index) => (
                                 <TableRow className={classes.row} key={row._id}>
-                                    <CustomTableCell align="center">{row.categoria}</CustomTableCell>
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
                                     <CustomTableCell align="center">{row.data}</CustomTableCell>
                                     <CustomTableCell align="center">{row.resumo}</CustomTableCell>
@@ -125,7 +121,7 @@ class TablePostagemBlog extends React.Component {
                                             <FontAwesomeIcon icon={faEdit} size="lg" className="App-icon" />
                                         </NavLink>
                                     </CustomTableCell>
-                                    <CustomTableCell onClick={() => this.removerPostagem(row.id)} align="center">
+                                    <CustomTableCell onClick={() => this.removerPostagem(row._id , index)} align="center">
                                         <FontAwesomeIcon icon={faTrashAlt} size="lg" className="App-icon" />
                                     </CustomTableCell>
                                 </TableRow>

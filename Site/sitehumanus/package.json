@@ -6,7 +6,9 @@
     "antd": "^3.26.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-image-lightbox": "^5.1.1",
     "react-router-dom": "^5.1.2",
+    "react-router-hash-link": "^1.2.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {
