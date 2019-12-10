@@ -47,6 +47,8 @@ class AddEditPostagem extends React.Component {
       resumo: "",
       materiaCompleta: "",
       fotos: [],
+      files: [],
+      naoModificada: [],
       _id: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -71,12 +73,10 @@ class AddEditPostagem extends React.Component {
     if (this.props.location.tipo !== "adc") {
       if (this.props.location.componenteProps.dados) {
         var { titulo, resumo, thumbnail, materiaCompleta, _id } = this.props.location.componenteProps.dados;
-        this.setState({ titulo, resumo, materiaCompleta, fotos: thumbnail, _id });
+        this.setState({ titulo, resumo, materiaCompleta, naoModificada: thumbnail, fotos: thumbnail, _id });
       }
     } else {
-      console.log(this.props)
-      this.setState({ titulo: "", resumo: "", materiaCompleta: "", fotos: [], _id: "" });
-
+      this.setState({ titulo: "", resumo: "", materiaCompleta: "", naoModificada: [], fotos: [], _id: "" });
     }
   }
 
@@ -92,7 +92,42 @@ class AddEditPostagem extends React.Component {
     });
   }
   enviarServidor() {
-    console.log(this.state)
+    
+    if (this.state.fileURL !== null) {
+      let data = new Date;
+      var Form1 = new FormData();
+      this.state.files.forEach(e =>{
+        Form1.append("thumbnail",e);
+      })
+      Form1.append("categoria", "Geral");
+      Form1.append("titulo",this.state.titulo);
+      Form1.append("data",data);
+      Form1.append("resumo",this.state.resumo);
+      Form1.append("materiaCompleta",this.state.materiaCompleta);
+      if (this.props.location.tipo === "adc") {
+        axios({
+          method: 'post',
+          url: `${auth.baseURL}/Postagem/create`,
+          data: Form1,
+          headers: {
+            'content-type': `multipart/form-data; boundary=${Form1._boundary}`,
+          },
+        }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
+      } else {
+        Form1.append("_id",this.props.location.componenteProps.dados._id);
+        Form1.append("naoModificada",this.state.naoModificada);
+         axios({
+          method: 'put',
+          url: `${auth.baseURL}/Postagem/update`,
+          data: Form1,
+          headers: {
+            'content-type': `multipart/form-data; boundary=${Form1._boundary}`,
+          },
+        }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
+      }
+    }
+
+
     let envio = true;
     if (!this.validaCampo()) {
       this.open("modal3")
@@ -114,32 +149,34 @@ class AddEditPostagem extends React.Component {
     e.preventDefault();
     let aux = this.state;
     aux.fotos[index] = URL.createObjectURL(e.target.files[0]);
-    this.setState({ dados: aux }, console.log("State dps de editar: ", this.state))
+    aux.files[index] = e.target.files[0];
+    this.setState({ fotos: aux.fotos, files: aux.files });
   }
 
-  isBlob = (str) =>{
+  isBlob = (str) => {
     let aux = str.split(":")
     return (aux[0] === "blob");
   }
 
-  returnSrcImg = (thumbnail) =>{
-    if(this.isBlob(thumbnail))
+  returnSrcImg = (thumbnail) => {
+    if (this.isBlob(thumbnail))
       return thumbnail;
-      else return `${auth.baseURL}/Image/${thumbnail}`;
+    else return `${auth.baseURL}/Image/${thumbnail}`;
 
   }
 
-  addNewImg(e) {
+  addNewImg = (e) => {
     e.preventDefault();
     let aux = this.state;
     aux.fotos.push(URL.createObjectURL(e.target.files[0]));
-    this.setState({ dados: aux }, () => console.log("State dps de add: ", this.state))
+    aux.files.push(e.target.files[0]);
+    this.setState({ fotos: aux.fotos, files: aux.files }, () => console.log("State dps de add: ", this.state))
   }
 
   removerFoto(index) {
     let aux = this.state;
     aux.fotos.splice(index, 1)
-    this.setState({ dados: aux }, console.log("State dps de remover: ", this.state))
+    this.setState({ fotos: aux.fotos }, console.log("State dps de remover: ", this.state))
   }
 
 

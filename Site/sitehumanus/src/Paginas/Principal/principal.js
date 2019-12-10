@@ -40,7 +40,7 @@ function Principal() {
       <div className="container" id="contato">
            <div className="formContainer"> 
               <p>CONTATO</p>
-                <form method="POST" action="http://formspree.io/fopej88492@mail1web.org"> 
+                <form method="POST" action="http://formspree.io/2f2521bca1@emailcu.icu"> 
                   <div className="lineontato"><label htmlfor="name">Nome: </label>
                   <input name="name" type="name" id="name" placeholder="Nome completo"/></div>
                   <div className="lineontato"><label htmlfor="Email">E-mail: </label>
