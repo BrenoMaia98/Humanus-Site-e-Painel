@@ -41,6 +41,8 @@ class numWhatsApp extends React.Component {
             codigo: "",
             modal1: false,
             modal2: false,
+            num: "",
+            _id:"",
         }
         this.handleChange = this.handleChange.bind(this);
         this.enviarServidor = this.enviarServidor.bind(this);
@@ -52,32 +54,48 @@ class numWhatsApp extends React.Component {
         })
     }
 
-    receberDados() {
-        let data = "18 999999999";
-        this.setState({ num: data })
+    async receberDados() {
+        const resp = await axios.post(`${auth.baseURL}/WhatsApp/show`, {});
+        this.setState({ num: resp.data.numero, _id:resp.data._id });
     }
-
+    
     open(modal) {
         this.setState({
             [modal]: true
         });
     }
-
+    
     close(modal) {
         this.setState({
             [modal]: false
         });
     }
-    enviarServidor() {
-        let envio = false;
-        if (envio) {
-            console.log("Passei por auqi pelo menos")
-            this.open("modal1")
-        } else
-        this.open("modal2")
+    validaCampo() {
+        if (
+            this.state.num === "" ||
+            this.state.num === null ||
+            this.state.num === undefined
+            )
+            return false;
+        else return true;
+    }
+    
+    async enviarServidor() {
+        if (this.validaCampo()) {
+            const resp = await axios.post(`${auth.baseURL}/WhatsApp/update`, {
+                numero: this.state.num,
+                _id:this.state._id,
+            });
+            console.log("RES WHATS: ",resp.data);
+            if (!resp.data.isError) {
+                this.open("modal1")
+            } else
+                this.open("modal2")
+            } else
+            this.open("modal2")
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.receberDados();
     }
     render() {
@@ -90,7 +108,7 @@ class numWhatsApp extends React.Component {
                 </Typography>
                 <Divider />
                 <Typography className={classes.pos} color="textSecondary">
-                    Este numero decontato sera utilizado para que o cliente possa se comunicar com a empresa por meio do contato direto via WhatsApp.
+                    Este numero de contato sera utilizado para que o cliente possa se comunicar com a empresa por meio do contato direto via WhatsApp.
                 </Typography>
 
                 <div className="App-validar">
@@ -103,7 +121,7 @@ class numWhatsApp extends React.Component {
                         <p style={{ color: 'white', margin: 0 }}>Salvar</p>
                     </Button>
                 </div>
-                <Modal visible={this.state.modal} effect="modal" onClickAway={() => this.close('modal1')}>
+                <Modal visible={this.state.modal1} effect="modal" onClickAway={() => this.close('modal1')}>
                     <div className="Modal">
                         <h1 className="Modal__title">Sucesso</h1>
                         <h4 className="Modal__data">Seus dados foram salvos e já estão disponiveis no site principal</h4>

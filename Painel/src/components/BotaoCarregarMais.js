@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 const styles = {
     card: {
@@ -23,12 +23,14 @@ const styles = {
 };
 
 class BotaoCarregarMais extends React.Component {
+    constructor(props){
+        super(props);
+    }
     render() {
-
         return (
             <div>
-                <Button variant="contained" size="medium" className = "App-Button" >
-                    <FontAwesomeIcon icon="caret-down" size = "lg" style = {{color:'white', marginRight: '10px'}}/> <p style = {{color:'white', margin:0}}>Adicionar {this.props.nome}</p>
+                <Button onClick={this.props.onClick} variant="contained" size="medium" className = "App-Button" >
+                    <FontAwesomeIcon icon={faArrowDown} size = "lg" style = {{color:'white', marginRight: '10px'}}/> <p style = {{color:'white', margin:0}}>Adicionar {this.props.nome}</p>
                 </Button>
             </div>
         );

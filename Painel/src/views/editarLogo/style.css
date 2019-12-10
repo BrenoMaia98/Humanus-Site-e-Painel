@@ -1,3 +1,11 @@
 .imgSize {
     height: 50vh;
 }
+
+.logoPrincipal{
+    min-height: 10vh;
+    max-height: 30vh;
+    min-width: 20vw;
+    max-width: 40vw;
+    display: block;
+}

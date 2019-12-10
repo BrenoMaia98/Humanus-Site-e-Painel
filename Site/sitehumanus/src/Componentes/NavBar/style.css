@@ -11,6 +11,7 @@
     display: flex;
     font-weight: bolder;
     position: fixed;
+    z-index: 50;
 }
 
 .menu{
@@ -36,3 +37,58 @@
     
 }
 
+.white{color:white}
+
+
+
+@media only screen and (max-width: 1200px) {
+    body 
+
+    .fundo{
+
+        width:100%;
+        font-weight: fundo;
+        background-color: #212B56;
+        display: flex;
+        font-weight: bolder;
+        position: fixed;
+    }
+    
+    .menu{
+        flex: 1;
+        display: flex;
+        color: white;
+        justify-content: space-evenly;
+    }
+    
+    .menu li{
+        /*Isso daqui deixa em linha*/
+        display: inline-block;
+        padding: 10px;
+        font-family: "Bebas";
+        font-size: 1.2em;
+    }
+    
+    
+    .logo{
+        display: inline-block; 
+        width: 15%;
+        margin-left: 20px;
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  

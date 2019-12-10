@@ -1,37 +1,43 @@
 import React from 'react';
 import './style.css';
 import CardSP from '../CardSP/index';
+import axios from 'axios';
+import { auth } from '../../auth';
 
-const cardInfo = [
-  {
-    title: 'titulo1',
-    description: 'desc1',
-  },
-  {
-    title: 'titulo2',
-    description: 'desc2',
-  },
-  {
-    title: 'titulo3',
-    description: 'desc3',
-  },
-  {
-    title: 'titulo4',
-    description: 'desc4',
-  },
-];
 
-export default function Servicos() {
-  return (
-    <>
-      <h1 style={{ "text-align": "center", "marginBottom": "45px", "marginTop": "50px", "marginBottom": "5px", "font-family": "Bebas", "fontSize": "45px" }}>Serviços e Projetos</h1>
-      <div className="containerServicos">
-        {
-          cardInfo.map(atual => (
-            <CardSP titulo={atual.title} descricao={atual.description} />
-          ))
+
+export default class Servicos extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardInfo: []
+    }
+  }
+  async componentDidMount() {
+    axios.get(`${auth.baseURL}/ServicosProjetos/list`, {}).then(
+      (response) => {
+        try {
+          this.setState({ cardInfo: response.data });
+        } catch (e) {
+          console.log(e);
         }
-      </div>
-    </>
-  );
+      }
+    )
+  }
+
+  render() {
+    return (
+      <>
+        <h1 style={{ "color":"#212b56", "text-align": "center", "marginBottom": "45px", "marginTop": "50px", "marginBottom": "5px", "font-family": "Bebas", "fontSize": "45px" }}>Serviços e Projetos</h1>
+        <div className="containerServicos">
+          {
+            this.state.cardInfo.map((atual, index) => (
+              <CardSP key={index} titulo={atual.titulo} descricao={atual.descricao} />
+            ))
+          }
+        </div>
+      </>
+    );
+  }
 }
+

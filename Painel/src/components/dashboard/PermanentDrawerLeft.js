@@ -16,7 +16,8 @@ import AuthButton from '../AuthButton';
 
 import DashboardRouter from './dashboard.route';
 import { NavLink } from "react-router-dom";
-
+import axios from 'axios';
+import {auth} from '../../auth';
 
 
 const Menu = ['INICIO', 'EDITAR FOTO GESTÃO', 'SERVIÇOS E PROJETOS', 'POSTAGEM BLOG','ALTERAR LOGO', "WHATSAPP"];
@@ -27,9 +28,16 @@ class PermanentDrawerLeft extends React.Component {
         this.state = {
             modoEdicao: false,
             modoCadastro: false,
-            pagAtual: ""
+            pagAtual: "",
+            logo:null,
         }
     }
+
+    async componentDidMount(){
+        const response = await axios.get(`${auth.baseURL}/Logo/index/Resumido`);
+        this.setState({logo:response.data.logo.thumbnail});
+    }
+
 
     render() {
         const { classes } = this.props;
@@ -51,7 +59,9 @@ class PermanentDrawerLeft extends React.Component {
                     }}
                     anchor="left"
                 >
-                    <img src={logo} alt="Logo" className={classes.imagemLogo} />
+                    {this.state.logo &&
+                        <img src={`${auth.baseURL}/Image/${this.state.logo}`} alt="Logo" className={classes.imagemLogo} />
+                    }
                     
                         <List >{
                         Menu.map((text, index) => (
