@@ -506,8 +506,7 @@
   }
 }
 
-
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 900px) and (orientation: landscape) {
   .fundoLogo {
     width: 100vw;
     height: 90vh;
@@ -525,17 +524,39 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
-
+@media only screen and (max-width: 900px) and (orientation: portrait)  {
   .fundoLogo {
-    width: 100vw;
-    height: 90vh;
+    height: 80vh;
   }
 
   .fundoLogo2 {
-    width: 90vw;
+    width: 100vw;
     left: 10vw;
-    top: 30vh;
+    top: 18vh;
+  }
+
+  .box.top,
+  .box.bottom {
+    background-size: contain;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  .divLogo{
+    height: 60vh;
+  }
+
+  .fundoLogo {
+    margin-top: 15vh;
+    width: 100vw;
+    height: 40vh;
+  }
+
+  .fundoLogo2 {
+    top: 10vh;
+    width: 100vw;
+    left: 0vw;
   }
 
   .box.top{
