@@ -1,50 +1,74 @@
-
-*{
+* {
   margin: 0;
   padding: 0;
   border: 0;
 
 }
 
-.App{
+.App {
   overflow-x: hidden;
 }
 
-.divLogo{
+.divLogo {
   margin-top: 10vh;
   height: 100vh;
   display: flex;
   z-index: -2;
 }
 
-.fundoLogo{
+.fundoLogo {
   width: 100vw;
   height: 100vh;
 }
-.fundoLogo2{
+
+.fundoLogo2 {
   position: absolute;
-  left: 22.1vw;
+  left: 23vw;
   top: 19vh;
   width: 75.9vw;
-  height: 50vh;
+  padding: 15px;
   z-index: -1;
-  display: flex;
   justify-content: center;
   align-items: center;
-}
-.img2{
-  position: relative;
-  width: 100%;
-  height: 100%;
+  border-radius: 3px;
 }
 
-.primeiraBarra{
+.box.top {
+  width: 100%;
+  height: 35px;
+  background-image: url("../../imagens/sombraCima.png");
+  background-size: 90% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 30px;
+}
+
+
+.box.bottom {
+  width: 100%;
+  height: 35px;
+  background-image: url("../../imagens/sombraBaixo.png");
+  background-size: 90% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 30px;
+}
+
+.img2 {
+  position: relative;
+  width: 85%;
+  height: auto;
+  margin-left: 8.2%;
+}
+
+.primeiraBarra {
   height: 2px;
   background-color: rgba(60, 37, 131, 0.374);
   margin-top: 5vh;
   margin-bottom: 5vh;
 }
-.container{
+
+.container {
   margin: 80px auto 0;
   max-width: 450px;
   width: 100%;
@@ -54,58 +78,61 @@
 
 }
 
-.formContainer{ /* todo o quadrado*/
+.formContainer {
+  /* todo o quadrado*/
   width: 180%;
-  background:white;
+  background: white;
   margin-top: 0px;
   border-radius: 4px;
-  padding:70px;
-  
+  padding: 70px;
+
 
 }
 
-.formContainer > p{
+.formContainer>p {
   line-height: 30px;
   margin-bottom: 60px;
   text-align: center;
   font-family: 'Bebas';
   font-size: 48px;
   color: #212b56;
-  
+
 
 
 
 }
 
-.formContainer form{
-  display:flex;
+.formContainer form {
+  display: flex;
   flex-direction: column;
 }
 
-.formContainer form label{ /* name, Email, assunto*/
+.formContainer form label {
+  /* name, Email, assunto*/
   font-size: 20px;
   color: #212b56;
   font-weight: bold;
   margin-bottom: 8px;
   font-family: 'CapitalAlegreya';
   font-weight: bolder;
-  font-style:normal;
-   
+  font-style: normal;
+
 
 }
 
-.formContainer form input{ /*barras*/
-  margin-bottom:20px;
+.formContainer form input {
+  /*barras*/
+  margin-bottom: 20px;
   border: 1px solid #dddb;
   border-radius: 20px;
-  height:30px;
+  height: 30px;
   width: 250px;
   padding: 20px 30px;
   font-size: 16px;
-  border-top:1px solid #212b56;
-  border-left:1px solid #212b56;
-  border-right:1px solid #212b56; 
-  border-bottom:1px solid #212b56;
+  border-top: 1px solid #212b56;
+  border-left: 1px solid #212b56;
+  border-right: 1px solid #212b56;
+  border-bottom: 1px solid #212b56;
   margin-left: 20px;
   float: left;
   display: block;
@@ -114,18 +141,19 @@
 
 }
 
-.Comentario{ /*barras*/
-  margin-bottom:20px;
+.Comentario {
+  /*barras*/
+  margin-bottom: 20px;
   border: 1px solid #dddb;
   border-radius: 20px;
-  height:30px;
+  height: 30px;
   width: 250px;
   padding: 20px 30px;
   font-size: 16px;
-  border-top:1px solid #212b56;
-  border-left:1px solid #212b56;
-  border-right:1px solid #212b56; 
-  border-bottom:1px solid #212b56;
+  border-top: 1px solid #212b56;
+  border-left: 1px solid #212b56;
+  border-right: 1px solid #212b56;
+  border-bottom: 1px solid #212b56;
   margin-left: 20px;
   float: left;
   display: block;
@@ -137,29 +165,29 @@
 
 
 
-.formContainer button.btn{
-  border:0;
+.formContainer button.btn {
+  border: 0;
   border-radius: 20px;
   width: 65%;
   height: 42px;
   padding: 0 20px;
   font-size: 16px;
   font-weight: bold;
-  background: #ccc9e2 ;
+  background: #ccc9e2;
   color: black;
   cursor: pointer;
-  border-top:3px solid #212b56;
-  border-left:3px solid #212b56;
-  border-right:3px solid #212b56; 
-  border-bottom:3px solid #212b56;
+  border-top: 3px solid #212b56;
+  border-left: 3px solid #212b56;
+  border-right: 3px solid #212b56;
+  border-bottom: 3px solid #212b56;
   margin-left: 10%;
   margin-top: 10px;
   font-family: 'CapitalAlegreya';
   font-weight: normal;
-  font-style:normal;
+  font-style: normal;
 }
 
-.formContainer button.btn:hover{
+.formContainer button.btn:hover {
   background: #ccc9e2;
 }
 
@@ -167,7 +195,7 @@
 
 
 
-.formContainer form input#Email{
+.formContainer form input#Email {
   box-sizing: unset !important;
   width: 55%;
   float: right;
@@ -177,7 +205,7 @@
   margin-bottom: 20px;
 }
 
-.formContainer form textarea#Comentario{
+.formContainer form textarea#Comentario {
   box-sizing: unset !important;
   resize: none;
   width: 500px;
@@ -190,7 +218,7 @@
 
 
 
-.formContainer form input#name{
+.formContainer form input#name {
   box-sizing: unset !important;
   width: 55%;
   float: right;
@@ -201,202 +229,202 @@
   margin-bottom: 25px;
 }
 
-.mapa{
+.mapa {
   border: 0px;
   width: 50%;
-  height:50%;          
-  margin-right:auto;
-  margin-bottom:10px;
+  height: 50%;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 
-.localizaçao{
-  text-align:center;
-  margin-bottom:10px;
-  color:#212b56;
-  font-size:25px;
-  margin-right:40%;
+.localizaçao {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #212b56;
+  font-size: 25px;
+  margin-right: 40%;
   font-family: 'Bebas';
   margin: 20px;
 
 }
 
-.endereço2{
-  margin-bottom:7px;
-  color:#212b56;
+.endereço2 {
+  margin-bottom: 7px;
+  color: #212b56;
   font-family: 'CapitalAlegreya';
-  font-weight:normal;
-  font-style:normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
-.cep{
-  margin-bottom:7px;
-  color:#212b56;
-  font-family:'CapitalAlegreya';
-  font-weight:normal;
-  font-style:normal;
-}
-
-.telefone2{
-  margin-bottom:7px;
-  color:#212b56;
+.cep {
+  margin-bottom: 7px;
+  color: #212b56;
   font-family: 'CapitalAlegreya';
-  font-weight:normal;
-  font-style:normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
-.TextoMapa{
-  display:flex;
+.telefone2 {
+  margin-bottom: 7px;
+  color: #212b56;
+  font-family: 'CapitalAlegreya';
+  font-weight: normal;
+  font-style: normal;
 }
 
-.Textos{
-  width: 20%; 
-  margin-left:auto;
+.TextoMapa {
+  display: flex;
+}
+
+.Textos {
+  width: 20%;
+  margin-left: auto;
 
 }
+
+
 
 @media only screen and (max-width: 1200px) {
-  body 
-
-
-  .App{
+  body .App {
     overflow-x: hidden;
   }
-  
-  .fundoLogo{
+
+  .fundoLogo {
     width: 100vw;
     height: 90vh;
   }
-  .fundoLogo2{
-    position: absolute;
-    left: 22.1vw;
-    top: 23vh;
-    width: 75.9vw;
-    height: 35vh;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .fundoLogo2 {
+    width: 80vw;
+    left: 20vw;
+    top: 30vh;
   }
-  
-  
-  .container{
+
+  .box.top,
+  .box.bottom {
+    background-size: contain;
+  }
+
+  .container {
     margin: 80px auto 0;
     max-width: 450px;
     width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-  
+
   }
-  
-  .formContainer{ /* todo o quadrado*/
+
+  .formContainer {
+    /* todo o quadrado*/
     width: auto;
-    background:white;
+    background: white;
     margin-top: 0px;
     border-radius: 4px;
-    padding:20px;
-    
-  
+    padding: 20px;
+
+
   }
-  
-  .formContainer > p{
+
+  .formContainer>p {
     line-height: 30px;
     margin-bottom: 60px;
     text-align: center;
     font-family: 'Bebas';
     font-size: 48px;
     color: #212b56;
-    
-  
+
+
   }
-  
-  .formContainer form{
-    display:flex;
+
+  .formContainer form {
+    display: flex;
     flex-direction: column;
   }
-  
-  .formContainer form label{ /* name, Email, assunto*/
+
+  .formContainer form label {
+    /* name, Email, assunto*/
     font-size: 20px;
     color: #212b56;
     font-weight: bold;
     margin-bottom: 8px;
     font-family: 'CapitalAlegreya';
     font-weight: bolder;
-    font-style:normal;
-     
-  
+    font-style: normal;
+
+
   }
-  
-  .formContainer form input{ 
-    margin-bottom:20px;
+
+  .formContainer form input {
+    margin-bottom: 20px;
     border: 1px solid #dddb;
     border-radius: 20px;
-    height:30px;
+    height: 30px;
     width: 250px;
     padding: 20px 30px;
     font-size: 16px;
-    border-top:1px solid #212b56;
-    border-left:1px solid #212b56;
-    border-right:1px solid #212b56; 
-    border-bottom:1px solid #212b56;
+    border-top: 1px solid #212b56;
+    border-left: 1px solid #212b56;
+    border-right: 1px solid #212b56;
+    border-bottom: 1px solid #212b56;
     margin-left: 20px;
     float: left;
     display: block;
     position: flex;
-  
-  
+
+
   }
-  
-  .Comentario{ 
-    margin-bottom:20px;
+
+  .Comentario {
+    margin-bottom: 20px;
     border: 1px solid #dddb;
     border-radius: 20px;
-    height:30px;
+    height: 30px;
     width: 250px;
     padding: 20px 30px;
     font-size: 16px;
-    border-top:1px solid #212b56;
-    border-left:1px solid #212b56;
-    border-right:1px solid #212b56; 
-    border-bottom:1px solid #212b56;
+    border-top: 1px solid #212b56;
+    border-left: 1px solid #212b56;
+    border-right: 1px solid #212b56;
+    border-bottom: 1px solid #212b56;
     margin-left: 20px;
     float: left;
     display: block;
     position: flex;
-  
-  
+
+
   }
-  
-    .formContainer button.btn{
-    border:0;
+
+  .formContainer button.btn {
+    border: 0;
     border-radius: 20px;
     width: 65%;
     height: 42px;
     padding: 0 20px;
     font-size: 16px;
     font-weight: bold;
-    background: #ccc9e2 ;
+    background: #ccc9e2;
     color: black;
     cursor: pointer;
-    border-top:3px solid #212b56;
-    border-left:3px solid #212b56;
-    border-right:3px solid #212b56; 
-    border-bottom:3px solid #212b56;
+    border-top: 3px solid #212b56;
+    border-left: 3px solid #212b56;
+    border-right: 3px solid #212b56;
+    border-bottom: 3px solid #212b56;
     margin-left: 17%;
     margin-top: 10px;
     font-family: 'CapitalAlegreya';
     font-weight: normal;
-    font-style:normal;
+    font-style: normal;
   }
-  
-  .formContainer button.btn:hover{
+
+  .formContainer button.btn:hover {
     background: #ccc9e2;
   }
-  
-    
-  
-  
-  .formContainer form input#Email{
+
+
+
+
+  .formContainer form input#Email {
     margin-top: 3%;
     box-sizing: unset !important;
     width: 85%;
@@ -406,9 +434,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
-   }
-  
-  .formContainer form textarea#Comentario{
+  }
+
+  .formContainer form textarea#Comentario {
     resize: none;
     box-sizing: unset !important;
     margin-top: 3%;
@@ -421,11 +449,11 @@
     margin-right: auto;
     margin-bottom: 25px;
   }
-  
-  
-  
-  
-  .formContainer form input#name{
+
+
+
+
+  .formContainer form input#name {
     margin-top: 3%;
     box-sizing: unset !important;
     width: 85%;
@@ -437,25 +465,84 @@
     margin-bottom: 25px;
   }
 
-  .mapa  {
-  
+  .mapa {
+
     width: 100%;
-    height:50%;          
-    align-items: center; 
-    display:block;
-    
-  }
-  
-  .TextoMapa{
+    height: 50%;
+    align-items: center;
     display: block;
-    
+
   }
+
+  .TextoMapa {
+    display: block;
+
+  }
+
   .Textos {
     width: 60%;
     align-items: center;
     margin-bottom: 10%;
     margin-left: 20%;
-}
-  
+  }
+
 }
 
+@media only screen and (max-width: 1000px) {
+  .fundoLogo {
+    width: 100vw;
+    height: 90vh;
+  }
+
+  .fundoLogo2 {
+    width: 85vw;
+    left: 13vw;
+    top: 25vh;
+  }
+
+  .box.top,
+  .box.bottom {
+    background-size: contain;
+  }
+}
+
+
+@media only screen and (max-width: 900px) {
+  .fundoLogo {
+    width: 100vw;
+    height: 90vh;
+  }
+
+  .fundoLogo2 {
+    width: 80vw;
+    left: 20vw;
+    top: 18vh;
+  }
+
+  .box.top,
+  .box.bottom {
+    background-size: contain;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  .fundoLogo {
+    width: 100vw;
+    height: 90vh;
+  }
+
+  .fundoLogo2 {
+    width: 90vw;
+    left: 10vw;
+    top: 30vh;
+  }
+
+  .box.top{
+    margin-bottom: 10px;
+  }
+  .box.bottom{
+    margin-top: 10px;
+  }
+
+}
