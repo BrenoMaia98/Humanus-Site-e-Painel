@@ -17,14 +17,14 @@
 }
 
 .fundoLogo {
-  width: 100vw;
+  width: 30vw !important;
   height: 100vh;
 }
 
 .fundoLogo2 {
   position: absolute;
   left: 23vw;
-  top: 19vh;
+  top: 25vh;
   width: 75.9vw;
   padding: 15px;
   z-index: -1;
@@ -283,6 +283,13 @@
 }
 
 
+@media only screen and (max-width: 1366px) and (orientation: landscape) {
+
+  .fundoLogo2 {
+    top: 30vh;
+  }
+  
+}
 
 @media only screen and (max-width: 1200px) {
   body .App {
@@ -290,14 +297,15 @@
   }
 
   .fundoLogo {
-    width: 100vw;
-    height: 90vh;
+    margin-top: 5vh;
+    width: 25vw !important;
+    height: 80vh;
   }
 
   .fundoLogo2 {
     width: 80vw;
     left: 20vw;
-    top: 30vh;
+    top: 35vh;
   }
 
   .box.top,
@@ -489,15 +497,17 @@
 }
 
 @media only screen and (max-width: 1000px) {
+
   .fundoLogo {
+    margin-top: 5vh;
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
   }
 
   .fundoLogo2 {
-    width: 85vw;
-    left: 13vw;
-    top: 25vh;
+    width: 80vw;
+    left: 20vw;
+    top: 13vh;
   }
 
   .box.top,
@@ -507,9 +517,11 @@
 }
 
 @media only screen and (max-width: 900px) and (orientation: landscape) {
+
   .fundoLogo {
+    margin-top: 5vh;
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
   }
 
   .fundoLogo2 {
@@ -525,14 +537,21 @@
 }
 
 @media only screen and (max-width: 900px) and (orientation: portrait)  {
+
+  .divLogo{
+    height: auto;
+  }
+
   .fundoLogo {
-    height: 80vh;
+    margin-top: 5vh;
+    width: 20vw !important;
+    height: 20vh;
   }
 
   .fundoLogo2 {
-    width: 100vw;
-    left: 10vw;
-    top: 18vh;
+    top: 10vh;
+    width: 85vw;
+    left: 12.5vw;
   }
 
   .box.top,
@@ -544,19 +563,46 @@
 @media only screen and (max-width: 500px) {
 
   .divLogo{
-    height: 60vh;
+    height: auto;
   }
 
   .fundoLogo {
-    margin-top: 15vh;
-    width: 100vw;
-    height: 40vh;
+    margin-top: 5vh;
+    width: 20vw !important;
+    height: 20vh;
   }
 
   .fundoLogo2 {
     top: 10vh;
-    width: 100vw;
-    left: 0vw;
+    width: 85vw;
+    left: 12.5vw;
+  }
+
+  .box.top{
+    margin-bottom: 10px;
+  }
+  .box.bottom{
+    margin-top: 10px;
+  }
+
+}
+
+@media only screen and (max-width: 360px) {
+
+  .divLogo{
+    height: auto;
+  }
+
+  .fundoLogo {
+    margin-top: 5vh;
+    width: 20vw !important;
+    height: 20vh;
+  }
+
+  .fundoLogo2 {
+    top: 10vh;
+    width: 85vw;
+    left: 12.5vw;
   }
 
   .box.top{
