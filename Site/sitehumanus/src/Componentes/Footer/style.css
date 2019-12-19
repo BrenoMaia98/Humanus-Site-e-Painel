@@ -1,185 +1,51 @@
-*{
-    margin:0;
-    padding:0;
-    border:0;
-  
-  }
-  
-  .footer {
-    position:absolute;
-    margin-bottom:0;
-    width:100%;
-    background-color:  #212b56;
-  }
-  .Texto{
-    text-align:right;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    margin-right: 80px;
-    color: white;
-    font-family: 'CapitalAlegreya';
-    font-weight: normal;
-    font-style:normal;
-  }
-  
-  .Texto2{
-    text-Align:center;
-    color:white;
-    font-family: 'CapitalAlegreya';
-    font-weight: normal;
-    font-style:normal;
-  }
-  
+.footer {
+  position: absolute;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: #212b56;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
 
-   
-  
-  .Icones li{
-   
-      display: inline-block;
-      float: left;
-      width: 40px;
-      height: 40px;
-      padding: 5px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      margin-left: 30px;
-  
-  
-  }
-  
-  .WhatsApp{
-  height: 35px;
-  width: 35px;
-  }
-  
-  .Facebook{
-    height: 35px;
-    width: 35px;
-    }
-  
-  
-  .instagram{
-  height: 35px;
-  width: 35px;
-  }
-  
-  .Twitter{
-  height: 35px;
-  width: 35px;
+.Texto {
+  text-align: center;
+  font-family: 'CapitalAlegreya';
+  width: 50%;
+  margin-top: 25px;
+}
+
+.Icones {
+  width: 50%;
+  margin-top: 25px;
+}
+
+.Icones a img {
+  width: 45px;
+  margin: 5px;
+}
+
+.TextoBaixo {
+  text-align: center;
+  font-family: 'CapitalAlegreya';
+  width: 100%;
+}
+
+.TextoBaixo p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 900px) {
+
+  .Icones,
+  .Texto {
+    width: 100%;
   }
 
-  .telefone{
-    margin-bottom:10px;
-    margin-right: 115px;
+  .TextoBaixo {
+    margin-top: 25px;
   }
-
-  .CEP{
-    margin-bottom:10px;
-    margin-right: 120px;
-
-  }
-
-  .endereço{
-    margin-bottom:10px;
-    margin-right: 50px;
-  }
-  
-  
-  @media only screen and (max-width: 1200px) {
-    body 
-
-
-    *{
-      margin:0;
-      padding:0;
-      border:0;
-    
-    }
-    
-    .footer {
-      position:absolute;
-      margin-bottom:0;
-      width:100%;
-      background-color:  #212b56;
-    }
-    .Texto{
-      text-align:center;
-      margin-top: 15px;
-      margin-bottom: 20px;
-      margin-right: 20px;
-      margin-left: 20px;
-      color: white;
-      font-family: 'CapitalAlegreya';
-      font-weight: normal;
-      font-style:normal;
-    
-    }
-    
-    .Texto2{
-      text-Align:center;
-      color:white;
-      font-family: 'CapitalAlegreya';
-      font-weight: normal;
-      font-style:normal;
-      
-    }
-    
-    
-    .Icones li{
-     
-        display: inline-block;
-        float: left;
-        width: 40px;
-        height: 40px;
-        padding: 5px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 43px;
-    
-    
-    }
-    
-    .WhatsApp{
-    height: 35px;
-    width: 35px;
-    }
-    
-    .Facebook{
-      height: 35px;
-      width: 35px;
-      }
-    
-    
-    .instagram{
-    height: 35px;
-    width: 35px;
-    }
-    
-    .Twitter{
-    height: 35px;
-    width: 35px;
-    }
-
-    
-    .telefone{
-      float: center;
-      margin-bottom:10px;
-      margin-right: 30px;
-      margin-left: 30px;
-    }
-  
-    .CEP{
-      margin-bottom:10px;
-      margin-right: 30px;
-      margin-left: 30px;
-  
-    }
-  
-    .endereço{
-      margin-bottom:10px;
-      margin-right: 30px;
-      margin-left: 30px;
-    }
-
-
-  }
+}
