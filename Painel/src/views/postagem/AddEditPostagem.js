@@ -115,7 +115,9 @@ class AddEditPostagem extends React.Component {
         }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
       } else {
         Form1.append("_id",this.props.location.componenteProps.dados._id);
-        Form1.append("naoModificada",this.state.naoModificada);
+        this.state.naoModificada.forEach( e =>{
+          Form1.append("naoModificada",e);
+        })
          axios({
           method: 'put',
           url: `${auth.baseURL}/Postagem/update`,

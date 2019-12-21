@@ -71,7 +71,7 @@ class App extends React.Component {
                                                 img={`${auth.baseURL}/Image/${atual.thumbnail[0]}`}
                                                 resumo={atual.resumo.split("\n")}
                                                 completo={atual.materiaCompleta.split("\n")}
-                                                showModal={() => this.openModal(atual.thumbnail)}
+                                                showModal={() => this.props.openModal(atual.thumbnail)}
                                             ></Esquerda>
                                             <Divisao></Divisao>
                                         </div>

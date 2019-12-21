@@ -39,6 +39,7 @@ class App extends React.Component {
       postagensAtuais: [],
       postagensPorPagina: 2,
       openSlider: false,
+      loading: true,
     };
   }
 
@@ -46,7 +47,8 @@ class App extends React.Component {
     const ArrayPostagens = await axios.get(`${auth.baseURL}/Postagem/all`);
     this.setState({
       postagens: ArrayPostagens.data,
-      ladoFotoPostagem: "direita"
+      ladoFotoPostagem: "direita",
+      loading: false,
     });
   }
 
@@ -111,45 +113,60 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <div >
           <NavBar></NavBar>
-          {/* <div className="BlogContainerPrincipal">
+          {/*
+           <div className="BlogContainerPrincipal">
             <p className="tituloPicker">Filtro de Postagens</p>
             <Picker data={Categorias}></Picker>
           </div> */}
-          <div className="containerPostagensBlog">
-            <RenderPostagem
-              openModal={this.openModal}
-              postagensAtuais={this.state.postagensAtuais} />
+
+          {!this.state.carregado ?
+            <div class="wrapper">
+            <div class="loading-container">
+              <div class="first-layer"></div>
+              <div class="second-layer"></div>
+              <div class="third-layer"></div>
+              <div class="fourth-layer"></div>
+              <div class="last-layer"></div>
+              <div class="last-layer2"></div>
+            </div>
+            
           </div>
-        </div>
+            :
+            <>
+              <div className="containerPostagensBlog">
+                <RenderPostagem
+                  openModal={this.openModal}
+                  postagensAtuais={this.state.postagensAtuais} />
+              </div>
 
-        <br></br>
-        <div className="botaoPostagem">
-          {
-            this.state.postagens !== undefined && this.state.postagens !== [] && this.state.carregado &&
-            <Pagination
-              onChange={this.handlePageChange}
-              defaultCurrent={1}
-              pageSize={this.state.postagensPorPagina}
-              total={this.state.postagens.length}
-              style={{ zIndex: 10 }}
-            />
+              <br></br>
+              <div className="botaoPostagem">
+                {
+                  this.state.postagens !== undefined && this.state.postagens !== [] && this.state.carregado &&
+                  <Pagination
+                    onChange={this.handlePageChange}
+                    defaultCurrent={1}
+                    pageSize={this.state.postagensPorPagina}
+                    total={this.state.postagens.length}
+                    style={{ zIndex: 10 }}
+                  />
+                }
+              </div>
+
+              <Footer></Footer>
+
+            </>
           }
+          <Slider
+            closeModal={this.closeModal}
+            isOpen={this.state.openSlider}
+            images={this.state.images}
+          ></Slider>
         </div>
-
-        {this.state.carregado &&
-          <Footer></Footer>
-        }
-        <Slider
-          closeModal={this.closeModal}
-          isOpen={this.state.openSlider}
-          images={this.state.images}
-        ></Slider>
-
-
-      </div>
+      </>
     );
   }
 }

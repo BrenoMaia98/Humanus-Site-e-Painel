@@ -111,7 +111,7 @@ class AddEditServicosProjetos extends React.Component {
         }
         )
       }else{
-         resp = await axios.post(`${auth.baseURL}/ServicosProjetos/update`,        {
+         resp = await axios.put(`${auth.baseURL}/ServicosProjetos/update`,        {
           titulo: this.state.titulo,
           descricao: this.state.descricaoItem,
           _id:this.props.location._id,
