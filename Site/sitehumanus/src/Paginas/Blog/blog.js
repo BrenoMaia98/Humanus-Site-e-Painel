@@ -53,7 +53,6 @@ class App extends React.Component {
   }
 
   getPostagens = (paginaAtual) => {
-    console.log(paginaAtual);
     var { postagensPorPagina, postagens } = this.state;
     let indexDaUltimaPostagem = paginaAtual * postagensPorPagina;
     let indexDaPrimeiraPostagem = indexDaUltimaPostagem - postagensPorPagina;
@@ -61,8 +60,6 @@ class App extends React.Component {
       indexDaPrimeiraPostagem,
       indexDaUltimaPostagem
     );
-    //console.log("Antes : ",this.state.postagensAtuais)
-    //console.log("DPS : ",postagensAtuais)
     this.setState({
       postagensAtuais,
       carregado: true,

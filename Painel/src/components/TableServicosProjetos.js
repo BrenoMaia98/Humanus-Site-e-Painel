@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom";
+import LinearProgress from '@material-ui/core/LinearProgress';
 import axios from 'axios';
 import { auth } from "../auth";
 const CustomTableCell = withStyles(theme => ({
@@ -106,7 +107,8 @@ class TableServicosProjetos extends React.Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.linhas.map((row,index) => (
+                        {this.state.linhas.length > 0 ?
+                            this.state.linhas.map((row,index) => (
                                 <TableRow className={classes.row} key={row._id}>
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
                                     <CustomTableCell align="center">{row.descricao}</CustomTableCell>
@@ -128,7 +130,9 @@ class TableServicosProjetos extends React.Component {
                                     </CustomTableCell>
                                 </TableRow>
                             ))
-                            }
+                            :
+                            <LinearProgress />
+                        }
                         </TableBody>
                     </Table>
 

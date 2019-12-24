@@ -51,11 +51,8 @@ class AddEditPostagem extends React.Component {
       naoModificada: [],
       _id: "",
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.enviarServidor = this.enviarServidor.bind(this);
-    this.receberDados = this.receberDados.bind(this);
-
   }
+
   validaCampo() {
     if (
       this.state.titulo === "" ||
@@ -69,7 +66,7 @@ class AddEditPostagem extends React.Component {
     else return true;
   }
 
-  receberDados() {
+  receberDados = () => {
     if (this.props.location.tipo !== "adc") {
       if (this.props.location.componenteProps.dados) {
         var { titulo, resumo, thumbnail, materiaCompleta, _id } = this.props.location.componenteProps.dados;
@@ -91,19 +88,19 @@ class AddEditPostagem extends React.Component {
       [modal]: false
     });
   }
-  enviarServidor() {
-    
+  enviarServidor = () => {
+
     if (this.state.fileURL !== null) {
       let data = new Date;
       var Form1 = new FormData();
-      this.state.files.forEach(e =>{
-        Form1.append("thumbnail",e);
+      this.state.files.forEach(e => {
+        Form1.append("thumbnail", e);
       })
       Form1.append("categoria", "Geral");
-      Form1.append("titulo",this.state.titulo);
-      Form1.append("data",data);
-      Form1.append("resumo",this.state.resumo);
-      Form1.append("materiaCompleta",this.state.materiaCompleta);
+      Form1.append("titulo", this.state.titulo);
+      Form1.append("data", data);
+      Form1.append("resumo", this.state.resumo);
+      Form1.append("materiaCompleta", this.state.materiaCompleta);
       if (this.props.location.tipo === "adc") {
         axios({
           method: 'post',
@@ -114,11 +111,14 @@ class AddEditPostagem extends React.Component {
           },
         }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
       } else {
-        Form1.append("_id",this.props.location.componenteProps.dados._id);
-        this.state.naoModificada.forEach( e =>{
-          Form1.append("naoModificada",e);
+        Form1.append("_id", this.props.location.componenteProps.dados._id);
+        this.state.naoModificada.forEach(e => {
+          if(e.split(":")[0] !== "blob")
+          Form1.append("naoModificada", e);
+          if(e.split(":")[0] !== "blob")
+          console.log(e)
         })
-         axios({
+        axios({
           method: 'put',
           url: `${auth.baseURL}/Postagem/update`,
           data: Form1,
@@ -127,6 +127,8 @@ class AddEditPostagem extends React.Component {
           },
         }).then(resp => console.log("RESP1 : ", resp)).catch(e => console.log("ERROR1 : ", e));
       }
+      debugger;
+      console.log(Form1);
     }
 
 
@@ -147,19 +149,19 @@ class AddEditPostagem extends React.Component {
   }
 
 
-  handleChange(e, index) {
+  handleChange = (e, index) => {
     e.preventDefault();
-    let aux = this.state;
-    aux.fotos[index] = URL.createObjectURL(e.target.files[0]);
-    aux.files[index] = e.target.files[0];
-    this.setState({ fotos: aux.fotos, files: aux.files });
+    let state = {...this.state};
+    state.fotos[index] = URL.createObjectURL(e.target.files[0]);
+    state.files[index] = e.target.files[0];
+    this.setState({ fotos: state.fotos, files: state.files, naoModificada : state.naoModificada});
   }
 
   isBlob = (str) => {
     let aux = str.split(":")
     return (aux[0] === "blob");
   }
-
+  
   returnSrcImg = (thumbnail) => {
     if (this.isBlob(thumbnail))
       return thumbnail;
@@ -168,17 +170,22 @@ class AddEditPostagem extends React.Component {
   }
 
   addNewImg = (e) => {
-    e.preventDefault();
-    let aux = this.state;
-    aux.fotos.push(URL.createObjectURL(e.target.files[0]));
-    aux.files.push(e.target.files[0]);
-    this.setState({ fotos: aux.fotos, files: aux.files }, () => console.log("State dps de add: ", this.state))
+    try{
+
+      e.preventDefault();
+      let aux = this.state;
+      aux.fotos.push(URL.createObjectURL(e.target.files[0]));
+      aux.files.push(e.target.files[0]);
+      this.setState({ fotos: aux.fotos, files: aux.files })
+    }catch(e){
+      console.log(e)
+    }
   }
 
   removerFoto(index) {
     let aux = this.state;
     aux.fotos.splice(index, 1)
-    this.setState({ fotos: aux.fotos }, console.log("State dps de remover: ", this.state))
+    this.setState({ fotos: aux.fotos })
   }
 
 

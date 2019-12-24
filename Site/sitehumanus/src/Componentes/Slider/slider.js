@@ -10,12 +10,10 @@ export default class Slider extends Component {
       isOpen: this.props.isOpen,
       images: this.props.images,
     };
-    console.log("STATE",this.state)
   }
 
 
   async componentWillReceiveProps(nextProps) {
-    console.log("nextProps",nextProps);
     await this.setState({
       isOpen: nextProps.isOpen,
       images: nextProps.images,

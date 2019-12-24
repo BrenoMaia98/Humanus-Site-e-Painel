@@ -79,7 +79,6 @@ class AddEditServicosProjetos extends React.Component {
         descricaoItem: dados.descricao,
       });
     }else{
-      console.log("PROPS: ", this.props.location);
       this.setState({
         titulo: this.props.location.titulo,
         descricaoItem: this.props.location.descricaoItem,

@@ -52,7 +52,6 @@ class FormsPostagem extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const { classes } = this.props;
          if(this.state.carregando){
           return(
@@ -64,7 +63,6 @@ class FormsPostagem extends React.Component {
           );
         }
         else{
-            console.log(this.props)
             return (
                 <div>
                     <Typography variant="h5" component="h2" >

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { NavLink } from "react-router-dom";
 import { withRouter } from 'react-router';
 import { auth } from "../../auth";
@@ -28,10 +29,15 @@ class PostagemBlog extends React.Component {
     }
 
     async pegarDados(){
-        const req = await axios.get(`${auth.baseURL}/Postagem/list/${this.state.pg + 1}/-`).catch(e => console.log(e));
-        var aux = this.state.data;
-        aux = aux.concat(req.data);
-        this.setState({ pg:this.state.pg + 1 ,data: aux });
+        try{
+
+            const req = await axios.get(`${auth.baseURL}/Postagem/list/${this.state.pg + 1}/-`).catch(e => console.log(e));
+            var aux = this.state.data;
+            aux = aux.concat(req.data);
+            this.setState({ pg:this.state.pg + 1 ,data: aux });
+        }catch(e){
+            alert("Houve um problema com a conexão");
+        }
     }
 
     componentWillMount() {
@@ -51,8 +57,10 @@ class PostagemBlog extends React.Component {
                         Nesta seção é possivel, editar, remover ou adicionar novas postagens do Blog.
                 </Typography>
                 </div>
-                {this.state.data.length > 0 &&
+                {this.state.data.length > 0 ?
                     <TablePostagemBlog data={this.state.data} />
+                    :
+                    <LinearProgress />
                 }
                 <BotaoCarregarMais onClick={this.pegarDados} nome="Carregar Mais" />
                 <NavLink to={{
