@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState , useEffect } from 'react';
 import "./principal.css";
 import NavBar from "../../Componentes/NavBar/NavBar";
 import FundoLogo from "../../imagens/FundoLogoCompleto.png";
@@ -9,7 +9,18 @@ import Servicos from "../../Componentes/Servico/index";
 import Footer from "../../Componentes/Footer/index";
 import Divisao from '../../Componentes/Divisao/divisao';
 
+import {auth} from "../../auth";
+import axios from 'axios';
+
 function Principal() {
+  const [Logo, setLogo] = useState("http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png");
+
+  useEffect(async () => {
+    const Completo = await axios.get(`${auth.baseURL}/Logo/index/Completo`);
+    console.log("Antes : ",Logo);
+    await  setLogo(`${auth.baseURL}/Image/${Completo.data.logo.thumbnail}`);
+    console.log("DPS : ",Logo);
+  }, []);
   return (
     <div className="App">
       <NavBar></NavBar>
@@ -18,7 +29,7 @@ function Principal() {
         <img src={FundoSemLogo} className="fundoLogo" />
         <div className="fundoLogo2">
           <div class="box top"></div>
-          <img src={LogoCompleto} className="img2" />
+          <img src={Logo} className="img2" />
           <div class="box bottom"></div>
         </div>
       </div>
