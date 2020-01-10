@@ -37,7 +37,7 @@ class App extends React.Component {
       carregado: false,
       postagens: [],
       postagensAtuais: [],
-      postagensPorPagina: 2,
+      postagensPorPagina: 10,
       openSlider: false,
       loading: true,
     };
@@ -111,7 +111,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div >
+        <div id="blog">
           <NavBar></NavBar>
           {/*
            <div className="BlogContainerPrincipal">
@@ -142,7 +142,7 @@ class App extends React.Component {
               <br></br>
               <div className="botaoPostagem">
                 {
-                  this.state.postagens !== undefined && this.state.postagens !== [] && this.state.carregado &&
+                  this.state.postagens !== undefined && this.state.postagens !== []  && this.state.postagensAtuais !== [] && this.state.carregado &&
                   <Pagination
                     onChange={this.handlePageChange}
                     defaultCurrent={1}

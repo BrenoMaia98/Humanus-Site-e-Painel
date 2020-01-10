@@ -17,7 +17,7 @@ export default class NavBar extends React.Component {
                     <HashLink to={"/home#ServicosProjetos"}>
                         <li className="white">SERVIÇOS E PROJETOS</li>
                     </HashLink>
-                    <HashLink to={"/blog#blog"}>
+                    <HashLink to={"/blog"}>
                         <li className="white">BLOG</li>
                     </HashLink>
                     <HashLink to={"/home#contato"}>

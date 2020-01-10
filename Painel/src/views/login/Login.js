@@ -26,10 +26,8 @@ class Login extends React.Component {
 
             const response = await axios.post(`${auth.baseURL}/Session/login`,
                 {
-                    "usuario": "golfionho",
-                    "senha": "23412341"
-                    // "usuario": this.state.email,
-                    //"senha": this.state.senha 
+                    "usuario": this.state.email,
+                    "senha": this.state.senha
                 },
             );
             if (!response.data.isError) {
