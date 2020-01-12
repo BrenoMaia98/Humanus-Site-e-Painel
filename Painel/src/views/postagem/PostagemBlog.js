@@ -58,14 +58,12 @@ class PostagemBlog extends React.Component {
                         Nesta seção é possivel, editar, remover ou adicionar novas postagens do Blog.
                 </Typography>
                 </div>
-                {this.state.data.length > 0 ?
-                    <TablePostagemBlog data={this.state.data} />
-                    :
-                    this.state.carregou && this.state.length === 0 ?
-                        <h1 style={{ fontSize: "2em" }}> Não existem dados</h1>
-                    :
-                        <LinearProgress />
+                <TablePostagemBlog data={this.state.data} />
+                {this.state.carregou && this.state.data.length === 0&&
+                    <h1 style={{ fontSize: "2em", color:"#ccc",textAlign:"center" }}> Não existem postagens</h1>
                 }
+                {!this.state.carregou && <LinearProgress />}
+
                 <BotaoCarregarMais onClick={this.pegarDados} nome="Carregar Mais" />
                 <NavLink to={{
                     pathname: "/POSTAGEM BLOG/adc",

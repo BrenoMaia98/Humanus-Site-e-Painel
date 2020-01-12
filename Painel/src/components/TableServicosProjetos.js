@@ -47,14 +47,15 @@ class TableServicosProjetos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            linhas: []
+            linhas: [],
+            carregou:false,
         };
     }
 
     async pegarServicosProjetos() {
         try {
             await axios.get(`${auth.baseURL}/ServicosProjetos/list`, {}).then(response => {
-                this.setState({ linhas: response.data })
+                this.setState({ linhas:[], carregou:true })
             })
         } catch (err) {
             console.log(err);
@@ -107,7 +108,7 @@ class TableServicosProjetos extends React.Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                        {this.state.linhas.length > 0 ?
+                        {this.state.linhas.length > 0 &&
                             this.state.linhas.map((row,index) => (
                                 <TableRow className={classes.row} key={row._id}>
                                     <CustomTableCell align="center">{row.titulo}</CustomTableCell>
@@ -130,9 +131,11 @@ class TableServicosProjetos extends React.Component {
                                     </CustomTableCell>
                                 </TableRow>
                             ))
-                            :
-                            <LinearProgress />
                         }
+                        {this.state.carregou && this.state.linhas.length === 0&&
+                    <h1 style={{ fontSize: "2em", color:"#ccc" , textAlign:"center"}}> Não existem serviços cadastrados</h1>
+                }
+                {!this.state.carregou && <LinearProgress />}
                         </TableBody>
                     </Table>
 
