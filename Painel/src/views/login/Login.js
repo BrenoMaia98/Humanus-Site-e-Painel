@@ -4,6 +4,8 @@ import { auth } from '../../auth';
 import axios from 'axios';
 import './login.css';
 
+import Modal from "../../components/modal/index"
+
 
 class Login extends React.Component {
     constructor(props) {
@@ -15,6 +17,8 @@ class Login extends React.Component {
             senha: '',
             tipo: 'admin',
             token: "",
+            modal2: false,
+            loginModal:false,
         }
     }
 
@@ -25,26 +29,20 @@ class Login extends React.Component {
         try {
 
             const response = await axios.post(`${auth.baseURL}/Session/login`,
-                {
-                    "usuario": this.state.email,
-                    "senha": this.state.senha
-                },
+                { "usuario": this.state.email, "senha": this.state.senha },
             );
             if (!response.data.isError) {
                 this.setState({ token: response.data.token },
                     () => {
-                        auth.authenticate("admin", response.data.token, () => {
-                            this.setState(() => ({
-                                redirectToReferrer: true
-                            }));
-                        });
+                        auth.authenticate("admin", response.data.token,
+                            () => { this.setState(() => ({ redirectToReferrer: true })); }
+                        );
                     })
-            } else {
-                alert(response.data.message);
-            }
+            } else
+                this.setState({ loginModal: true })
+
         } catch (err) {
-            alert(err);
-            window.location.replace('/login');
+            this.setState({ modal2: true });
         }
     }
 
@@ -88,7 +86,23 @@ class Login extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Modal visible={this.state.modal2} effect="modal" onClickAway={() => this.close('modal2')}>
+                <div className="Modal">
+                    <h1 className="Modal__title">Erro</h1>
+                    <h4 className="Modal__data">Ocorreu um erro na conexão, por favor tente mais tarde, caso o erro persista, contate a empresa EJCOMP.</h4>
+                    <a onClick={() => this.setState({ modal2: false })}>Ok</a>
+                </div>
+            </Modal>
+
+            <Modal visible={this.state.loginModal} effect="modal" onClickAway={() => this.close('modal2')}>
+                <div className="Modal">
+                    <h1 className="Modal__title">Erro</h1>
+                    <h4 className="Modal__data">Usuário ou senha incorretos</h4>
+                    <a onClick={() => this.setState({ loginModal: false })}>Ok</a>
+                </div>
+            </Modal>
             </div>
+            
         );
     }
 }

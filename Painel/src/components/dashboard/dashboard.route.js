@@ -11,6 +11,8 @@ import AddEditPostagem from '../../views/postagem/AddEditPostagem';
 
 import NumWhatsApp from '../../views/numWhatsApp/numWhatsApp';
 
+import editarEmail from '../../views/editarEmail/editarEmail';
+
 import editarFotoGestao from '../../views/editarFoto/editarFotoGestao';
 import editarLogo from '../../views/editarLogo/editarLogo';
 
@@ -29,6 +31,7 @@ class DashboardRouter extends Component {
                     <Route exact path="/SERVIÇOS E PROJETOS" component={ServicosProjetos} />
                     <Route exact path="/POSTAGEM BLOG" component={PostagemBlog} />
                     <Route exact path="/WHATSAPP" component={NumWhatsApp} />
+                    <Route exact path="/EMAIL" component={editarEmail} />
                     <Route exact path="/ALTERAR LOGO" component={editarLogo} />
 
                 

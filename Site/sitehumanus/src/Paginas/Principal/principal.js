@@ -13,17 +13,32 @@ import { auth } from "../../auth";
 import axios from 'axios';
 
 function Principal() {
-  const [Logo, setLogo] = useState("http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png");
+  const imgNotFound = "http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png";
+  const [Logo, setLogo] = useState(imgNotFound);
+  const [Email, setEmail] = useState("teste123@gmail.com.br");
+  const [Carregado, setCarregado] = useState(false);
+  const [Erro, setErro] = useState(false);
 
   useEffect(() => {
-    try {
-      axios.get(`${auth.baseURL}/Logo/index/Completo`).then(
-        Completo => {
-          setLogo(`${auth.baseURL}/Image/${Completo.data.logo.thumbnail}`);
-        })
-    } catch (e) {
-      console.log("Erro de conexão: ", e);
-    }
+    axios.get(`${auth.baseURL}/Logo/index/Completo`)
+      .then(
+
+        Completo => setLogo(`${auth.baseURL}/Image/${Completo.data.logo.thumbnail}`))
+
+      .catch(e => { setErro(true); console.log("Erro de conexão: ", e); })
+      .finally(
+
+        axios.get(`${auth.baseURL}/Email/show`, {})
+          .then(
+
+            resp => {
+              if (!resp.data.isError) setEmail(resp.data.email)
+              else setErro(true)
+            }
+
+          ).catch(e => { setErro(true); console.log("Erro de conexão: ", e); })
+          .finally(setCarregado(true))
+      )
   }, []);
 
   return (
@@ -34,15 +49,9 @@ function Principal() {
         <img src={FundoSemLogo} className="fundoLogo" />
         <div className="fundoLogo2">
           <div className="box top"></div>
-          {Logo !== "http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png" ?
-            <img src={Logo} className="img2" />
-            :
-            <>
-              <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center", color: "red" }}>Ocorreu um erro com de conexão com o servidor.</h3>
-              <br />
-              <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center", color: "red" }}>Por favor contate a empresa para mais detalhes.</h3>
-            </>
-          }
+
+          <img src={Logo} className="img2" />
+
           <div className="box bottom"></div>
         </div>
       </div>
@@ -65,7 +74,7 @@ function Principal() {
       <div className="container" id="contato">
         <div className="formContainer">
           <p>CONTATO</p>
-          <form method="POST" action="http://formspree.io/2f2521bca1@emailcu.icu">
+          <form method="POST" action={`http://formspree.io/${Email}`}>
             <div className="lineontato"><label htmlFor="name">Nome: </label>
               <input name="name" type="name" id="name" placeholder="Nome completo" /></div>
             <div className="lineontato"><label htmlFor="Email">E-mail: </label>

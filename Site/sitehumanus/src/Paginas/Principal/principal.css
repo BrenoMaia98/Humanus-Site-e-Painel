@@ -58,6 +58,7 @@
   position: relative;
   width: 85%;
   height: auto;
+  max-height: 60vh;
   margin-left: 8.2%;
 }
 

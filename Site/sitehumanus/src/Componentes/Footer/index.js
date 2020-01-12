@@ -42,7 +42,7 @@ export default class Footer extends React.Component {
                     <div className="Icones">
                         <a href={`https://wa.me/${this.state.numWhats}?text=Olá, gostaria de entrar em contato com vocês!`} target="_blank"><img src={WhatsApp2} className="WhatsApp" /> </a>
                         <a href="https://www.instagram.com/humanus_ej/?hl=pt-br" target="_blank"><img src={instagram2} className="instagram" /> </a>
-                        <a href="https://twitter.com/humanusjr" target="_blank"><img src={Twitter2} className="Twitter" /></a>
+                        {/* <a href="https://twitter.com/humanusjr" target="_blank"><img src={Twitter2} className="Twitter" /></a> */}
                         <a href="https://www.facebook.com/HumanusEJ/?__tn__=%2Cd%2CP-R&eid=ARBhe7mEjvAeXMNEZNds0zW-o9R92IWueMVWQh6s2-Ij2FVxYUR3x-GGQc8LlOmV-bDR3R7Q1okOFaF2" target="_blank"><img src={Facebook2} className="Facebook" /></a>
                     </div>
                     <div className="Texto">

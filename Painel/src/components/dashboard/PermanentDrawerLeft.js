@@ -20,7 +20,7 @@ import axios from 'axios';
 import {auth} from '../../auth';
 
 
-const Menu = ['INICIO', 'EDITAR FOTO GESTÃO', 'SERVIÇOS E PROJETOS', 'POSTAGEM BLOG','ALTERAR LOGO', "WHATSAPP"];
+const Menu = ['INICIO', 'EDITAR FOTO GESTÃO', 'SERVIÇOS E PROJETOS', 'POSTAGEM BLOG','ALTERAR LOGO', "WHATSAPP", "EMAIL"];
 
 class PermanentDrawerLeft extends React.Component {
     constructor(props) {
