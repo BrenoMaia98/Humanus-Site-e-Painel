@@ -37,8 +37,8 @@ export default class Footer extends React.Component {
 
     render() {
         return (
-            <div class="container body-content">
-                <footer class="footer">
+            <div className="container body-content">
+                <footer className="footer">
                     <div className="Icones">
                         <a href={`https://wa.me/${this.state.numWhats}?text=Olá, gostaria de entrar em contato com vocês!`} target="_blank"><img src={WhatsApp2} className="WhatsApp" /> </a>
                         <a href="https://www.instagram.com/humanus_ej/?hl=pt-br" target="_blank"><img src={instagram2} className="instagram" /> </a>

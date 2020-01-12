@@ -25,15 +25,15 @@ export default class SemFoto extends Component {
         <br />
         <div className="containerTituloCentro">
           <p className=" textBlogStyle tituloCentro">{this.state.titulo}</p>
-          <p className=" textBlogStyle dataCentro">{this.state.data}</p>
+          <p className=" textBlogStyle dataCentro">Criado em: {this.state.data}</p>
         </div>
         <div>
           {this.state.show ?
             this.state.completo.map((e, index) => {
-              return <p key={index} className="textBlogStyle">{e}</p>
+              return <p key={index} className="textBlogStyle completo">{e}</p>
             }) :
             this.state.resumo.map((e, index) => {
-              return <p key={index} className="textBlogStyle">{e}</p>
+              return <p key={index} className="textBlogStyle resumo">{e}</p>
             })
           }
         </div>

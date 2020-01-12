@@ -33,12 +33,12 @@ class App extends React.Component {
                 <div className="containerPostagensBlog">
                     {
                         this.props.postagensAtuais.map((atual, index) => {
-                            if (atual.img === null) {
+                            if (atual.thumbnail.length === 0) {
                                 return (
                                     <div>
                                         <SemFoto
                                             titulo={atual.titulo}
-                                            data={`${atual.data.getDate()}/${atual.data.getMonth()}/${atual.data.getFullYear()}`}
+                                            data={this.dataFormat(atual.data)}
                                             resumo={atual.resumo.split("\n")}
                                             completo={atual.materiaCompleta.split("\n")}
                                         ></SemFoto>

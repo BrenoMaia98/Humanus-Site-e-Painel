@@ -24,18 +24,19 @@ class PostagemBlog extends React.Component {
         this.state = {
             pg: 0,
             data: [],
+            carregou: false,
         }
         this.pegarDados = this.pegarDados.bind(this);
     }
 
-    async pegarDados(){
-        try{
+    async pegarDados() {
+        try {
 
             const req = await axios.get(`${auth.baseURL}/Postagem/list/${this.state.pg + 1}/-`).catch(e => console.log(e));
             var aux = this.state.data;
             aux = aux.concat(req.data);
-            this.setState({ pg:this.state.pg + 1 ,data: aux });
-        }catch(e){
+            this.setState({ pg: this.state.pg + 1, data: aux, carregou: true });
+        } catch (e) {
             alert("Houve um problema com a conexão");
         }
     }
@@ -60,7 +61,10 @@ class PostagemBlog extends React.Component {
                 {this.state.data.length > 0 ?
                     <TablePostagemBlog data={this.state.data} />
                     :
-                    <LinearProgress />
+                    this.state.carregou && this.state.length === 0 ?
+                        <h1 style={{ fontSize: "2em" }}> Não existem dados</h1>
+                    :
+                        <LinearProgress />
                 }
                 <BotaoCarregarMais onClick={this.pegarDados} nome="Carregar Mais" />
                 <NavLink to={{

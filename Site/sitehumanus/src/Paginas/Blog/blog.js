@@ -40,16 +40,22 @@ class App extends React.Component {
       postagensPorPagina: 10,
       openSlider: false,
       loading: true,
+      erro: "",
     };
   }
 
   recebeDados = async () => {
-    const ArrayPostagens = await axios.get(`${auth.baseURL}/Postagem/all`);
-    this.setState({
-      postagens: ArrayPostagens.data,
-      ladoFotoPostagem: "direita",
-      loading: false,
-    });
+    try {
+
+      const ArrayPostagens = await axios.get(`${auth.baseURL}/Postagem/all`);
+      this.setState({
+        postagens: ArrayPostagens.data,
+        ladoFotoPostagem: "direita",
+        loading: false,
+      });
+    } catch (erro) {
+      this.setState({ erro, carregado: true })
+    }
   }
 
   getPostagens = (paginaAtual) => {
@@ -121,28 +127,30 @@ class App extends React.Component {
 
           {!this.state.carregado ?
             <div class="wrapper">
-            <div class="loading-container">
-              <div class="first-layer"></div>
-              <div class="second-layer"></div>
-              <div class="third-layer"></div>
-              <div class="fourth-layer"></div>
-              <div class="last-layer"></div>
-              <div class="last-layer2"></div>
-            </div>
-            
-          </div>
-            :
-            <>
-              <div className="containerPostagensBlog">
-                <RenderPostagem
-                  openModal={this.openModal}
-                  postagensAtuais={this.state.postagensAtuais} />
+              <div class="loading-container">
+                <div class="first-layer"></div>
+                <div class="second-layer"></div>
+                <div class="third-layer"></div>
+                <div class="fourth-layer"></div>
+                <div class="last-layer"></div>
+                <div class="last-layer2"></div>
               </div>
+            </div>
+            :
+            this.state.postagens !== undefined && this.state.postagens.length !== 0 &&
+            this.state.postagensAtuais.length !== 0 && this.state.carregado && this.state.erro === "" &&
+            (
+              <>
+                <div className="containerPostagensBlog">
+                  <RenderPostagem
+                    openModal={this.openModal}
+                    postagensAtuais={this.state.postagensAtuais} />
+                </div>
 
-              <br></br>
-              <div className="botaoPostagem">
-                {
-                  this.state.postagens !== undefined && this.state.postagens !== []  && this.state.postagensAtuais !== [] && this.state.carregado &&
+                <br></br>
+                <div className="botaoPostagem">
+
+
                   <Pagination
                     onChange={this.handlePageChange}
                     defaultCurrent={1}
@@ -150,12 +158,11 @@ class App extends React.Component {
                     total={this.state.postagens.length}
                     style={{ zIndex: 10 }}
                   />
-                }
-              </div>
 
-              <Footer></Footer>
+                </div>
+              </>
+            )
 
-            </>
           }
           <Slider
             closeModal={this.closeModal}
@@ -163,6 +170,24 @@ class App extends React.Component {
             images={this.state.images}
           ></Slider>
         </div>
+
+        {
+          (this.state.postagens.length === 0 || this.state.postagensAtuais.length === 0) && this.state.carregado && this.state.erro === "" &&
+          <div style={{ paddingTop: "35vh" }}>
+            <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center" }}>Não existem postagens a serem exibidas. Aguarde por mais atualizações!</h3>
+            <br />
+            <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center" }}>Acessa outras seções atraves do menu superior</h3>
+          </div>
+        }
+        {this.state.erro !== "" &&
+          <div style={{ paddingTop: "35vh" }}>
+            <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center", color:"red" }}>Ocorreu um erro com de conexão com o servidor.</h3>
+            <br/>
+            <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center", color:"red" }}>Por favor contate a empresa para mais detalhes.</h3>
+            <br/>
+          </div>
+        }
+        <Footer></Footer>
       </>
     );
   }

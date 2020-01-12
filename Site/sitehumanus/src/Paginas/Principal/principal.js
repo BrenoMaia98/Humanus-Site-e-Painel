@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./principal.css";
 import NavBar from "../../Componentes/NavBar/NavBar";
 import FundoLogo from "../../imagens/FundoLogoCompleto.png";
@@ -9,18 +9,23 @@ import Servicos from "../../Componentes/Servico/index";
 import Footer from "../../Componentes/Footer/index";
 import Divisao from '../../Componentes/Divisao/divisao';
 
-import {auth} from "../../auth";
+import { auth } from "../../auth";
 import axios from 'axios';
 
 function Principal() {
   const [Logo, setLogo] = useState("http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png");
 
-  useEffect(async () => {
-    const Completo = await axios.get(`${auth.baseURL}/Logo/index/Completo`);
-    console.log("Antes : ",Logo);
-    await  setLogo(`${auth.baseURL}/Image/${Completo.data.logo.thumbnail}`);
-    console.log("DPS : ",Logo);
+  useEffect(() => {
+    try {
+      axios.get(`${auth.baseURL}/Logo/index/Completo`).then(
+        Completo => {
+          setLogo(`${auth.baseURL}/Image/${Completo.data.logo.thumbnail}`);
+        })
+    } catch (e) {
+      console.log("Erro de conexão: ", e);
+    }
   }, []);
+
   return (
     <div className="App">
       <NavBar></NavBar>
@@ -28,9 +33,17 @@ function Principal() {
       <div className="divLogo" id="topo">
         <img src={FundoSemLogo} className="fundoLogo" />
         <div className="fundoLogo2">
-          <div class="box top"></div>
-          <img src={Logo} className="img2" />
-          <div class="box bottom"></div>
+          <div className="box top"></div>
+          {Logo !== "http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png" ?
+            <img src={Logo} className="img2" />
+            :
+            <>
+              <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center", color: "red" }}>Ocorreu um erro com de conexão com o servidor.</h3>
+              <br />
+              <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center", color: "red" }}>Por favor contate a empresa para mais detalhes.</h3>
+            </>
+          }
+          <div className="box bottom"></div>
         </div>
       </div>
 
@@ -53,13 +66,13 @@ function Principal() {
         <div className="formContainer">
           <p>CONTATO</p>
           <form method="POST" action="http://formspree.io/2f2521bca1@emailcu.icu">
-            <div className="lineontato"><label htmlfor="name">Nome: </label>
+            <div className="lineontato"><label htmlFor="name">Nome: </label>
               <input name="name" type="name" id="name" placeholder="Nome completo" /></div>
-            <div className="lineontato"><label htmlfor="Email">E-mail: </label>
+            <div className="lineontato"><label htmlFor="Email">E-mail: </label>
               <input name="_cc" type="Email" id="Email" placeholder="Seu melhor Email" /></div>
-            <div className="lineontato"><label htmlfor="Email">Assunto: </label>
+            <div className="lineontato"><label htmlFor="Email">Assunto: </label>
               <input name="_subject" id="Email" placeholder="Assunto do email" /></div>
-            <div className="lineontato"><label htmlfor="Comentario">Comentário: </label>
+            <div className="lineontato"><label htmlFor="Comentario">Comentário: </label>
               <textarea name="message" id="Comentario" className="Comentario" rows="5" cols="50" placeholder="Faça seu comentario">
               </textarea></div>
             <button className="btn" type="submit"><strong>Enviar</strong></button>
@@ -79,8 +92,6 @@ function Principal() {
         </div>
         <iframe className="mapa"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.170600858988!2d-50.44049668425479!3d-22.64742703436298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDM4JzUwLjgiUyA1MMKwMjYnMTcuOSJX!5e0!3m2!1spt-PT!2sbr!4v1575923822428!5m2!1spt-PT!2sbr"
-
-          allowfullscreen=""
         ></iframe>
       </div>
       <Footer></Footer>
