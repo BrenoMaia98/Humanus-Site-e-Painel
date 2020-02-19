@@ -3,7 +3,7 @@ export const auth = {
 	token: '',
 	tipo: '',
 	config:'',
-	baseURL:"http://localhost:3333",
+	baseURL:"https://api.humanusjr.com",
 	authenticate(tipo, token, cb){
 		this.token = token;
 		this.isAuthenticated = true;

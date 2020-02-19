@@ -176,7 +176,7 @@ class App extends React.Component {
           <div style={{ paddingTop: "35vh" }}>
             <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center" }}>Não existem postagens a serem exibidas. Aguarde por mais atualizações!</h3>
             <br />
-            <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center" }}>Acessa outras seções atraves do menu superior</h3>
+            <h3 style={{ fontFamily: "Bebas", fontSize: "3em", textAlign: "center" }}>Acesse outras seções atraves do menu superior.</h3>
           </div>
         }
         {this.state.erro !== "" &&

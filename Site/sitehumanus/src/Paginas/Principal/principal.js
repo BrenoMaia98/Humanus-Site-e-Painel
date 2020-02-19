@@ -8,12 +8,13 @@ import QuemSomos from "../../Componentes/QuemSomos/index";
 import Servicos from "../../Componentes/Servico/index";
 import Footer from "../../Componentes/Footer/index";
 import Divisao from '../../Componentes/Divisao/divisao';
+import SemImagem from '../../imagens/semImagem.png'
 
 import { auth } from "../../auth";
 import axios from 'axios';
 
 function Principal() {
-  const imgNotFound = "http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png";
+  const imgNotFound = SemImagem;
   const [Logo, setLogo] = useState(imgNotFound);
   const [Email, setEmail] = useState("teste123@gmail.com.br");
   const [Carregado, setCarregado] = useState(false);
@@ -74,7 +75,7 @@ function Principal() {
       <div className="container" id="contato">
         <div className="formContainer">
           <p>CONTATO</p>
-          <form method="POST" action={`http://formspree.io/${Email}`}>
+          <form method="POST" action={`https://formspree.io/${Email}`}>
             <div className="lineontato"><label htmlFor="name">Nome: </label>
               <input name="name" type="name" id="name" placeholder="Nome completo" /></div>
             <div className="lineontato"><label htmlFor="Email">E-mail: </label>

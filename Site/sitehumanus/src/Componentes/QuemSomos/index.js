@@ -1,5 +1,6 @@
 import React from 'react';
 import imgGestao from '../../imagens/imgGestao.jpeg';
+import SemImagem from '../../imagens/semImagem.png'
 import './style.css';
 
 
@@ -12,7 +13,7 @@ export default class quemSomos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            img: "http://www.bonfanti.ind.br/igc/uploadAr/FileProcessingScripts/PHP/UploadedFiles/thumbs/semImagem.png"
+            img: SemImagem
         }
     }
     async componentDidMount() {
